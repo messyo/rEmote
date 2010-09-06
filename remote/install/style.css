@@ -1,0 +1,163 @@
+body
+{
+	font-family: Arial, Helvetica, sans-serif;
+	background:  #333;
+	padding-top: 30px;
+	text-align: center;
+	background: url(images/background.png);
+}
+
+div#main
+{
+	text-align: left;
+	width: 900px;
+	margin-left: auto;
+	margin-right: auto;
+	background: white;
+}
+
+div#buttons
+{
+	margin-top: 20px;
+}
+
+div#custombutton
+{
+	margin-right: 320px;
+	width: 560px;
+	height: 20px;
+}
+
+div#next
+{
+	text-align: right;
+	width: 300px;
+	height: 24px;
+	float: right;
+}
+
+div.bottom a
+{
+	border: 1px solid blue;
+	color: blue;
+	text-decoration: none;
+	padding: 3px;
+	font-weight: bold;
+}
+
+div.bottom a:hover
+{
+	background: blue;
+	color: white;
+}
+
+div#header
+{
+	height: 43px;
+	color: white;
+	background: url(images/header.png);
+	font-size: 26px;
+	font-weight: bold;
+	padding-top: 3px;
+	padding-left: 10px;
+}
+
+div#content
+{
+	padding: 10px;
+}
+
+div.error
+{
+	border: 2px solid red;
+	padding-top: 12px;
+	padding-right: 12px;
+	padding-bottom: 12px;
+	padding-left: 45px;
+	color: red;
+	font-weight: bold;
+	background: url(images/messagebox_warning.png);
+	background-repeat: no-repeat;
+	background-position: 5px 5px;
+	background-color: #ffdddd;
+	margin-bottom: 15px;
+	font-size: 16px;
+	text-align: left;
+}
+
+div.notify
+{
+	border: 2px solid blue;
+	padding-top: 12px;
+	padding-right: 12px;
+	padding-bottom: 12px;
+	padding-left: 45px;
+	color: blue;
+	font-weight: bold;
+	background: url(images/messagebox_info.png);
+	background-repeat: no-repeat;
+	background-position: 5px 5px;
+	background-color: #ddddff;
+	margin-bottom: 15px;
+	font-size: 16px;
+	text-align: left;
+}
+
+div.success
+{
+	border: 2px solid green;
+	padding-top: 12px;
+	padding-right: 12px;
+	padding-bottom: 12px;
+	padding-left: 45px;
+	color: green;
+	font-weight: bold;
+	background: url(images/messagebox_ok.png);
+	background-repeat: no-repeat;
+	background-position: 5px 5px;
+	background-color: #ddffdd;
+	margin-bottom: 15px;
+	font-size: 16px;
+	text-align: left;
+}
+
+div.small
+{
+	padding-left: 30px;
+	font-size: 12px;
+	margin-top: 30px;
+	margin-bottom: 10px;
+}
+
+table      { border-collapse: collapse; }
+table td   { vertical-align: top; padding: 4px;}
+tr.head td { border-bottom: 2px solid black; font-weight: bold;}
+
+span.green { color: green; font-weight: bold;}
+span.red   { color: red;   }
+
+#legend
+{
+	border: 1px solid black;
+	margin-top: 30px;
+}
+
+#legend td
+{
+	vertical-align: middle;
+}
+
+#pathes input, #binaries input
+{
+	width: 400px;
+}
+
+#binaries td
+{
+	vertical-align: middle;
+}
+
+td.auto
+{
+	font-size: 12px;
+}
