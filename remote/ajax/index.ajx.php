@@ -33,8 +33,8 @@ set_error_handler('error_handler');
 
 $totup_format = format_bytes($global['upspeed']);
 $totdown_format = format_bytes($global['downspeed']);
-$percup  = $global['upspeed']*100/($settings['maxupspeed']*1024);
-$percdwn = $global['downspeed']*100/($settings['maxdownspeed']*1024);
+$percup  = $settings['maxupspeed'] == 0 ? 0 : $global['upspeed']*100/($settings['maxupspeed']*1024);
+$percdwn = $settings['maxdownspeed'] == 0 ? 0 : $global['downspeed']*100/($settings['maxdownspeed']*1024);
 
 $output  = "[ '$totup_format/s / $totdown_format/s - {$settings['html_title']}'";
 $output .= ', \''.progressbar($percup  > 100 ? 100 : $percup,  $totup_format.'/s').'\'';
@@ -71,95 +71,98 @@ if($_SESSION['refmode'] == 2)
 		$cache = array();
 	$changed = false;
 
-	foreach($data as $groupid => $group)
+	if(is_array($data) && count($data))
 	{
-		$t_count     = 0;
-		$t_done      = 0.0;
-		$t_eta       = 0.0;
-		$t_sup       = 0.0;
-		$t_sdwn      = 0.0;
-		$t_seeded    = 0.0;
-		$t_completed = 0.0;
-		$t_size      = 0.0;
-		$t_ratio     = 0.0;
-
-		foreach($group as $item)
+		foreach($data as $groupid => $group)
 		{
-			$l = array();
-			$l_hash         = $item[HASH];
-			$l_status       = $item[STATUS];
-			$l['statuskey'] = $lng["status$l_status"];
-			$l['statusimg'] = "<img src=\"{$imagedir}status_$l_status.png\" alt=\"{$l['statuskey']}\" />";
-			$l['done']      = progressbar($item[PERCENT_COMPLETE], $item[PERCENT_COMPLETE].'%');
-			$l['eta']       = $item[ETA];
-			$l['upspeed']   = ($item[UP_RATE] ? ('<span class="speedhighlight">'.format_bytes($item[UP_RATE]).'/s</span>') : format_bytes($item[UP_RATE]).'/s');
-			$l['downspeed'] = ($item[DOWN_RATE] ? ('<span class="speedhighlight">'.format_bytes($item[DOWN_RATE]).'/s</span>') : format_bytes($item[DOWN_RATE]).'/s');
-			$l['seeded']    = format_bytes($item[UP_TOTAL]);
-			$l['completed'] = format_bytes($item[COMPLETED_BYTES]);
-			$l['peers']     = "{$item[PEERS_CONNECTED]}/{$item[PEERS_NOT_CONNECTED]} ({$item[PEERS_COMPLETE]})";
-			$l['ratio']     = round($item[RATIO]/1000, 2);
-			$l['message']   = $item[MESSAGE];
-			if($l['ratio'] < 1)
-				$l['ratio']  = '<span style="color: #'.dechex(255-($l['ratio']*255))."0000;\">{$l['ratio']}</span>";
-			//$l['check']     = "<input type=\"checkbox\" class=\"checkbox\" name=\"multiselect[]\" value=\"$l_hash\" />";
+			$t_count     = 0;
+			$t_done      = 0.0;
+			$t_eta       = 0.0;
+			$t_sup       = 0.0;
+			$t_sdwn      = 0.0;
+			$t_seeded    = 0.0;
+			$t_completed = 0.0;
+			$t_size      = 0.0;
+			$t_ratio     = 0.0;
 
-			$t_count     += 1;
-			$t_done      += $item[PERCENT_COMPLETE];
-	  		$t_sup       += $item[UP_RATE];
-	  		$t_sdwn      += $item[DOWN_RATE];
-			$t_seeded    += $item[UP_TOTAL];
-			$t_completed += $item[COMPLETED_BYTES];
-			$t_size      += $item[SIZE_BYTES];
-			$t_ratio     += $item[RATIO];
-
-	  		if(isset($cache[$l_hash]))
+			foreach($group as $item)
 			{
-				$diff = array_diff($l, $cache[$l_hash]);
+				$l = array();
+				$l_hash         = $item[HASH];
+				$l_status       = $item[STATUS];
+				$l['statuskey'] = $lng["status$l_status"];
+				$l['statusimg'] = "<img src=\"{$imagedir}status_$l_status.png\" alt=\"{$l['statuskey']}\" />";
+				$l['done']      = progressbar($item[PERCENT_COMPLETE], $item[PERCENT_COMPLETE].'%');
+				$l['eta']       = $item[ETA];
+				$l['upspeed']   = ($item[UP_RATE] ? ('<span class="speedhighlight">'.format_bytes($item[UP_RATE]).'/s</span>') : format_bytes($item[UP_RATE]).'/s');
+				$l['downspeed'] = ($item[DOWN_RATE] ? ('<span class="speedhighlight">'.format_bytes($item[DOWN_RATE]).'/s</span>') : format_bytes($item[DOWN_RATE]).'/s');
+				$l['seeded']    = format_bytes($item[UP_TOTAL]);
+				$l['completed'] = format_bytes($item[COMPLETED_BYTES]);
+				$l['peers']     = "{$item[PEERS_CONNECTED]}/{$item[PEERS_NOT_CONNECTED]} ({$item[PEERS_COMPLETE]})";
+				$l['ratio']     = round($item[RATIO]/1000, 2);
+				$l['message']   = $item[MESSAGE];
+				if($l['ratio'] < 1)
+					$l['ratio']  = '<span style="color: #'.dechex(255-($l['ratio']*255))."0000;\">{$l['ratio']}</span>";
+				//$l['check']     = "<input type=\"checkbox\" class=\"checkbox\" name=\"multiselect[]\" value=\"$l_hash\" />";
+
+				$t_count     += 1;
+				$t_done      += $item[PERCENT_COMPLETE];
+				$t_sup       += $item[UP_RATE];
+				$t_sdwn      += $item[DOWN_RATE];
+				$t_seeded    += $item[UP_TOTAL];
+				$t_completed += $item[COMPLETED_BYTES];
+				$t_size      += $item[SIZE_BYTES];
+				$t_ratio     += $item[RATIO];
+
+				if(isset($cache[$l_hash]))
+				{
+					$diff = array_diff($l, $cache[$l_hash]);
+					if(count($diff))
+					{
+						$changed = true;
+						foreach($diff as $key => $val)
+							add($l_hash, $key, $val);
+					}
+				}
+				else
+				{
+					$changed = true;
+					$cache[$l_hash] = $l;
+					foreach($l as $key => $val)
+						add($l_hash, $key, $val);
+				}
+			}
+
+			$ident          = 'group'.$groupid;
+			$l['count']     = $t_count;
+			$l['done']      = round($t_done/$t_count, 2).'%';
+			$l['upspeed']       = ($t_sup  ? ('<span class="speedhighlight">'.format_bytes($t_sup).'/s</span>') : format_bytes($t_sup).'/s');
+			$l['downspeed']      = ($t_sdwn ? ('<span class="speedhighlight">'.format_bytes($t_sdwn).'/s</span>') : format_bytes($t_sdwn).'/s');
+			$l['speeds']    = "{$l['upspeed']}/{$l['downspeed']}";
+			$l['seeded']    = format_bytes($t_seeded);
+			$l['completed'] = format_bytes($t_completed);
+			$l['size']      = format_bytes($t_size);
+			$l['ratio']     = $t_completed > 0 ? round(($t_seeded/$t_completed), 2) : 0;
+			if($l['ratio'] < 1)
+				$l['ratio'] = '<span style="color: #'.dechex(255-($l['ratio']*255))."0000;\">{$l['ratio']}</span>";
+
+			if(isset($cache[$ident]))
+			{
+				$diff = array_diff($l, $cache[$ident]);
 				if(count($diff))
 				{
 					$changed = true;
 					foreach($diff as $key => $val)
-						add($l_hash, $key, $val);
+						add($ident, $key, $val);
 				}
 			}
 			else
 			{
 				$changed = true;
-				$cache[$l_hash] = $l;
+				$cache[$ident] = $l;
 				foreach($l as $key => $val)
-					add($l_hash, $key, $val);
-			}
-		}
-
-		$ident          = 'group'.$groupid;
-		$l['count']     = $t_count;
-		$l['done']      = round($t_done/$t_count, 2).'%';
-		$l['upspeed']       = ($t_sup  ? ('<span class="speedhighlight">'.format_bytes($t_sup).'/s</span>') : format_bytes($t_sup).'/s');
-		$l['downspeed']      = ($t_sdwn ? ('<span class="speedhighlight">'.format_bytes($t_sdwn).'/s</span>') : format_bytes($t_sdwn).'/s');
-		$l['speeds']    = "{$l['upspeed']}/{$l['downspeed']}";
-		$l['seeded']    = format_bytes($t_seeded);
-		$l['completed'] = format_bytes($t_completed);
-		$l['size']      = format_bytes($t_size);
-		$l['ratio']     = $t_completed > 0 ? round(($t_seeded/$t_completed), 2) : 0;
-		if($l['ratio'] < 1)
-			$l['ratio'] = '<span style="color: #'.dechex(255-($l['ratio']*255))."0000;\">{$l['ratio']}</span>";
-
-		if(isset($cache[$ident]))
-		{
-			$diff = array_diff($l, $cache[$ident]);
-			if(count($diff))
-			{
-				$changed = true;
-				foreach($diff as $key => $val)
 					add($ident, $key, $val);
 			}
-		}
-		else
-		{
-			$changed = true;
-			$cache[$ident] = $l;
-			foreach($l as $key => $val)
-				add($ident, $key, $val);
 		}
 	}
 

@@ -196,6 +196,7 @@ div#loginbox table {
 	text-align: right;
 	float: left;
 	margin-left: 0px;
+	overflow: hidden;
 }
 
 #topchecklabel {
@@ -499,7 +500,7 @@ td.tableheadline div {
 div.multilinks { float: right; margin-right: 7px;}
 td.tableheadline div.multilinks { margin-left: 5px; }
 
-div.multilinks input { border: none; }
+div.multilinks input { border: none; background: none; }
 span.multimasker img { cursor: pointer; }
 
 span.groupmasker {

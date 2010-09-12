@@ -5,8 +5,8 @@ function sidebar_render()
 	global $settings, $global, $lng, $imagedir, $qsid, $filter, $ftext, $refresh_arr;
 
 	$sidebar = '';
-	$percup  = $global['upspeed']*100/($settings['maxupspeed']*1024);
-	$percdwn = $global['downspeed']*100/($settings['maxdownspeed']*1024);
+	$percup  = $settings['maxupspeed'] == 0 ? 0 : $global['upspeed']*100/($settings['maxupspeed']*1024);
+	$percdwn = $settings['maxdownspeed'] == 0 ? 0 : $global['downspeed']*100/($settings['maxdownspeed']*1024);
 	$box  = "<h2>{$lng['speed']}</h2><div class=\"sidebarcontent\" id=\"sidebarspeed\">";
 	$box .="<div class=\"label\"><img src=\"{$imagedir}max_up.png\" alt=\"Up\" /></div><div id=\"sidebarup\">".progressbar($percup > 100 ? 100 : $percup, format_bytes($global['upspeed']).'/s</div>');
 	$box .="<div class=\"label\"><img src=\"{$imagedir}max_down.png\" alt=\"Down\" /></div><div id=\"sidebardown\">".progressbar($percdwn > 100 ? 100 : $percdwn, format_bytes($global['downspeed']).'/s</div>');

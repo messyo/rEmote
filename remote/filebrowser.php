@@ -65,7 +65,7 @@ if(isset($_GET['action']))
 				if(!is_valid_dir($folder) || !checkWrite(realdirname($folder)) || !rrmdir($folder))
 					$out->addError($lng['normdir']);
 				else
-					$out->redirect('filebrowser.php');
+					$out->redirect("filebrowser.php$qsid");
 			}
 			else if(!isset($_REQUEST['decline']))
 			{
@@ -81,7 +81,7 @@ if(isset($_GET['action']))
 				if(!@unlink(substr($file, 0, -1)))
 					$out->addError($lng['nodelfile']);
 				else
-					$out->redirect('filebrowser.php');
+					$out->redirect("filebrowser.php$qsid");
 			}
 			else if(!isset($_REQUEST['decline']))
 			{

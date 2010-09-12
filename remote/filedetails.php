@@ -63,7 +63,7 @@ if(!$isdir)
 			break;
 		case '.rar':
 			$actionsarr['display'] = 'show.png';
-			if(getBin('rar') === false)
+			if(getBin('unrar') === false)
 				break;
 			$actionsarr['extract'] = 'extract.png';
 			break;
