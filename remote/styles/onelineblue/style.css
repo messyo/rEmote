@@ -1,0 +1,1026 @@
+body {
+	font-family: Arial, sans-serif;
+	background: url(../../images/newblue/background.png);
+	min-width: 980px;
+}
+
+body#bodysmall {
+	min-width: 600px;
+}
+
+#main {
+	background: white;
+	border: 1px solid black;
+	margin: 10px;
+	overflow: hidden;
+}
+
+#content {
+	padding: 10px;
+}
+
+h1  { color: #0000aa; }
+h2  { font-size: 20px;}
+img { border: 0px; }
+hr  { color: #0000aa; }
+td  { text-align: left; vertical-align: top; }
+
+thead td {
+	font-weight: bold;
+	color: black;
+	font-size: 14px;
+	text-align: center;
+	border: none !important;
+}
+
+a {
+	color: #0000aa;
+	border-style: none;
+	border-width: 0px;
+}
+
+input, textarea, select {
+	border: 1px solid #0000aa;
+	background: white;
+	color: #0000aa;
+	font-size: 11px;
+}
+
+input:focus, textarea:focus {
+	background: #ddddff;
+	color: black;
+}
+
+input.text     { height: 16px; }
+input.longtext { height: 16px; width: 500px;}
+input.num      { height: 16px; width: 40px; }
+input.file     { height: 20px; }
+input.submit,
+input.reset,
+select         { height: 18px; }
+
+label, span.label {
+	color: #0000aa;
+	font-weight: bold;
+	font-size: 14px;
+}
+
+.hint {
+	font-size: 13px;
+	font-style: italic;
+}
+
+div.error {
+	border: 2px solid red;
+	padding-top: 12px;
+	padding-right: 12px;
+	padding-bottom: 12px;
+	padding-left: 45px;
+	color: red;
+	font-weight: bold;
+	background: url(../../images/newblue/messagebox_warning.png);
+	background-repeat: no-repeat;
+	background-position: 5px 5px;
+	background-color: #ffdddd;
+	margin-bottom: 15px;
+	font-size: 16px;
+	text-align: left;
+}
+
+div.notify {
+	border: 2px solid blue;
+	padding-top: 12px;
+	padding-right: 12px;
+	padding-bottom: 12px;
+	padding-left: 45px;
+	color: blue;
+	font-weight: bold;
+	background: url(../../images/newblue/messagebox_info.png);
+	background-repeat: no-repeat;
+	background-position: 5px 5px;
+	background-color: #ddddff;
+	margin-bottom: 15px;
+	font-size: 16px;
+	text-align: left;
+}
+
+div.success {
+	border: 2px solid green;
+	padding-top: 12px;
+	padding-right: 12px;
+	padding-bottom: 12px;
+	padding-left: 45px;
+	color: green;
+	font-weight: bold;
+	background: url(../../images/newblue/messagebox_ok.png);
+	background-repeat: no-repeat;
+	background-position: 5px 5px;
+	background-color: #ddffdd;
+	margin-bottom: 15px;
+	font-size: 16px;
+	text-align: left;
+}
+
+div#footer {
+	text-align: center;
+	font-size: 11px;
+	margin-top: 30px;
+	color: #ccc;
+}
+
+div#loginbox {
+	width: 400px;
+	margin: 40px auto 0px auto;
+	border: 1px solid black;
+	padding: 10px;
+	background: white;
+}
+
+div#loginbox h1 {
+	background: #cccccc;
+	text-align: center;
+	padding: 2px;
+	margin-top: 0px;
+}
+
+div#loginbox label.hint {
+	font-weight: normal;
+}
+
+div#loginbox table {
+	margin-left: 40px;
+}
+
+#header {
+	height: 46px;
+	width: 100%;
+	color: white;
+	background: url(../../images/newblue/header.png);
+}
+
+#logo {
+	font-size: 26px;
+	font-weight: bold;
+	width: 100px;
+	float: left;
+	padding-top: 3px;
+	padding-left: 10px;
+}
+
+#logo span.hint {
+	font-weight: normal;
+	font-size: 8px;
+	color: #aaa;
+}
+
+#tupload {
+	width: 350px;
+	float: right;
+	height: 44px;
+	padding-top: 5px;
+}
+
+#tupload span.hint {
+}
+
+#tupload label {
+	font-weight: normal;
+	color: #aaa;
+	font-size: 11px;
+	font-style: italic;
+	display: block;
+}
+
+#topfieldlabel {
+	width: 300px;
+	text-align: right;
+	float: left;
+	margin-left: 0px;
+	overflow: hidden;
+}
+
+#topchecklabel {
+	margin-left: 305px;
+}
+
+#topaddfield {
+	width: 300px;
+	background: #669;
+	color: white;
+}
+
+#topaddcheckbox {
+	background: #669;
+	color: white;
+	padding: 3px;
+}
+
+#topaddfield:focus {
+	background: white;
+	color: #0000aa;
+}
+
+#topaddbutton {
+	border-style: none;
+	background-color: transparent;
+}
+
+#topmenu {
+	margin-left: 100px;
+	margin-top: 0px;
+	padding-top: 7px;
+}
+
+#topmenu li {
+	float: left;
+	width: 60px;
+	list-style-type: none;
+	height: 37px;
+	text-align: center;
+}
+
+#topmenu li a {
+	display: block;
+	font-size: 14px;
+	text-decoration: none;
+	color: #888;
+	font-weight: bold;
+	overflow: hidden;
+	margin: auto;
+	padding-bottom: 5px;
+}
+
+div.progress {
+	height: 10px;
+	padding: 1px;
+	width: 60px;
+	border: 1px solid black;
+	text-align: left;
+	background: white;
+}
+
+div.progress div {
+	height: 10px;
+	margin-top: -11px;
+	color: black;
+	text-align: center;
+	font-size: 10px;
+	font-weight: bold;
+	letter-spacing: 1px;
+	text-shadow: white  1px  1px 0,
+	             white -1px  1px 0,
+	             white -1px -1px 0,
+	             white  1px -1px 0;
+}
+
+#menu1 span, #menu1active span { display: none; }
+#menu1:before { content:url(../../images/newblue/gmenu_torrents.png); }
+#menu1:hover:before, #menu1active:before { content:url(../../images/newblue/menu_torrents.png); }
+
+#menu2 span, #menu2active span { display: none; }
+#menu2:before { content:url(../../images/newblue/gmenu_upload.png); }
+#menu2:hover:before, #menu2active:before { content:url(../../images/newblue/menu_upload.png); }
+
+#menu3 span, #menu3active span { display: none; }
+#menu3:before { content:url(../../images/newblue/gmenu_files.png); }
+#menu3:hover:before, #menu3active:before { content:url(../../images/newblue/menu_files.png); }
+
+#menu4 span, #menu4active span { display: none; }
+#menu4:before { content:url(../../images/newblue/gmenu_feeds.png); }
+#menu4:hover:before, #menu4active:before { content:url(../../images/newblue/menu_feeds.png); }
+
+#menu5 span, #menu5active span { display: none; }
+#menu5:before { content:url(../../images/newblue/gmenu_cp.png); }
+#menu5:hover:before, #menu5active:before { content:url(../../images/newblue/menu_cp.png); }
+
+#menu6 span, #menu6active span { display: none; }
+#menu6:before { content:url(../../images/newblue/gmenu_logout.png); }
+#menu6:hover:before, #menu6active:before { content:url(../../images/newblue/menu_logout.png); }
+
+
+
+#precache {
+	/*
+	 * Div for preloading Images...
+	 * not set invisible as some Browsers ignore loading invisible Pictures
+	 * so create a little div and place it outside the users view.
+	 */
+
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	top: -10px;
+	left: -10px;
+}
+
+
+div#sidebar {
+	width: 140px;
+	float: left;
+	margin-top: 10px;
+	margin-left: 5px;
+	font-size: 12px;
+}
+
+div#sidebar h2 {
+	background: url(../../images/newblue/header_small.png);
+	height: 17px;
+	font-size: 14px;
+	font-weight: bold;
+	color: #fff;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	padding-top: 2px;
+	text-indent: 10px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+div#sidebar input.text, div#sidebar input.longtext, div#sidebar select, div#sidebar textarea {
+	width: 125px;
+}
+
+div#sidebar input, div#sidebar select, div#sidebar textarea {
+	margin-top: 4px;
+}
+
+div#sidebar h2:first-letter {
+	color: orange;
+	font-style: italic;
+}
+
+div.sidebarcontent {
+	padding: 10px 5px 5px 5px;
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+	border-bottom: 1px solid black;
+	margin-bottom: 10px;
+}
+
+div.sidebarcontent div.progress {
+	width: 125px;
+}
+
+div#sidebarrefresh input.text {
+	width: 40px;
+}
+
+
+div.contentoftable {
+	margin-left: 150px;
+	min-height: 300px;
+}
+
+#torrenttable {
+	width: 100%;
+	border-collapse: collapse;
+	border: 1px solid black;
+}
+
+
+tr.row1 td, .row1 {
+	background: #dfdfff;
+}
+
+#torrenttable td {
+	text-align: center;
+	font-size: 12px;
+	padding: 4px;
+}
+
+#torrenttable div.progress {
+	width: 98%;
+}
+
+
+td.tableheadline {
+	background: url(../../images/newblue/header_medium.png);
+	height: 32px;
+	text-indent: 10px;
+	font-size: 14px;
+}
+
+thead {
+	border-bottom: 1px solid black;
+}
+
+td.tableheadline div#tshow {
+	color: white;
+	text-align: left;
+}
+td.tableheadline select, td.tableheadline input {
+	background: #669;
+	color: white;
+	text-indent: 0px;
+}
+
+td.tableheadline select:focus, td.tableheadline input:focus {
+	background: white;
+	color: #0000aa;
+}
+
+td.tableheadline h2 {
+	font-weight: bold;
+	font-size: 20px;
+	float: left;
+	padding: 0px;
+	margin: 0px;
+	color: white;
+	text-align: left;
+}
+
+td.tableheadline h2:first-letter {
+	color: orange;
+	font-style: italic;
+}
+
+td.tableheadline div {
+	margin-left: 100px;
+	height: 16px;
+	margin-top: 5px;
+}
+
+#sidebarspeed div.progress {
+	margin-left: 18px;
+	width: 108px;
+	margin-bottom: 2px;
+}
+
+#sidebarspeed div.label, #sidebarbandwith div.label {
+	width: 16px;
+	height: 16px;
+	float: left;
+}
+
+#sidebarbandwith input.num {
+	margin-top: 2px;
+}
+
+#fsubmit {
+}
+
+#torrenttable td.links {
+	text-align: left;
+}
+
+#torrenttable td.name {
+	text-align: left;
+	color: #0000aa;
+	font-weight: bold;
+	overflow: hidden;
+}
+
+#torrenttable td.statusimg span { display: none; width: 94px; height: 18px; position: absolute; background: white; padding: 4px; border: 1px solid black;}
+#torrenttable td.statusimg:hover span { display: block; }
+
+#torrenttable td              { font-size: 11px; overflow: hidden; white-space: nowrap; }
+#torrenttable td.name a       { text-decoration: none; display: block; width: 270px; overflow: hidden; height: 18px; }
+#torrenttable td.name a:hover { text-decoration: underline; }
+#torrenttable td.upspeed, #torrenttable td.downspeed { text-align: left; width: 70px; }
+#torrenttable td.status      { width: 20px; }
+#torrenttable td.check       { width: 20px; }
+#torrenttable td.check input { padding: 2px; }
+#torrenttable td.done        { width: 5%; }
+#torrenttable td.links       { width: 94px;}
+#torrenttable span.speedhighlight { font-weight: bold; }
+
+#torrenttable td.groupheader {
+	text-align: left;
+	border-top: 1px solid black;
+}
+
+#torrenttable td.groupheader h2 {
+	font-size: 16px;
+	font-weight: bold;
+	margin: 5px;
+	color: #0000aa;
+}
+
+#torrenttable td.groupheader h2:first-letter {
+	color: orange;
+	font-style: italic;
+}
+
+div.multilinks { float: right; margin-right: 7px;}
+td.tableheadline div.multilinks { margin-left: 5px; }
+
+div.multilinks input { border: none; background: none; }
+span.multimasker img { cursor: pointer; }
+
+span.groupmasker {
+	display: block;
+	float: right;
+	margin-top: 5px;
+	margin-right: 25px;
+}
+
+span.torrentmessage {
+	font-weight: bold;
+	color: red;
+	font-size: 12px;
+}
+
+fieldset.box {
+	border-color: #0000aa;
+	margin: 10px;
+}
+
+fieldset.box legend {
+	color: #0000aa;
+	font-weight: bold;
+}
+
+fieldset.box legend:first-letter {
+	font-style: italic;
+	color: orange;
+}
+
+div.addfield {
+	margin: 10px;
+	float: left;
+}
+
+div.addfield input, div.longinput {
+	width: 340px;
+}
+
+#addadd { margin-bottom: 10px; }
+#addadd input { margin-left: 10px; }
+
+table#folder {
+	width: 100%;
+	border-collapse: collapse;
+	margin-top: 20px;
+}
+
+table#folder tr td {
+	border-bottom: 1px dotted #aaa;
+	border-top: 1px dotted #aaa;
+	font-size: 12px;
+}
+
+table#folder tr:hover td         { background: #ddddff; }
+table#folder td.icon             { width: 20px; }
+table#folder td.filename a       { text-decoration: none; }
+table#folder td.filename a:hover { text-decoration: underline; }
+table#folder td.actions          { width: 80px; }
+
+div#filebrowser {
+	padding: 5px;
+	border: 1px solid black;
+}
+
+input.submitbutton {
+	border: none;
+	background: transparent;
+}
+
+div#changefolder {
+	background: url(../../images/newblue/header.png);
+	background-position: 0px -4px;
+	height: 36px;
+	border-top: 1px solid black;
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+}
+
+div#changefolder img, div#changefolder input { vertical-align: middle; }
+
+#filebrowseractions {
+	width: 100%;
+	height: 30px;
+}
+
+#filebrowseractions img, #filebrowseractions input { vertical-align: middle; }
+
+#filebrowseractions div { float: left; height: 24px; }
+
+#filebrowseractions div#lastfolder {
+	width: 24px;
+	padding-right: 10px;
+	border-right: 2px solid #ccc;
+}
+
+#filebrowseractions div#folderup, #filebrowseractions div#folderhome {
+	width: 24px;
+}
+
+#filebrowseractions div#folderviewmode {
+	width: 48px;
+	margin-left: 10px;
+}
+
+#filebrowseractions div#folderjoblist {
+	width: 24px;
+	border-left: 2px solid #ccc;
+	margin-left: 10px;
+	padding-left: 10px;
+}
+
+#filebrowseractions div#folderpaste {
+	width: 46px;
+	border-left: 2px solid #ccc;
+	margin-left: 10px;
+	padding-left: 10px;
+}
+
+#filebrowseractions div#foldernew {
+	padding-left: 10px;
+	margin-left: 10px;
+	width: 192px;
+	border-left: 2px solid #ccc;
+}
+
+#filebrowseractions div#folderspace {
+	width: 400px;
+	border-left: 2px solid #ccc;
+	padding-left: 4px;
+}
+
+#filebrowseractions div#folderspace img              { float: left; }
+#filebrowseractions div#folderspace div#progress     { margin-left: 30px; font-size: 12px; }
+#filebrowseractions div#folderspace div.progress     { width: 100%; height: 10px;}
+#filebrowseractions div#folderspace div.progress img { float: none; }
+/*
+#filebrowseractions div#folderspace div.progress div { font-size: 14px; margin-top: -16px; float: none; }
+*/
+ul.tabs {
+	height: 24px;
+	border-bottom: 1px solid black;
+	padding-left: 5px;
+	padding-right: 5px;
+	margin-bottom: 0px;
+}
+
+ul.tabs li {
+	width: 108px;
+	height: 20px;
+	list-style-type: none;
+	float: left;
+	margin-left: 5px;
+	border: 1px solid black;
+	text-align: center;
+	margin-top: 3px;
+}
+
+ul.tabs li a {
+	display: block;
+	text-decoration: none;
+}
+
+ul.tabs li.viewselon {
+	border-bottom: 1px solid white;
+}
+
+ul.tabs li.viewselon a {
+	border-bottom: 1px solid white;
+	color: orange;
+	font-weight: bold;
+}
+
+div.tabsbody {
+	border-color: black;
+	border-width: 1px;
+	border-style: none solid solid solid;
+	padding-top: 10px;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+}
+
+ul.vtabs {
+	padding: 4px;
+}
+
+ul.vtabs li {
+	list-style-type: none;
+	text-align: center;
+	margin-bottom: 2px;
+	border: 1px solid black;
+	width: 100%;
+	height: 20px;
+	background: white;
+	margin-left: 3px;
+}
+
+ul.vtabs li a {
+	padding-top: 4px;
+	display: block;
+	text-decoration: none;
+}
+
+ul.vtabs li.viewselon {
+	border-right-color: white;
+}
+
+ul.vtabs li.viewselon a {
+	color: orange;
+	font-weight: bold;
+}
+
+table#rtstats td {
+	font-family: monospace;
+	font-size: 14px;
+}
+
+table#logtable {
+	margin: 10px;
+	border-collapse: collapse;
+}
+
+table#logtable td {
+	font-size: 14px;
+	border-bottom: 1px dotted #888;
+	color: #0000aa;
+}
+
+table#logtable td.logtimestamp {
+	padding-right: 20px;
+	font-weight: bold;
+	color: black;
+}
+
+table#logtable td.logscript {
+	padding-right: 20px;
+	color: black;
+}
+
+a.yes { font-weight: bold; color: green; }
+a.no  { font-weight: bold; color: red; margin-left: 40px; }
+
+input.yes { font-weight: bold; width: 140px; text-align: center; padding: 4px; border: 1px solid black; color: white; background-color: green; }
+input.no  { font-weight: bold; width: 140px; text-align: center; padding: 4px; border: 1px solid black; color: white; background-color: red; margin-left: 40px; }
+
+table#settingstable {
+	border-collapse: collapse;
+}
+
+
+div#tree {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	font-size: 12px;
+}
+
+table#filelist {
+	font-size: 12px;
+}
+
+table#filelist td {
+	background: white;
+}
+
+#sidebarbandwith input.submit {
+	margin-left: 16px;
+}
+
+#xmlrpccommandlist {
+}
+
+#xmlrpcdetails {
+}
+
+ul.xmlrpcblock {
+	width: 200px;
+	float: left;
+	font-size: 14px;
+}
+
+ul.xmlrpcblock li.active {
+	font-weight: bold;
+}
+
+div#xmlrpchelp {
+	font-size: 18px;
+}
+
+#xmlrpcsignature {
+	text-decoration: underline;
+	font-weight: bold;
+	margin-top: 20px;
+}
+
+div#xmlrpcsignature li {
+	text-decoration: none;
+	font-weight: normal;
+}
+
+#cookietable, #usertable, #sessiontable, #feedstable, #jobtable, #highlighttable {
+	border-collapse: collapse;
+	border: 1px solid black;
+	margin-top: 20px;
+}
+
+#cookietable td, #usertable td, #sessiontable td, #feedstable td, #jobtable td, #highlighttable td {
+	padding: 4px;
+	border: 1px solid black;
+}
+
+#bserverinformation {
+}
+
+#bcredits {
+	float: right;
+	width: 350px;
+}
+
+#cpcontent {
+	overflow: hidden;
+}
+
+
+div#ajaxmodmenu {
+	float: left;
+	width: 100px;
+}
+
+div#ajaxmodcontent {
+	max-height: 600px;
+	overflow: auto;
+	text-align: left;
+	margin-top: 8px;
+	margin-bottom: 20px;
+	border: 1px solid black;
+	padding: 10px;
+	background: white;
+	min-height: 116px;
+	margin-right: 6px;
+}
+
+#detailstable td {
+	text-align: left;
+	background: white;
+}
+
+#detailstable td.left {
+	text-align: right;
+	font-weight: bold;
+}
+
+div#actionsbox {
+	position: absolute;
+	right: 10px;
+	border: 1px solid black;
+	background: white;
+}
+
+div#actionsbox a {
+	display: block;
+	border-bottom: 1px dotted black;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	padding-left:  6px;
+	padding-right: 6px;
+	font-size: 12px;
+}
+
+div#actionsbox a:hover {
+	background: black;
+	color: white;
+}
+
+div#iconfolder div {
+	font-size: 12px;
+	width: 90px;
+	height: 50px;
+	padding: 12px;
+	float: left;
+	overflow: hidden;
+	text-align: center;
+}
+
+#rsstable {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+#rsstable tr:hover td {
+	background: #ddddff;
+}
+
+#rsstable td {
+	font-size: 12px;
+	padding-top: 2px;
+	border-bottom: 1px dotted black;
+	vertical-align: top;
+}
+
+#rsstable td.actions    { text-align: right; width: 64px; }
+#rsstable td.rssdate    { width: 120px; }
+#rsstable td.rsstitle   { padding-right: 20px; }
+#rsstable td.rsstitle a { font-weight: bold; text-decoration: none; }
+
+span.highlighted {
+	font-weight: bold;
+	color: red;
+}
+
+span.success { color: green; }
+span.error   { color: red;   }
+
+#feedchooser input, #feedchooser select {
+	font-weight: bold;
+	font-size: 24px;
+	height: 30px;
+	background: #669;
+	color: white;
+}
+
+div#tree ul {
+	margin: 0px;
+}
+
+div#tree ul li {
+	list-style-type: none;
+}
+
+#jobtable {
+	width: 100%;
+}
+
+ul#actions li {
+	margin-top: 2px;
+	list-style-type: none;
+}
+
+ul#actions li a {
+	text-decoration: none;
+}
+
+ul#actions li a:hover span {
+	text-decoration: underline;
+}
+
+div#shouts {
+	height: 140px;
+	overflow: auto;
+}
+
+div#shouts table {
+	font-size: 12px;
+}
+
+div#shouts table span.hint {
+	font-size: 0.8em;
+}
+
+div#shout input[type=text] {
+	width: 600px;
+}
+
+div#sidebar div#shouts {
+	height: 200px;
+	overflow: auto;
+}
+
+div#sidebar div#shouts table {
+	font-size: 11px;
+}
+
+div#sidebar div#shout input[type=text] {
+	width: 99%;
+}
+
+div.framebox {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	margin: 0px;
+	width: 100%;
+	height: 100%;
+}
+
+div.framebox>div {
+	background-image: url(../../images/newblue/transparent.png);
+	padding: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 15%;
+	width: 600px;
+}
+
+div.framebox div div {
+	background-color: white;
+	padding: 20px;
+	background-image: none;
+	width: auto;
+}
+
+div.framebox div div p#confbuttons {
+	text-align: center;
+}
+
+
+a.addoption {
+	margin-top: 6px;
+	width: 200px;
+	text-decoration: none;
+	display: block;
+	padding: 4px;
+	text-align: center;
+	border: 1px solid #0000aa;
+	background: white;
+	color: #0000aa;
+	font-size: 12px;
+}
