@@ -296,7 +296,6 @@ else if($_SESSION['refmode'] == 1)
 	$out->metas['refresh'] = "{$_SESSION['refinterval']}; url=index.php$qsid";
 	define('IS_REFRESH', true);
 }
-$out->bodyonload = 'invisible();';
 
 //echo '<div class="framebox" ><div><div>Testtext</div></div></div>';
 $out->renderPage($settings['html_title']);

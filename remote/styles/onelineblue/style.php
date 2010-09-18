@@ -5,7 +5,7 @@ $imagedir    = 'images/newblue/';
 $fileimgs    = 'images/filetypes/';
 $dynimgs     = 'styles/newblue/dynimgs/';
 $smileyimgs  = 'images/newblue/smileys/';
-$stylejs     = array('styles/newblue/newblue.js');
+$stylejs     = array('styles/onelineblue/onelineblue.js');
 
 /*
  * trows sets the number of Table-Rows one Torrent uses

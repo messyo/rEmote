@@ -295,3 +295,5 @@ function delConfirm()
 {
 	return confirm(lngdelconfirm);
 }
+
+window.addEventListener('load', invisible, false);
