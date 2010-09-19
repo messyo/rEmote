@@ -453,8 +453,9 @@ if(isset($_GET['action']) && isset($actionsarr[$_GET['action']]))
 				// The following clean code could not be used due to a bug in PHP...
 				// http://bugs.php.net/bug.php?id=45028
 				// $intHash = hash_file('crc32b', $path);
+				//
 				if(is_valid_file($path) && is_readable($path))
-					$intHash = dechex(crc32(file_get_contents($path)));
+					$intHash = str_pad(dechex(crc32(file_get_contents($path))), 8, '0', STR_PAD_LEFT);
 				else
 					$intHash = '';
 
