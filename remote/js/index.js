@@ -235,7 +235,7 @@ function popupfun( link )
 
 		newtr.innerHTML = '<td colspan="' + numcolumns + '"><img src="' + imagedir + 'loading.gif" alt="' + lngloading + '" /></td>';
 		var td = newtr.getElementsByTagName('TD');
-		ajax_details(0, td[0]);
+		ajax_details(detailsdefmode, td[0]);
 
 		return false;
 	}
