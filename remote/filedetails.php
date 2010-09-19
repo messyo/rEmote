@@ -46,7 +46,6 @@ if(!$isdir)
 		case '.gif':
 		case '.ico':
 		case '.nfo':
-		case '.sfv':
 		case '.txt':
 		case 'html':
 		case '.php':
@@ -84,6 +83,10 @@ if(!$isdir)
 				$actionsarr['faddstartpu'] = 'fadd.png';
 			}
 			$actionsarr['edittorrent'] = 'edit.png';
+			break;
+		case '.sfv':
+			$actionsarr['display'] = 'show.png';
+         $actionsarr['checksfv'] = 'checksfv.png';
 			break;
 	}
 }
@@ -430,6 +433,49 @@ if(isset($_GET['action']) && isset($actionsarr[$_GET['action']]))
 			}
 			
 			break;
+		case 'checksfv':
+			$files = file($object);
+			$dir   = dirname($object);
+			
+			$no  = "<img src=\"{$imagedir}button_cancel.png\" alt=\"{$lng['no']}\" />";
+			$yes = "<img src=\"{$imagedir}button_ok.png\" alt=\"{$lng['yes']}\" />";
+
+			$passedTotal = true;
+
+			$table = "<table id=\"sfvtable\"><thead><tr><td>{$lng['file']}</td><td>{$lng['sfvhash']}</td><td>{$lng['calchash']}</td><td>{$lng['passed']}</td></tr></thead>";
+			foreach($files as $file)
+			{
+				$parts    = explode(' ', trim($file));
+				$extHash  = array_pop($parts);
+				$filename = implode(' ', $parts);
+				$path     = "$dir/$filename";
+				
+				if(is_valid_file($path) && is_readable($path))
+					$intHash = hash_file('crc32b', $path);
+				else
+					$intHash = '';
+
+				$passed = ($intHash == $extHash);
+				$passedTotal &= $passed;
+				$row = '<tr><td>'.htmlspecialchars($filename, ENT_QUOTES)."</td><td>$extHash</td><td>$intHash</td>";
+			   if($passed)
+					$row .= "<td>$yes</td>";
+				else
+					$row .= "<td>$no</td>";
+				$row .= '</tr>';
+
+				$table .= $row;
+			}
+         
+			$table .= '</table>';
+			$dialog = 'checksfv';
+
+			if($passedTotal)
+				$out->addError($lng['sfvpassed']);
+			else
+				$out->addError($lng['sfvfailed']);
+
+			break;
 	}
 }
 
@@ -525,6 +571,9 @@ else
 			$content .= "<tr><td>&nbsp;</td><td><input type=\"submit\" name=\"create\" value=\"{$lng['save']}\" /></td></tr>";
 			$content .= '</table></form></fieldset>';
 
+			break;
+		case 'checksfv':
+         $content = $table;
 			break;
 	}
 }

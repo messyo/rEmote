@@ -256,6 +256,12 @@ $lng['faddpublic']   = 'Add torrent as public';
 $lng['faddstart']    = 'Start torrent';
 $lng['faddstartpu']  = 'start torrent public';
 $lng['dirnowrite']   = 'Not all File-Operations may be available.';
+$lng['checksfv']     = 'Check Files';
+$lng['sfvhash']      = 'SFV-Hash';
+$lng['calchash']     = 'Calculated Hash';
+$lng['passed']       = 'Passed';
+$lng['sfvpassed']    = 'All hashes are correct';
+$lng['sfvfailed']    = 'One or more hashes are not correct';
 
 // DETAILS
 

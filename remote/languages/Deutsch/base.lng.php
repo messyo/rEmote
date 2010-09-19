@@ -252,6 +252,12 @@ $lng['faddpublic']   = 'Torrent als public hinzufügen';
 $lng['faddstart']    = 'Torrent starten';
 $lng['faddstartpu']  = 'Torrent public starten';
 $lng['dirnowrite']   = 'Es können möglicherweise nicht alle Operationen ausgeführt werden.';
+$lng['checksfv']     = 'Überprüfe Dateien';
+$lng['sfvhash']      = 'SFV-Hash';
+$lng['calchash']     = 'Berechneter Hash';
+$lng['passed']       = 'Bestanden';
+$lng['svfpassed']    = 'Alle Prüfsummen sind richtig.';
+$lng['svffailed']    = 'Eine oder mehrere Prüfsummen sind falsch.';
 
 // DETAILS
 
