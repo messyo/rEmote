@@ -256,8 +256,8 @@ $lng['checksfv']     = 'Überprüfe Dateien';
 $lng['sfvhash']      = 'SFV-Hash';
 $lng['calchash']     = 'Berechneter Hash';
 $lng['passed']       = 'Bestanden';
-$lng['svfpassed']    = 'Alle Prüfsummen sind richtig.';
-$lng['svffailed']    = 'Eine oder mehrere Prüfsummen sind falsch.';
+$lng['sfvpassed']    = 'Alle Prüfsummen sind richtig.';
+$lng['sfvfailed']    = 'Eine oder mehrere Prüfsummen sind falsch.';
 
 // DETAILS
 
