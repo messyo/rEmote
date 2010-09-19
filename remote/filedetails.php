@@ -449,9 +449,12 @@ if(isset($_GET['action']) && isset($actionsarr[$_GET['action']]))
 				$extHash  = array_pop($parts);
 				$filename = implode(' ', $parts);
 				$path     = "$dir/$filename";
-				
+
+				// The following clean code could not be used due to a bug in PHP...
+				// http://bugs.php.net/bug.php?id=45028
+				// $intHash = hash_file('crc32b', $path);
 				if(is_valid_file($path) && is_readable($path))
-					$intHash = hash_file('crc32b', $path);
+					$intHash = dechex(crc32(file_get_contents($path)));
 				else
 					$intHash = '';
 
