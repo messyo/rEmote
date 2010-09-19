@@ -801,13 +801,13 @@ div#xmlrpcsignature li {
 	font-weight: normal;
 }
 
-#cookietable, #usertable, #sessiontable, #feedstable, #jobtable, #highlighttable {
+#cookietable, #usertable, #sessiontable, #feedstable, #jobtable, #highlighttable, #sfvtable {
 	border-collapse: collapse;
 	border: 1px solid black;
 	margin-top: 20px;
 }
 
-#cookietable td, #usertable td, #sessiontable td, #feedstable td, #jobtable td, #highlighttable td {
+#cookietable td, #usertable td, #sessiontable td, #feedstable td, #jobtable td, #highlighttable td, #sfvtable td {
 	padding: 4px;
 	border: 1px solid black;
 }

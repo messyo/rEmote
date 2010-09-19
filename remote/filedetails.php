@@ -442,7 +442,8 @@ if(isset($_GET['action']) && isset($actionsarr[$_GET['action']]))
 
 			$passedTotal = true;
 
-			$table = "<table id=\"sfvtable\"><thead><tr><td>{$lng['file']}</td><td>{$lng['sfvhash']}</td><td>{$lng['calchash']}</td><td>{$lng['passed']}</td></tr></thead>";
+			$table = "<table id=\"sfvtable\"><thead><tr><td colspan=\"4\" class=\"tableheadline\"><h2>{$lng['checksfv']}</h2></td></tr>";
+			$table .= "<tr><td>{$lng['file']}</td><td>{$lng['sfvhash']}</td><td>{$lng['calchash']}</td><td>{$lng['passed']}</td></tr></thead>";
 			foreach($files as $file)
 			{
 				$parts    = explode(' ', trim($file));
@@ -475,7 +476,7 @@ if(isset($_GET['action']) && isset($actionsarr[$_GET['action']]))
 			$dialog = 'checksfv';
 
 			if($passedTotal)
-				$out->addError($lng['sfvpassed']);
+				$out->addSuccess($lng['sfvpassed']);
 			else
 				$out->addError($lng['sfvfailed']);
 
