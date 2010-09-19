@@ -541,7 +541,7 @@ div.addfield {
 	float: left;
 }
 
-div.addfield input, div.longinput {
+div.addfield input, .longinput {
 	width: 340px;
 }
 
