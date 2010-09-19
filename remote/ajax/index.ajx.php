@@ -45,6 +45,19 @@ $free = format_bytes($free); $total = format_bytes($total);
 
 $output .= ", '<div>{$lng['freespace']}:<br />$free/$total</div>".progressbar($progress).'\'';
 
+if($settings['shoutbox'] && ($_SESSION['shoutbox'] > 0))
+{
+	require_once(TO_ROOT.'inc/shoutbox.php');
+	$shoutbox = new Shoutbox;
+	$shoutboxcontent = addslashes($shoutbox->getShouts());
+}
+else
+{
+	$shoutboxcontent = '';
+}
+
+$output .= ", '$shoutboxcontent'";
+
 
 if($_SESSION['status'] >= 2)
 {

@@ -11,6 +11,8 @@ require_once('inc/sidebar.php');
 require_once('inc/template.php');
 if($settings['real_multiuser'])
 	require_once('inc/functions/torrents.fun.php');
+if($settings['shoutbox'] && ($_SESSION['shoutbox'] > 0))
+	require_once('inc/shoutbox.php');
 
 $content = '';
 if($settings['usermessage'] != '')
@@ -268,11 +270,11 @@ $shoutbox_top    = '';
 $shoutbox_bottom = '';
 if($settings['shoutbox'] && ($_SESSION['shoutbox'] > 1))
 {
-	$shoutbox = makeShoutbox();
+	$shoutbox = new Shoutbox();
 	if($_SESSION['shoutbox'] == 2)
-		$shoutbox_top    = "<fieldset class=\"box\"><legend>{$lng['shoutbox']}</legend>$shoutbox</fieldset>";
+		$shoutbox_top    = "<fieldset class=\"box\"><legend>{$lng['shoutbox']}</legend>".$shoutbox->makeShoutbox()."</fieldset>";
 	else
-		$shoutbox_bottom = "<fieldset class=\"box\"><legend>{$lng['shoutbox']}</legend>$shoutbox</fieldset>";
+		$shoutbox_bottom = "<fieldset class=\"box\"><legend>{$lng['shoutbox']}</legend>".$shoutbox->makeShoutbox()."</fieldset>";
 }
 
 $content .= "$shoutbox_top$table<tr><td colspan=\"$numcolumns\"><div class=\"multilinks\">$multilinks</div></td></tr></table></form>$shoutbox_bottom";

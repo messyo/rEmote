@@ -54,9 +54,14 @@ function stats_refresh( data )
 	document.getElementById('sidebardown').innerHTML = data[2];
 	document.getElementById('sidebardisk').innerHTML = data[3];
 	document.getElementById('sidebardisk').innerHTML = data[3];
-
+	
 	if(data[4] != '')
-		document.getElementById('sidebarload').innerHTML = data[4];
+	{
+		var shouts = data[4].replace(/\\'/g,'\'').replace(/\\"/g,'"').replace(/\\0/g,'\0').replace(/\\\\/g,'\\');
+		document.getElementById('shouts').innerHTML = shouts;
+	}
+	if(data[5] != '')
+		document.getElementById('sidebarload').innerHTML = data[5];
 
 	/* Start shifted by 5 as title and the 4 Sidebar-Values are sent at first */
 	if(data.length < 5)
@@ -67,7 +72,7 @@ function stats_refresh( data )
 	var obj;
 	var rows;
 
-	for(y = 5; y < data.length; y = y + 3)
+	for(y = 6; y < data.length; y = y + 3)
 	{
 		/*
 		data[y] = Hash/"x".groupid   (x could not be contained in a hash)

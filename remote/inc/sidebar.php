@@ -69,9 +69,11 @@ function sidebar_render()
 
 	if($settings['shoutbox'] && $_SESSION['shoutbox'] == 1 )
 	{
+		$shoutbox = new Shoutbox();
+
 		$box  = "<h2>{$lng['shoutbox']}</h2>";
 		$box .= "<div class=\"sidebarcontent\" id=\"sidebarshoutbox\">";
-		$box .= makeShoutbox();
+		$box .= $shoutbox->makeShoutbox();
 		$box .= '</div>';
 		$sidebar .= $box;
 	}
