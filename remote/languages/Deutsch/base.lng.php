@@ -219,6 +219,7 @@ $lng['filename']     = 'Dateiname';
 $lng['powner']       = 'Eigentümer';
 $lng['pgroup']       = 'Gruppe';
 $lng['pother']       = 'Sonstige';
+$lng['precoursive']  = 'Auf Objekte in diesem Ordner anwenden';
 
 $lng['extract']      = 'Entpacke';
 $lng['downtar']      = 'Download als Tar';

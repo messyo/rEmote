@@ -30,6 +30,7 @@ else
 	$out->renderPage($settings['html_title'], true, true);
 }
 
+$actionsarr['changeperms'] = '';
 
 if(!$isdir)
 {
@@ -481,6 +482,34 @@ if(isset($_GET['action']) && isset($actionsarr[$_GET['action']]))
 				$out->addError($lng['sfvfailed']);
 
 			break;
+		case 'changeperms':
+
+			if(posix_getuid() != fileowner($object))
+			{
+         	$out->addError($lng['npermission']);
+				break;
+			}
+         $p = 0;
+			
+			$p += (isset($_POST['perms_ur']) && ($_POST['perms_ur'] == 'true')) ? 0400 : 0000;
+         $p += (isset($_POST['perms_gr']) && ($_POST['perms_gr'] == 'true')) ? 0040 : 0000;
+         $p += (isset($_POST['perms_or']) && ($_POST['perms_or'] == 'true')) ? 0004 : 0000;
+			
+			$p += (isset($_POST['perms_uw']) && ($_POST['perms_uw'] == 'true')) ? 0200 : 0000;
+         $p += (isset($_POST['perms_gw']) && ($_POST['perms_gw'] == 'true')) ? 0020 : 0000;
+         $p += (isset($_POST['perms_ow']) && ($_POST['perms_ow'] == 'true')) ? 0002 : 0000;
+			
+			$p += (isset($_POST['perms_ux']) && ($_POST['perms_ux'] == 'true')) ? 0100 : 0000;
+         $p += (isset($_POST['perms_gx']) && ($_POST['perms_gx'] == 'true')) ? 0010 : 0000;
+			$p += (isset($_POST['perms_ox']) && ($_POST['perms_ox'] == 'true')) ? 0001 : 0000;
+
+			if(@chmod($object, $p))
+				$out->addSuccess($lng['saved']);
+			else
+				$out->addError($lng['notsaved']);
+
+			clearstatcache();
+			break;
 	}
 }
 
@@ -509,8 +538,16 @@ if(!isset($dialog))
 	$information .= '</table></fieldset>';
 
 	$permissions  = "<fieldset class=\"box\" id=\"filepermbox\"><legend>{$lng['permissions']}</legend>";
+	if($isdir)
+		$permissions .= "<form method=\"post\" action=\"filedetails.php?action=changeperms&amp;dir=$object$sid\">";
+	else
+		$permissions .= "<form method=\"post\" action=\"filedetails.php?action=changeperms&amp;file=$object$sid\">";
 	$permissions .= make_permission_table($object);
-	$permissions .= "</fieldset>";
+	$permissions .= '<div>';
+	if($isdir)
+		$permissions .= "<input type=\"checkbox\" name=\"perms_recoursive\" value=\"true\" />&nbsp;{$lng['precoursive']}<br />";
+	$permissions .= "<input type=\"submit\" value=\"{$lng['save']}\" /></div>";
+	$permissions .= "</form></fieldset>";
 
 	$actions = "<fieldset class=\"box\" id=\"fileactionbox\"><legend>{$lng['actions']}</legend>";
 
@@ -525,7 +562,11 @@ if(!isset($dialog))
 		$encobject = rawurlencode($object);
 		asort($actionsarr);
 		foreach($actionsarr as $act => $img)
+		{
+			if($img == '')
+				continue;
 			$actions     .= "<li><a href=\"filedetails.php?$prefix=$encobject&amp;action=$act$sid\" title=\"{$lng[$act]}\"><img src=\"$imagedir$img\" alt=\"$act\" />&nbsp;<span>{$lng[$act]}</span></a></li>";
+		}	
 		$actions     .= '</ul>';
 	}
 	else

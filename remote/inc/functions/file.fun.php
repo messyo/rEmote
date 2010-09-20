@@ -127,16 +127,16 @@ function make_permission_table($file)
 {
 	global $imagedir, $lng;
 	
-	$no  = "<img src=\"{$imagedir}button_cancel.png\" alt=\"{$lng['no']}\" />";
-	$yes = "<img src=\"{$imagedir}button_ok.png\" alt=\"{$lng['yes']}\" />";
+	$no  = "";
+	$yes = " checked=\"checked\"";
 	
 	$p = fileperms($file);
 
 	$ret  = '<table class="permtable">';
 	$ret .= "<tr><td>&nbsp;</td><td>&nbsp;</td><td><img src=\"{$imagedir}p_read.png\" alt=\"Read\"></td><td><img src=\"{$imagedir}p_write.png\" alt=\"Write\"></td><td><img src=\"{$imagedir}p_exec.png\" alt=\"Exec\"></td></tr>";
-	$ret .= "<tr><td>{$lng['powner']}</td><td>&nbsp;</td><td>" . (($p & 0x0100) ? $yes : $no) . '</td><td>' . (($p & 0x0080) ? $yes : $no) . '</td><td>' . (($p & 0x0040) ? $yes : (($p & 0x0800) ? $yes : $no)) . '</td></tr>';
-	$ret .= "<tr><td>{$lng['pgroup']}</td><td>&nbsp;</td><td>" . (($p & 0x0020) ? $yes : $no) . '</td><td>' . (($p & 0x0010) ? $yes : $no) . '</td><td>' . (($p & 0x0008) ? $yes : (($p & 0x0400) ? $yes : $no)) . '</td></tr>';
-	$ret .= "<tr><td>{$lng['pother']}</td><td>&nbsp;</td><td>" . (($p & 0x0004) ? $yes : $no) . '</td><td>' . (($p & 0x0002) ? $yes : $no) . '</td><td>' . (($p & 0x0001) ? $yes : (($p & 0x0200) ? $yes : $no)) . '</td></tr>';
+	$ret .= '<tr><td>' . $lng['powner'] . '</td><td>&nbsp;</td><td><input type="checkbox" name="perms_ur" value="true"' . (($p & 0x0100) ? $yes : $no) . ' /></td><td><input type="checkbox" name="perms_uw" value="true"' . (($p & 0x0080) ? $yes : $no) . ' /></td><td><input type="checkbox" name="perms_ux" value="true"' . (($p & 0x0040) ? $yes : (($p & 0x0800) ? $yes : $no)) . ' /></td></tr>';
+	$ret .= '<tr><td>' . $lng['pgroup'] . '</td><td>&nbsp;</td><td><input type="checkbox" name="perms_gr" value="true"' . (($p & 0x0020) ? $yes : $no) . ' /></td><td><input type="checkbox" name="perms_gw" value="true"' . (($p & 0x0010) ? $yes : $no) . ' /></td><td><input type="checkbox" name="perms_gx" value="true"' . (($p & 0x0008) ? $yes : (($p & 0x0400) ? $yes : $no)) . ' /></td></tr>';
+	$ret .= '<tr><td>' . $lng['pother'] . '</td><td>&nbsp;</td><td><input type="checkbox" name="perms_or" value="true"' . (($p & 0x0004) ? $yes : $no) . ' /></td><td><input type="checkbox" name="perms_ow" value="true"' . (($p & 0x0002) ? $yes : $no) . ' /></td><td><input type="checkbox" name="perms_ox" value="true"' . (($p & 0x0001) ? $yes : (($p & 0x0200) ? $yes : $no)) . ' /></td></tr>';
 	$ret .= '</table>';
 	return($ret);
 }

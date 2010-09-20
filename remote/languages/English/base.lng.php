@@ -219,6 +219,7 @@ $lng['filename']     = 'Filename';
 $lng['powner']       = 'Owner';
 $lng['pgroup']       = 'Group';
 $lng['pother']       = 'World';
+$lng['precoursive']  = 'Apply to object in this directory';
 
 $lng['extract']      = 'Extract';
 $lng['downtar']      = 'Download as Tar';
