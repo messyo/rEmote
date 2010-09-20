@@ -16,9 +16,10 @@ DEFINE('LOGSETTINGS', 32);
 DEFINE('LOGUSERS',    64);
 
 //USERCLASSES
-DEFINE('GUEST',  0);
-DEFINE('USER',   1);
-DEFINE('ADMIN',  2);
+DEFINE('GUEST',    0);
+DEFINE('USER',     1);
+DEFINE('ADMIN',    2);
+DEFINE('SUADMIN',  3);
 
 //VIEW/SOURCE/GROUP
 $view_arr    = array('main', 'started', 'stopped', 'complete', 'incomplete', 'seeding');

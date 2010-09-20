@@ -22,6 +22,10 @@ function checkPermissions($uid)
 {
 	global $db;
 
+
+	if($_SESSION['status'] == SUADMIN)
+		return true;
+
 	$result = $db->query('SELECT status FROM users WHERE uid = ?', 'i', $uid);
 	if(($h = $db->fetch($result)) && (intval($h['status']) > 0) && (intval($h['status'])) < $_SESSION['status'])
 		return true;
@@ -43,14 +47,25 @@ function makeRandomStr($len, $simple)
 	return $str;
 }
 
-function checkDir()
+function checkDir($edit = 0)
 {
-	global $lng;
+	global $lng, $db;
 
-	if(is_valid_dir($_POST['dir']))
-		return '';
+
+	if(($_SESSION['status'] == SUADMIN) || ($edit && (intval($db->one_result($db->query('SELECT COUNT(*) AS c FROM users WHERE uid = ? AND rootdir = ?', 'is', $edit, $_POST['dir']))) > 0)))
+	{
+		if(is_dir($_POST['dir']))
+			return '';
+		else
+			return $lng['invaliddir'];
+	}
 	else
-		return $lng['invaliddir'];
+	{
+		if(is_valid_dir($_POST['dir']))
+			return '';
+		else
+			return $lng['invaliddir'];
+	}
 }
 
 function checkValid($edit = 0)
@@ -58,7 +73,8 @@ function checkValid($edit = 0)
 	$error = checkName($edit);
 	if($error != '')
 		return $error;
-	$error = checkDir();
+	if($edit)
+	$error = checkDir($edit);
 	return $error;
 }
 
@@ -164,7 +180,7 @@ else if(isset($_POST['usersave']))
 		if($h = $db->fetch($result))
 		{
 			$error = '';
-			if(intval($h['status']) >= $_SESSION['status'])
+			if(($_SESSION['status'] < SUADMIN) && (intval($h['status']) >= $_SESSION['status']))
 			{
 				$error = $lng['npermission'];
 				logger(LOGSECURITY, "User {$_SESSION['uid']} ({$_SESSION['username']}) is trieing to edit an SuperAdmins Profile", __FILE__, __LINE__);
