@@ -189,7 +189,9 @@ else if(isset($_POST['usersave']))
 				$error = checkValid($edit);
 			if($error == '')
 			{
-				if($v_admin)
+				if($_SESSION['status'] == SUADMIN)
+					$status = 3;
+				else if($v_admin)
 					$status = 2;
 				else
 					$status = 1;

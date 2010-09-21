@@ -28,8 +28,11 @@ if($command !== false)
 	$help = htmlspecialchars($result[0][0], ENT_QUOTES);
 	$m .= "<div id=\"xmlrpchelp\">$help</div>";
 	$m .= '<div id="xmlrpcsignature">'.count($result[1][0][0])." {$lng['parameters']}<ul>";
-	foreach($result[1][0][0] as $p)
-		$m .= "<li>$p</li>";
+	if(is_array($result[1][0][0]))
+	{
+		foreach($result[1][0][0] as $p)
+			$m .= "<li>$p</li>";
+	}	
 	$m .= '</ul></div>';
 }
 else
