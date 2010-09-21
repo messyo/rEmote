@@ -17,7 +17,7 @@ if(!isset($_SERVER['argv']) || !count($_SERVER['argv']))
 }
 
 ini_set('error_reporting',    E_ALL);
-ini_set('max_execution_time',	0);
+ini_set('max_execution_time', 0);
 
 // Provide This Class for the whole error-Handling-Stuff
 class smallRender
@@ -62,9 +62,9 @@ while($h = $db->fetch($result))
 	$id = $h['fid'];
 	if(!cache_get("feed$id"))
 	{
-   	if($items = fetchRss($h['url'], $id, ord($h['download']), $h['directory']))
+		if($items = fetchRss($h['url'], $id, ord($h['download']), $h['directory']))
 			cache_put("feed$id", $items, $h['uid'], time() + $h['interval']);
-	}	
+	}
 }
 
 ?>

@@ -77,9 +77,9 @@ if(isset($_POST['login']))
 				$url .= '?'.SID;
 		}
 
-      // Insert User-Id into Sessions-Table
+		// Insert User-Id into Sessions-Table
 		session_write_close();
-      $db->query('UPDATE sessions SET uid = ? WHERE sid = ?', 'is', $_SESSION['uid'], session_id());
+		$db->query('UPDATE sessions SET uid = ? WHERE sid = ?', 'is', $_SESSION['uid'], session_id());
 		logger(LOGDEBUG, "User {$_SESSION['uid']} has logged in.", __FILE__, __LINE__);
 		$out->redirect($url);
 	}
@@ -118,7 +118,7 @@ if(substr($url, -11) == 'control.php')
 				{
 					if(isset($_GET['mod']))
 						$url = "details.php?hash={$_GET['hash']}&mod={$_GET['mod']}";
-				   else
+					else
 						$url = "details.php?hash={$_GET['hash']}";
 				}
 				else

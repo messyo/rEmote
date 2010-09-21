@@ -186,13 +186,13 @@ if($data = get_full_list($_SESSION['viewmode'], $_SESSION['groupmode'], $_SESSIO
 			$multiselecticons = "<span class=\"multimasker groupmasker\"><img src=\"{$imagedir}check.png\" alt=\"Checkall\" onclick=\"checkrange( true , $multiselectoffset, $multiselectend );\" />&nbsp;<img src=\"{$imagedir}uncheck.png\" alt=\"uncheck\" onclick=\"checkrange( false , $multiselectoffset , $multiselectend );\" />&nbsp;&nbsp;&nbsp;</span>";
 			$multiselectoffset = $multiselectend;
 			if($_SESSION['groupmode'] == 1)
-				$grpct = "<tr><td class=\"groupheader\" colspan=\"$numcolumns\">$multiselecticons<h2>$groupid</h2></td></tr>";                 // Group by Tracker
+				$grpct = "<tr><td class=\"groupheader\" colspan=\"$numcolumns\">$multiselecticons<h2>$groupid</h2></td></tr>";                  // Group by Tracker
 			else if($_SESSION['groupmode'] == 2)
 				$grpct = "<tr><td class=\"groupheader\" colspan=\"$numcolumns\">$multiselecticons<h2>{$lng["status$groupid"]}</h2></td></tr>";  // Group by Status
 			else if($_SESSION['groupmode'] == 5)
 				$grpct = "<tr><td class=\"groupheader\" colspan=\"$numcolumns\">$multiselecticons<h2>".getUsername($groupid).'</h2></td></tr>'; // Group by User
 			else
-				$grpct = "<tr><td class=\"groupheader\" colspan=\"$numcolumns\">$multiselecticons<h2>{$lng[$groupid]}</h2></td></tr>";  			// Group by Message || Traffic
+				$grpct = "<tr><td class=\"groupheader\" colspan=\"$numcolumns\">$multiselecticons<h2>{$lng[$groupid]}</h2></td></tr>";          // Group by Message || Traffic
 		}
 		else
 			$grpct = '';
@@ -222,8 +222,8 @@ if($data = get_full_list($_SESSION['viewmode'], $_SESSION['groupmode'], $_SESSIO
 
 			$t_count     += 1;
 			$t_done      += $item[PERCENT_COMPLETE];
-	  		$t_sup       += $item[UP_RATE];
-	  		$t_sdwn      += $item[DOWN_RATE];
+			$t_sup       += $item[UP_RATE];
+			$t_sdwn      += $item[DOWN_RATE];
 			$t_seeded    += $item[UP_TOTAL];
 			$t_completed += $item[COMPLETED_BYTES];
 			$t_size      += $item[SIZE_BYTES];

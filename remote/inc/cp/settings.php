@@ -137,7 +137,7 @@ for($x = 0; $h = $db->fetch($result); $x++)
 	{
 		list(,,$phpcode) = explode('|', $h['inputtype'], 3);  /* inputtype is in Format 'php|$DATATYPE|$PHPCODE' */
 		eval($phpcode);
-	   $for = '';
+		$for = '';
 	}
 	else
 	{

@@ -23,9 +23,10 @@ $feedarr = array(-1 => array('name' => $lng['choosefeed']));
 while($h = $db->fetch($result))
 {
 	$feedarr[$h['fid']] = array(
-							   		'name'      => $h['name'],
-							   		'download'  => $h['download'],
-										'allowhtml' => $h['allowhtml']);
+		'name'      => $h['name'],
+		'download'  => $h['download'],
+		'allowhtml' => $h['allowhtml']
+	);
 }
 
 
@@ -50,11 +51,11 @@ if($feedid && (isset($_GET['add']) && trim($_GET['add']) != ''))
 
 	if(($dir !== false) && ($dir != ''))
 		set_directory($dir);
-	
+
 	$return = get_torrent($_GET['add'], false, false);
 	if($return != '')
-		$out->addError($return); 
-	
+		$out->addError($return);
+
 	if(!$settings['disable_sem'])
 		sem_release($sem);
 }
@@ -109,7 +110,7 @@ if($feedid)
 						{
 							$link .= "&nbsp;<a href=\"feeds.php?feedid=$feedid&amp;add=".rawurlencode($item['enclosure']['attributes']['url']).$sid."\" title=\"{$lng['rsstort']}\"><img src=\"{$imagedir}addtort.png\" alt=\"add to rTorrent\" /></a>";
 							$link .= "&nbsp;<a href=\"{$item['enclosure']['attributes']['url']}\" title=\"{$lng['download']}\"><img src=\"{$imagedir}download.png\" alt\"Download\" /></a>";
-				   	}
+						}
 					}
 				}
 			}

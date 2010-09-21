@@ -67,9 +67,9 @@ if(!($settings = simple_cache_get('settings')))
 ini_set('error_reporting',          E_ALL);
 ini_set('session.gc_divisor',       1000);// Let's set to a very high value... as Ubuntu/Debian do not call the php-Session-GC, we have to call it by ourselves anyway...
 ini_set('session.gc_propability',   1);
-ini_set('session.use_cookies',	   $settings['session_use_cookies']);
+ini_set('session.use_cookies',      $settings['session_use_cookies']);
 ini_set('session.use_only_cookies', 0);
-ini_set('max_execution_time',		   $settings['max_exec_time']);
+ini_set('max_execution_time',       $settings['max_exec_time']);
 
 session_name($settings['session_name']);
 
@@ -84,31 +84,31 @@ if(!defined('NO_GC') && mt_rand(1, SESSION_GC_DIVISOR) == SESSION_GC_DIVISOR)
 {
 	SessionHandler::gc($settings['session_lifetime']);
 	// Also cleanup cache
-	$db->query('DELETE FROM cache WHERE expires > 0 AND expires < ?', 'i', time());	
+	$db->query('DELETE FROM cache WHERE expires > 0 AND expires < ?', 'i', time());
 }
 
 
 // Strip MagicQuotes
 if(get_magic_quotes_gpc())
 {
-    $process = array(&$_GET, &$_POST, &$_COOKIE, &$_REQUEST);
-	 while(list($key, $val) = each($process))
-	 {
-		 foreach($val as $k => $v)
-		 {
-            unset($process[$key][$k]);
-				if(is_array($v))
-				{
-                $process[$key][stripslashes($k)] = $v;
-                $process[] = &$process[$key][stripslashes($k)];
-				}
-				else
-				{
-                $process[$key][stripslashes($k)] = stripslashes($v);
-            }
-        }
-    }
-    unset($process);
+	$process = array(&$_GET, &$_POST, &$_COOKIE, &$_REQUEST);
+	while(list($key, $val) = each($process))
+	{
+		foreach($val as $k => $v)
+		{
+			unset($process[$key][$k]);
+			if(is_array($v))
+			{
+				$process[$key][stripslashes($k)] = $v;
+				$process[] = &$process[$key][stripslashes($k)];
+			}
+			else
+			{
+				$process[$key][stripslashes($k)] = stripslashes($v);
+			}
+		}
+	}
+	unset($process);
 }
 
 

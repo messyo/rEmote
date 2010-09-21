@@ -257,9 +257,9 @@ if(isset($_GET['action']) && isset($actionsarr[$_GET['action']]))
 			$v_down = true;
 			$v_add  = false;
 			$chunksizes = array(15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28);
-			
+
 			$dialog = 'mktorrent';
-			
+
 			if(isset($_POST['create']))
 			{
 				$v_name = $_POST['torrentname'];
@@ -309,7 +309,7 @@ if(isset($_GET['action']) && isset($actionsarr[$_GET['action']]))
 					// Let's check on nobody is trieing to write (AND DOWNLOAD!) files he should not download
 					if(!is_valid_file($file, false))
 					{
-               	$out->addError($lng['internerror']);
+						$out->addError($lng['internerror']);
 						logger(LOGSECURITY, "User {$_SESSION['uid']} tried to create torrentfile \"$file\"", __FILE__, __LINE__);
 						break;
 					}
@@ -362,7 +362,7 @@ if(isset($_GET['action']) && isset($actionsarr[$_GET['action']]))
 
 					if(!$v_save && !$v_down)
 						unlink($file);
-					
+
 					if($v_down)
 					{
 						$_SESSION['tfiles'][$object] = array($file, !$v_save);
@@ -432,12 +432,12 @@ if(isset($_GET['action']) && isset($actionsarr[$_GET['action']]))
 					}
 				}
 			}
-			
+
 			break;
 		case 'checksfv':
 			$files = file($object);
 			$dir   = dirname($object);
-			
+
 			$no  = "<img src=\"{$imagedir}button_cancel.png\" alt=\"{$lng['no']}\" />";
 			$yes = "<img src=\"{$imagedir}button_ok.png\" alt=\"{$lng['yes']}\" />";
 
@@ -455,7 +455,7 @@ if(isset($_GET['action']) && isset($actionsarr[$_GET['action']]))
 				// The following clean code could not be used due to a bug in PHP...
 				// http://bugs.php.net/bug.php?id=45028
 				// $intHash = hash_file('crc32b', $path);
-				
+
 				if(is_valid_file($path) && is_readable($path))
 					$intHash = str_pad(bin2hex(hash_file('crc32b', $path, true)), 8, '0', STR_PAD_LEFT);
 				else
@@ -464,7 +464,7 @@ if(isset($_GET['action']) && isset($actionsarr[$_GET['action']]))
 				$passed = ($intHash == $extHash);
 				$passedTotal &= $passed;
 				$row = '<tr><td>'.htmlspecialchars($filename, ENT_QUOTES)."</td><td>$extHash</td><td>$intHash</td>";
-			   if($passed)
+				if($passed)
 					$row .= "<td>$yes</td>";
 				else
 					$row .= "<td>$no</td>";
@@ -472,7 +472,7 @@ if(isset($_GET['action']) && isset($actionsarr[$_GET['action']]))
 
 				$table .= $row;
 			}
-         
+
 			$table .= '</table>';
 			$dialog = 'checksfv';
 
@@ -489,8 +489,8 @@ if(isset($_GET['action']) && isset($actionsarr[$_GET['action']]))
 				$out->addError($lng['npermission']);
 				break;
 			}
-         $mode = 0;
-			
+			$mode = 0;
+
 			$mode += (isset($_POST['perms_ur']) && ($_POST['perms_ur'] == 'true')) ? 0400 : 0000;
 			$mode += (isset($_POST['perms_gr']) && ($_POST['perms_gr'] == 'true')) ? 0040 : 0000;
 			$mode += (isset($_POST['perms_or']) && ($_POST['perms_or'] == 'true')) ? 0004 : 0000;
@@ -596,7 +596,7 @@ else
 				$c = (($s == $v_size) ? ' selected="selected"' : '');
 				$sizeoptions .= "<option value=\"$s\"$c>". format_bytes(pow(2,$s)).'</option>';
 			}
-			
+
 			$obj = $isdir ? 'dir' : 'file';
 			$robj = rawurlencode($object);
 

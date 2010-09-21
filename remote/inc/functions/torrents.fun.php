@@ -12,12 +12,12 @@ function getEndOfList($start, &$file)
 		$key = $file[++$offset];
 		switch($key)
 		{
-      	case 'e':
+			case 'e':
 				return $offset;
 				break;
 			case 'i':
 				$offset = strpos($file, 'e', $offset + 1);
-            break;
+				break;
 			case 'l':
 			case 'd':
 				if(($offset = getEndOfList($offset, $file)) === false)
@@ -55,7 +55,7 @@ function quick_get_hash($file)
 
 	// Get String of Info-Dictionary
 	$info = substr($file, $start, ($end - $start + 1));
-	
+
 	if(!strlen($info))
 		return false;
 	return(strtoupper(sha1($info)));
@@ -64,7 +64,7 @@ function quick_get_hash($file)
 function add_missing_hashes()
 {
 	global $db, $rpc, $settings;
-	
+
 	if(!$settings['disable_sem'])
 		$sem = sem_get(SEM_KEY);
 
@@ -76,7 +76,7 @@ function add_missing_hashes()
 	 */
 
 
-   // Get Hashes in rTorrent
+	// Get Hashes in rTorrent
 	$response = $rpc->request('d.multicall', array('main', 'd.get_hash='));
 
 	// Get Hashes in Database
@@ -85,13 +85,13 @@ function add_missing_hashes()
 	while($h = $db->fetch($result))
 		$hashes[] = $h['hash'];
 
-   // Walk through rTorrents hashes and insert missing into databse
+	// Walk through rTorrents hashes and insert missing into databse
 	for($x = 0; $x < count($response); $x++)
 	{
 		if(!in_array($response[$x][0], $hashes))
 			$db->query('INSERT INTO torrents (hash, uid) VALUES (?, 0)', 's', $response[$x][0]);
 	}
-	
+
 	if(!$settings['disable_sem'])
 		sem_release($sem);
 }

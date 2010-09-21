@@ -24,16 +24,16 @@ class Shoutbox
 
 		if(is_array($string))
 			return "<img src=\"{$smileyimgs}{$this->smileys[$string[1]]}\" alt=\"{$string[1]}\" />";
-		
+
 		return preg_replace_callback($this->smileyPattern, array($this, 'replaceSmileys'), $string);
 	}
 
 	function getShouts()
 	{
 		global $db, $lng, $qsid;
-		
+
 		$result = $db->query('SELECT u.name, s.sid, s.uid, s.message, s.time FROM users u INNER JOIN shouts s ON u.uid = s.uid ORDER BY time DESC LIMIT 30');
-		
+
 		$shouts = '<table>';
 		while($h = $db->fetch($result))
 			$shouts .= sprintf('<tr><td><strong>%s</strong><br /><span class="hint">%s</span></td><td>%s</td><td>%s</td></tr>',

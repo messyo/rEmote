@@ -40,7 +40,7 @@ else
 		$db->query('DELETE FROM cache WHERE ckey = ?', 's', 'settings');
 		$qry = 'INSERT INTO `settings` (`skey`, `defaultname`, `gid`, `inputtype`, `onsave`, `value`, `sortid`, `defaultvalue`) VALUES '.$qry;
 		$res = $db->query($qry);
-		
+
 		$out .= "<div class=\"small\">$details</div>";
 		if($db->affected_rows($res))
 			$out .= "<div class=\"success\">{$lng['settingsu2d']}</div>";

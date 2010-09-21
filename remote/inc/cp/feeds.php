@@ -193,7 +193,7 @@ if(isset($_POST['save']))
 		}
 		else
 			$out->addError($lng['notsaved']);
-	}	
+	}
 }
 else if($edit)
 {
@@ -201,7 +201,7 @@ else if($edit)
 		$qry = 'SELECT name, fid, expression, fields, regex, function FROM highlightrules WHERE hid = ? AND uid = ?';
 	else
 		$qry = 'SELECT name, url, directory, `interval`, download, allowhtml FROM feeds WHERE fid = ? AND uid = ?';
-	
+
 	if($h = $db->fetch($db->query($qry, 'ii', $edit, $_SESSION['uid'])))
 	{
 		$v_name = $db->out($h['name']);
@@ -246,7 +246,7 @@ if(($field != '') && !isset($_GET['kill']))
 		$new .= "<tr><td><label for=\"feedint\">{$lng['interval']}</label></td><td><input id=\"feedint\" type=\"text\" class=\"num\" name=\"feedint\" value=\"$v_int\" />&nbsp;{$lng['minutes']}</td></tr>";
 		$new .= "<tr><td>&nbsp;</td><td><input type=\"checkbox\" id=\"feeddown\" name=\"feeddown\" value=\"true\" ".($v_down ? ' checked="checked"' : '')."/>&nbsp;<label for=\"feeddown\">{$lng['feedlongdld']}</label></td></tr>";
 		$new .= "<tr><td>&nbsp;</td><td><input type=\"checkbox\" id=\"feedhtml\" name=\"feedhtml\" value=\"true\" ".($v_html ? ' checked="checked"' : '')."/>&nbsp;<label for=\"feedhtml\">{$lng['feedlonghtm']}</label></td></tr>";
-		
+
 		$new .= "<tr><td>&nbsp;</td><td><input type=\"submit\" name=\"save\" value=\"".($edit ? $lng['save'] : $lng['add'] )."\" /></td></tr>";
 		$new .= '</table></form></fieldset>';
 	}
@@ -279,10 +279,10 @@ if(($field != '') && !isset($_GET['kill']))
 		$new .= "<tr><td><label for=\"rulesin\">{$lng['lookin']}</label></td><td><select name=\"rulesin\">$fieldoptions</select></td></tr>";
 		$new .= "<tr><td><label for=\"rulefunc\">{$lng['actions']}</label></td><td><select name=\"rulefunc\">$funcoptions</select></td></tr>";
 		$new .= "<tr><td>&nbsp;</td><td><input type=\"checkbox\" id=\"ruleregex\" name=\"ruleregex\" value=\"true\" ".($v_regex ? ' checked="checked"' : '')."/>&nbsp;<label for=\"ruleregex\">{$lng['regex']}</label></td></tr>";
-		
+
 		$new .= "<tr><td>&nbsp;</td><td><input type=\"submit\" name=\"save\" value=\"".($edit ? $lng['save'] : $lng['add'] )."\" /></td></tr>";
 		$new .= '</table></form></fieldset>';
-	}	
+	}
 }
 
 $result = $db->query('SELECT fid, name, url, directory, `interval`, download, allowhtml FROM feeds WHERE uid = ?', 'i', $_SESSION['uid']);
@@ -296,11 +296,11 @@ while($h = $db->fetch($result))
 	$url = $h['url'];
 	$url = maxlength($url ,72);
 	$url = htmlspecialchars($url, ENT_QUOTES);
-	
+
 	$dir = $h['directory'];
 	$dir = maxlength($dir, 72);
 	$dir = htmlspecialchars($dir, ENT_QUOTES);
-	
+
 	$row .= "<td>$url</td>";
 	$row .= "<td>$dir</td><td>".($h['interval']/60).'&nbsp;'.$lng['minutes'].'</td>';
 	if(ord($h['download']))
@@ -335,7 +335,7 @@ if($db->num_rows($result))
 		$regex      = ord($h['regex']) ? "<img src=\"{$imagedir}yes.png\" alt=\"yes\" />" : "<img src=\"{$imagedir}no.png\" alt=\"no\" />";
 		$highlight  = (intval($h['function']) & FEEDHIGHLIGHT) ?  "<img src=\"{$imagedir}yes.png\" alt=\"yes\" />" : "<img src=\"{$imagedir}no.png\" alt=\"no\" />";
 		$download   = (intval($h['function']) & FEEDDOWNLOAD ) ?  "<img src=\"{$imagedir}yes.png\" alt=\"yes\" />" : "<img src=\"{$imagedir}no.png\" alt=\"no\" />";
-		
+
 		$row  = "<tr><td>$name</td>";
 		$row .= "<td>$fid</td>";
 		$row .= "<td>$expression</td>";

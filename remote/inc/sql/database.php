@@ -168,7 +168,7 @@ class DatabaseFrame
 
 	function out($str)
 	{
-   	return htmlspecialchars($str, ENT_QUOTES);
+		return htmlspecialchars($str, ENT_QUOTES);
 	}
 }
 

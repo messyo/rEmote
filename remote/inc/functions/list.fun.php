@@ -154,11 +154,11 @@ function get_full_list($view, $group, $source)
 			}
 			else
 			{
-         	// GROUP BY USER
+				// GROUP BY USER
 				if($settings['real_multiuser'])
 				{
 					if(isset($hashes[$item[HASH]]))
-            		$retarr[$hashes[$item[HASH]]][] = $item;
+						$retarr[$hashes[$item[HASH]]][] = $item;
 					else
 					{
 						$retarr[0] = $item; // Set Torrent Public

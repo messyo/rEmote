@@ -20,11 +20,11 @@ if(isset($_POST['add']))
 		$start = true;
 	else
 		$start = false;
-	
+
 	logger(LOGDEBUG, 'POST-Parameter "add" is given (start is '.intval($start).')', __FILE__, __LINE__);
 
 	$added_anything = false;
-	
+
 	/* Let's change the directory first */
 	$changeback = false;
 	if(isset($_POST['diroptions']) && $_POST['diroptions'])
@@ -84,7 +84,7 @@ if(isset($_POST['add']))
 					$invalid[] = "{$_FILES["addbyfile$x"]['name']} - $err";
 				else
 					$added_anything = true;
-			}	
+			}
 		}
 
 		if(isset($invalid) && count($invalid))

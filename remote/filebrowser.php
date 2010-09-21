@@ -71,7 +71,7 @@ if(isset($_GET['action']))
 			{
 				// Do Question
 				$out->addNotify(makeSecQuestion("filebrowser.php?action=deldir$sid", $lng['fbdelconf'], array('dir' => $_REQUEST['dir'])));
-			}	
+			}
 			break;
 		case 'delfile':
 			if(isset($_REQUEST['confirm']))
@@ -87,7 +87,7 @@ if(isset($_GET['action']))
 			{
 				// Do Question
 				$out->addNotify(makeSecQuestion("filebrowser.php?action=delfile$sid", $lng['fbdelconf'], array('file' => $_REQUEST['file'])));
-			}	
+			}
 			break;
 		case 'copydir':
 			$folder = clean_dir($_GET['dir']);

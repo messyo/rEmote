@@ -48,14 +48,14 @@ else
 	$ctable .= "<tr><td>{$lng['cookiehost']}</td><td>{$lng['cookiedata']}</td><td><img src=\"{$imagedir}delete.png\" alt=\"{$lng['delete']}\" /></td></tr></thead>";
 	while($h = $db->fetch($result))
 		$ctable .= sprintf('<tr><td class="cookiehost">%s</td><td class="cookiedata">%s</td><td><a href="controlpanel.php?mod=%d&amp;kill=%d%s" title="%s"><img src="%sdelete.png" alt="%s" /></a></td></tr>',
-								 htmlspecialchars($h['host'],    ENT_QUOTES),
-								 htmlspecialchars($h['cookies'], ENT_QUOTES),
-								 $mod,
-								 $h['cid'],
-								 $sid,
-								 $lng['rmcookie'],
-								 $imagedir,
-								 $lng['delete']);
+								htmlspecialchars($h['host'],    ENT_QUOTES),
+								htmlspecialchars($h['cookies'], ENT_QUOTES),
+								$mod,
+								$h['cid'],
+								$sid,
+								$lng['rmcookie'],
+								$imagedir,
+								$lng['delete']);
 	$ctable .= '</table>';
 }
 

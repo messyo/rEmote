@@ -7,7 +7,7 @@ class Template
 
 	function __construct($template)
 	{
-   	$this->string = $template;
+		$this->string = $template;
 	}
 
 	function bindOrder($values)
@@ -21,13 +21,13 @@ class Template
 	{
 		global $lng;
 
-   	return($lng[$p[1]]);
+		return($lng[$p[1]]);
 	}
 
 	function renderOrdered(&$values)
 	{
-      $string = str_replace($this->vk, $values, $this->string);
-      $string = preg_replace_callback('/:lng\[([a-z_]+)\]/U', 'Template::replaceLng', $string);
+		$string = str_replace($this->vk, $values, $this->string);
+		$string = preg_replace_callback('/:lng\[([a-z_]+)\]/U', 'Template::replaceLng', $string);
 
 		return $string;
 	}
@@ -42,8 +42,8 @@ class Template
 			$vr[] = $v;
 		}
 
-      $string = str_replace($vk, $vr, $this->string);
-      $string = preg_replace_callback('/:lng\[([a-z_]+)\]/U', 'Template::replaceLng', $string);
+		$string = str_replace($vk, $vr, $this->string);
+		$string = preg_replace_callback('/:lng\[([a-z_]+)\]/U', 'Template::replaceLng', $string);
 
 		return $string;
 	}
@@ -56,8 +56,8 @@ class Template
 			$vr[] = $v;
 		}
 
-      $string = str_replace($vk, $vr, $s);
-      $string = preg_replace_callback('/:lng\[([a-z_]+)\]/U', 'Template::replaceLng', $string);
+		$string = str_replace($vk, $vr, $s);
+		$string = preg_replace_callback('/:lng\[([a-z_]+)\]/U', 'Template::replaceLng', $string);
 
 		return $string;
 	}

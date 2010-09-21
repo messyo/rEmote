@@ -5,7 +5,7 @@ class Render
 	const ERROR       = 1;
 	const SUCCESS     = 2;
 	const NOTIFY      = 4;
-	
+
 	var $bodyonload   = '';
 	var $content      = '';
 	var $stylesheets  = array();
@@ -21,15 +21,15 @@ class Render
 
 	function addError($string)
 	{
-   	if($this->error != '')
+		if($this->error != '')
 			$this->error .= "<br />$string";
 		else
 			$this->error .= $string;
 	}
-	
+
 	function addNotify($string)
 	{
-   	if($this->notify != '')
+		if($this->notify != '')
 			$this->notify .= "<br />$string";
 		else
 			$this->notify .= $string;
@@ -37,7 +37,7 @@ class Render
 
 	function addSuccess($string)
 	{
-   	if($this->success != '')
+		if($this->success != '')
 			$this->success .= "<br />$string";
 		else
 			$this->success .= $string;
@@ -51,12 +51,12 @@ class Render
 		{
 			$output .= "<div class=\"error\">{$this->error}</div>";
 			$this->error = '';
-		}	
+		}
 		if(($t & Render::SUCCESS) && ($this->success != ''))
 		{
 			$output .= "<div class=\"success\">{$this->success}</div>";
 			$this->success = '';
-		}	
+		}
 		if(($t & Render::NOTIFY) && ($this->notify != ''))
 		{
 			$output .= "<div class=\"notify\">{$this->notify}</div>";
@@ -68,7 +68,7 @@ class Render
 
 	function hasError()
 	{
-   	return($this->error != '');
+		return($this->error != '');
 	}
 
 	function setStylesheets($arr)
@@ -80,7 +80,7 @@ class Render
 	{
 		$this->javascripts = $arr;
 	}
-	
+
 	function setStyleJavascripts($arr)
 	{
 		$this->stylescripts = $arr;
@@ -109,7 +109,7 @@ class Render
 		for($i = 0; $i < $argc; $i++)
 			$this->precache[] = func_get_arg($i);
 	}
-	
+
 	function setPrecache($arr)
 	{
 		$this->precache = $arr;

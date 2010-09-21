@@ -74,10 +74,6 @@ function cache_put($key, $content, $uid = 0, $expires = 0)
 						serialize($content));
 }
 
-function do_xmlrpc($method, $params, $dieonfault = true) {	exit('USE OF DEPRECATED do_xmlrpc!'); }
-function simple_system_multicall($f1)                    {	exit('USE OF DEPRECATED simple_system_multicall!'); }
-function system_multicall($f1, $a1)                      {	exit('USE OF DEPRECATED system_multicall!'); }
-
 function lng($l)
 {
 	global $lng;
@@ -213,8 +209,8 @@ function getBin($name, $logit = true)
 function replace_latin1($string)
 {
 	static $latin1 = array( '�',  '�',  '�',  '�',     '�',     '�',     '�'    );
-   static $utf8   = array( 'ä', 'ö', 'ü', 'Ä', 'Ö', 'Ü', 'ß');
-	
+	static $utf8   = array( 'ä', 'ö', 'ü', 'Ä', 'Ö', 'Ü', 'ß');
+
 	return str_replace($latin1, $utf8, $string);
 }
 
@@ -248,7 +244,7 @@ function checkWrite($o, $error = false)
 			$out->addError($lng['nowrite']);
 		else
 			$out->addNotify($lng['nowrite']);
-		
+
 		return false;
 	}
 }
@@ -283,7 +279,7 @@ function checkExec($o, $error = false)
 			$out->addError($lng['nowrite']);
 		else
 			$out->addNotify($lng['nowrite']);
-		
+
 		return false;
 	}
 
@@ -293,13 +289,13 @@ function checkPerms($o, $error = false)
 {
 	return(checkWrite($o, $error)
 		|| checkRead($o, $error)
-      || checkExec($o, $error));
+		|| checkExec($o, $error));
 }
 
 function remainingJobs()
 {
 	global $db;
-	
+
 	$running = $db->one_result($db->query('SELECT COUNT(*) AS c FROM jobs WHERE uid = ? AND status = ?',
 		'is',
 		$_SESSION['uid'],
@@ -311,7 +307,7 @@ function remainingJobs()
 function finishedJobs()
 {
 	global $db;
-	
+
 	$count = $db->one_result($db->query('SELECT COUNT(*) AS c FROM jobs WHERE uid = ? AND finishtime >= ? AND finishtime < ?',
 		'iii',
 		$_SESSION['uid'],

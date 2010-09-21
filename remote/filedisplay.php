@@ -19,76 +19,76 @@ if(isset($_GET['passthru']) && ($_GET['passthru'] == true))
 		case '.jpg':
 		case 'jpeg':
 			if(!isset($type))
-			  $type = 'jpeg';
+				$type = 'jpeg';
 		case '.png':
 			if(!isset($type))
-			  $type = 'png';
+				$type = 'png';
 		case '.bmp':
 			if(!isset($type))
-			  $type = 'bmp';
+				$type = 'bmp';
 		case 'tiff':
 			if(!isset($type))
-			  $type = 'tiff';
+				$type = 'tiff';
 		case '.xpm':
 			if(!isset($type))
-			  $type = 'x-xpixmap';
+				$type = 'x-xpixmap';
 		case '.gif':
 			if(!isset($type))
-			  $type = 'gif';
+				$type = 'gif';
 		case '.ico':
 			if(!isset($type))
-			  $type = 'x-icon';
+				$type = 'x-icon';
 			header('Content-type: image/' . $type);
 			readfile($object);
 			break;
 		case '.nfo':
-			 /*
-				  -------------------------------------------------------------------
-				  NFO Viewer v1.1 by Richard Davey, Core PHP (rich@corephp.co.uk)
+			/*
+			-------------------------------------------------------------------
+			NFO Viewer v1.1 by Richard Davey, Core PHP (rich@corephp.co.uk)
 
-				  Released 3rd May 2007
-				  Updated 5th January 2008
+			Released 3rd May 2007
+			Updated 5th January 2008
 
-				  Includes base font from the Damn NFO Viewer
-				  -------------------------------------------------------------------
-				  You are free to use this in any product, or on any web site.
-				  I'd appreciate it if you email and tell me where you use it, thanks.
-				  Latest builds at: http://nfo.corephp.co.uk
-				  -------------------------------------------------------------------
+			Includes base font from the Damn NFO Viewer
+			-------------------------------------------------------------------
+			You are free to use this in any product, or on any web site.
+			I'd appreciate it if you email and tell me where you use it, thanks.
+			Latest builds at: http://nfo.corephp.co.uk
+			-------------------------------------------------------------------
 
-				  This script accepts the following $_REQUEST parameters:
+			This script accepts the following $_REQUEST parameters:
 
-				  bg              optional        The background colour of the image (default black)
-				  filename        required        The NFO file to load and display
-				  colour          required        The font to use when rendering
-			 */
+			bg              optional        The background colour of the image (default black)
+			filename        required        The NFO file to load and display
+			colour          required        The font to use when rendering
+			*/
 
-			 //    PHP Version sanity check
-			 if (version_compare('4.0.6', phpversion()) == 1)
-			 {
-				  logger(LOGERROR, 'NFOGEN: This version of PHP is not fully supported. You need 4.0.6 or above.', __FILE__, __LINE__);
-				  exit();
-			 }
+			//    PHP Version sanity check
+			if (version_compare('4.0.6', phpversion()) == 1)
+			{
+				logger(LOGERROR, 'NFOGEN: This version of PHP is not fully supported. You need 4.0.6 or above.', __FILE__, __LINE__);
+				exit();
+			}
 
-			 //    GD check
-			 if (extension_loaded('gd') == false && !dl('gd.so'))
-			 {
-				  echo 'You are missing the GD extension for PHP, sorry but I cannot continue.';
-				  exit();
-			 }
+			//    GD check
+			if (extension_loaded('gd') == false && !dl('gd.so'))
+			{
+				echo 'You are missing the GD extension for PHP, sorry but I cannot continue.';
+				exit();
+			}
 
-			 $red    = 255;
-			 $green  = 255;
-			 $blue   = 255;
-			 $colour = 5;
+			$red    = 255;
+			$green  = 255;
+			$blue   = 255;
+			$colour = 5;
 
-			 if (file_exists($imagedir.'nfogen.png'))
-				  $fontset = imagecreatefrompng($imagedir.'nfogen.png');
-			 else
-			 {
-				  logger(LOGERROR, "NFOGEN: Aborting, cannot find the required fontset nfogen.png in path: $imagedir", __FILE__, __LINE__);
-				  exit();
-			 }
+			if (file_exists($imagedir.'nfogen.png'))
+				$fontset = imagecreatefrompng($imagedir.'nfogen.png');
+			else
+			{
+				logger(LOGERROR, "NFOGEN: Aborting, cannot find the required fontset nfogen.png in path: $imagedir", __FILE__, __LINE__);
+				exit();
+			}
 
 			$x      = 0;
 			$y      = 0;
@@ -98,30 +98,30 @@ if(isset($_GET['passthru']) && ($_GET['passthru'] == true))
 
 			$nfo = file($object);
 
-			//	Calculate max width and height of image needed - height is easy, do first:
+			// Calculate max width and height of image needed - height is easy, do first:
 			$image_height = count($nfo) * 12;
 			$image_width = 0;
 
-			//	Width needs a loop through the text
-			for ($c = 0; $c < count($nfo); $c++)
+			// Width needs a loop through the text
+			for($c = 0; $c < count($nfo); $c++)
 			{
 				$line = $nfo[$c];
 				$temp_len = strlen($line);
-				if ($temp_len > $image_width)
+				if($temp_len > $image_width)
 					$image_width = $temp_len;
 			}
 
 			$image_width = $image_width * $fontx;
 
-			//	Sanity Checks
-			if ($image_width > 1600)
+			// Sanity Checks
+			if($image_width > 1600)
 				$image_width = 1600;
 
-			 $im = imagecreatetruecolor($image_width, $image_height);
-			 $bgc = imagecolorallocate($im, $red, $green, $blue);
-			 imagefill($im, 0, 0, $bgc);
+			$im = imagecreatetruecolor($image_width, $image_height);
+			$bgc = imagecolorallocate($im, $red, $green, $blue);
+			imagefill($im, 0, 0, $bgc);
 
-			for ($c = 0; $c < count($nfo); $c++)
+			for($c = 0; $c < count($nfo); $c++)
 			{
 				$x = $fontx;
 				$line = $nfo[$c];

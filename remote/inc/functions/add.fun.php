@@ -32,7 +32,7 @@ function add_single_torrent($file, $action, $public, $delete = true)
 	set_directory($_SESSION['dir']);
 
 	$return = add_torrent($file, $action, $public, $delete);
-	
+
 	if(!$settings['disable_sem'])
 		sem_release($sem);
 
@@ -67,7 +67,7 @@ function add_torrent($file, $action, $public, $delete = true)
 		logger(LOGERROR, "Torrent $file could not be added", __FILE__, __LINE__);
 		return($lng['notadded']);
 	}
-	
+
 	if($settings['real_multiuser'])
 	{
 		if($public)

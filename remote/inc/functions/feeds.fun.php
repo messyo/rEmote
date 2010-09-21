@@ -50,7 +50,7 @@ function highlight($field, $message)
 function fetchRss($url, $id, $download, $ddir = '')
 {
 	global $settings;
-	
+
 	if(!($xml = @file_get_contents($url)) || ($xml == ''))
 		return false;
 
@@ -90,12 +90,12 @@ function fetchRss($url, $id, $download, $ddir = '')
 					else
 					{
 						$func = highlight(FEEDTITLE, $items[$c]['title']['value']);
-						
-						if(isset($items[$c]['description']))
-						  $func |= highlight(FEEDDESCR, $items[$c]['description']['value']);
-						
 
-						if($func & 1)	
+						if(isset($items[$c]['description']))
+							$func |= highlight(FEEDDESCR, $items[$c]['description']['value']);
+
+
+						if($func & 1)
 							$items[$c]['marked'] = true;
 						else
 							$items[$c]['marked'] = false;
@@ -111,13 +111,13 @@ function fetchRss($url, $id, $download, $ddir = '')
 								$durl = $items[$c]['link']['value'];
 							else if($items[$c]['enclosure']['attributes']['type'] == 'application/x-bittorrent')
 								$durl = $items[$c]['enclosure']['attributes']['url'];
-							
+
 							if($durl !== false)
 							{
 								set_directory($ddir);
 								get_torrent($durl, false, true);
 							}
-						}	
+						}
 					}
 				}
 				$count++;
@@ -154,7 +154,7 @@ function fetchRss($url, $id, $download, $ddir = '')
 		else if($tag['tag'] == 'item' && $tag['type'] == 'open')
 				$open = true;
 	}
-	
+
 	if(!$settings['disable_sem'])
 		sem_release($sem);
 

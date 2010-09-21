@@ -26,7 +26,7 @@ else
 $width=100;
 
 if(isset($_GET['width']) && $_GET['width'] > 0)
-    $width = intval($_GET['width']);
+	$width = intval($_GET['width']);
 
 
 $im = imagecreate($width, 1);
@@ -44,7 +44,8 @@ $value = 0;
 $oldx = -293;
 
 for($i = 0; $i < $length; ++$i) {
-    $char = hexdec($bitfield[floor($i / 4)]);
+	$char = hexdec($bitfield[floor($i / 4)]);
+
 	if($char & (8 >> ($i % 4))) {
 		$value |= 2;
 	} else {

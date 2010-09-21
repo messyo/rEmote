@@ -20,10 +20,10 @@ class CFile
 		$this->completed_chunks = $completed_chunks;
 		$this->priority         = $priority;
 	}
-	
+
 	function isFolder()
 	{
-   	return false;
+		return false;
 	}
 }
 
@@ -38,10 +38,10 @@ class CFolder
 		$this->elements = array();
 		$this->folder = true;
 	}
-	
+
 	function isFolder()
 	{
-   	return true;
+		return true;
 	}
 }
 
@@ -97,9 +97,9 @@ function get_file_array($hash)
 	foreach($response AS $item)
 	{
 		$f = $root;
-		
-		$c = count($item[F_PATH_COMPS])-1; 
-		
+
+		$c = count($item[F_PATH_COMPS])-1;
+
 		for($x = 0; $x < $c; $x++)
 		{
 			$p = htmlspecialchars(replace_latin1($item[F_PATH_COMPS][$x]), ENT_QUOTES);
@@ -113,7 +113,7 @@ function get_file_array($hash)
 				$found = true;
 				break;
 			}
-			
+
 			if($found == false)
 			{
 				$new = new CFolder($p);
@@ -147,12 +147,12 @@ function print_array($arr)
 		$return .= "<img src=\"{$imagedir}folder.png\" alt=\"F\" />&nbsp;{$arr->name}";
 		$return .= "<ul id=\"folder$index\">";
 		foreach($arr->elements as $e)
-		 	$return .= '<li>'.print_array($e).'</li>';
+			$return .= '<li>'.print_array($e).'</li>';
 		$return .= '</ul>';
 	}
 	else
 		$return = sprintf('<input type="checkbox" class="filecheck" name="priority%d" value="%d" onchange="updateAll();" %s/><img src="%ssmall/%s" alt="_" />&nbsp;%s',
-         	$arr->index,
+				$arr->index,
 				($arr->priority > 0) ? $arr->priority : 1,
 				($arr->priority > 0) ? 'checked="checked" ' : '',
 				$fileimgs,
@@ -199,18 +199,18 @@ function get_peer_list($hash)
 	$cache  = array();
 	foreach($response as $item)
 	{
-		$retarr[$index]['address']					= $item[P_ADDRESS       ];
-		$retarr[$index]['client_version']		= $item[P_CLIENT_VERSION];
-		$retarr[$index]['completed_percent']	= $item[P_COMPLETED     ];
-		$retarr[$index]['up_rate']					= $item[P_UP_RATE       ];
-		$retarr[$index]['down_rate']				= $item[P_DOWN_RATE     ];
-		$retarr[$index]['port']	 			  		= $item[P_PORT          ];
-		$retarr[$index]['is_encrypted']  		= $item[P_IS_ENCRYPTED  ];
+		$retarr[$index]['address']           = $item[P_ADDRESS       ];
+		$retarr[$index]['client_version']    = $item[P_CLIENT_VERSION];
+		$retarr[$index]['completed_percent'] = $item[P_COMPLETED     ];
+		$retarr[$index]['up_rate']           = $item[P_UP_RATE       ];
+		$retarr[$index]['down_rate']         = $item[P_DOWN_RATE     ];
+		$retarr[$index]['port']              = $item[P_PORT          ];
+		$retarr[$index]['is_encrypted']      = $item[P_IS_ENCRYPTED  ];
 		if($bitfields)
 		{
 			// Push to cache
 			$cache[$index] = $item[P_BITFIELD];
-		}	
+		}
 		$index++;
 	}
 
@@ -219,7 +219,7 @@ function get_peer_list($hash)
 		$already = cache_get('bitfields');
 		if(!is_array($already))
 			$already = array();
-		
+
 		$already[$hash] = $cache;
 		cache_put('bitfields', $already, $_SESSION['uid'], (time() + 120));
 	}
@@ -323,26 +323,28 @@ function page_infos($hash)
 
 	require_once(TO_ROOT.'inc/defines/torrent.php');
 
-	$response = $rpc->multicall(  'd.get_complete',            array($hash),
-											'd.get_completed_bytes',     array($hash),
-											'd.get_connection_current',  array($hash),
-											'd.get_down_rate',           array($hash),
-											'd.get_hash',                array($hash),
-											'd.get_message',             array($hash),
-											'd.get_name',                array($hash),
-											'd.get_peers_complete',      array($hash),
-											'd.get_peers_connected',     array($hash),
-											'd.get_peers_not_connected', array($hash),
-											'd.get_priority',            array($hash),
-											'd.get_ratio',               array($hash),
-											'd.get_size_bytes',          array($hash),
-											'd.get_up_rate',             array($hash),
-											'd.get_up_total',            array($hash),
-											'd.is_active',               array($hash),
-											'd.get_left_bytes',          array($hash),
-									      'd.get_directory',           array($hash),
-											'd.get_down_total',          array($hash),
-											'd.get_size_chunks',         array($hash));
+	$response = $rpc->multicall(
+		'd.get_complete',            array($hash),
+		'd.get_completed_bytes',     array($hash),
+		'd.get_connection_current',  array($hash),
+		'd.get_down_rate',           array($hash),
+		'd.get_hash',                array($hash),
+		'd.get_message',             array($hash),
+		'd.get_name',                array($hash),
+		'd.get_peers_complete',      array($hash),
+		'd.get_peers_connected',     array($hash),
+		'd.get_peers_not_connected', array($hash),
+		'd.get_priority',            array($hash),
+		'd.get_ratio',               array($hash),
+		'd.get_size_bytes',          array($hash),
+		'd.get_up_rate',             array($hash),
+		'd.get_up_total',            array($hash),
+		'd.is_active',               array($hash),
+		'd.get_left_bytes',          array($hash),
+		'd.get_directory',           array($hash),
+		'd.get_down_total',          array($hash),
+		'd.get_size_chunks',         array($hash)
+	);
 
 	if($response[IS_ACTIVE][0])
 	{

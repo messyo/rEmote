@@ -67,12 +67,12 @@ class SessionHandler
 		return $db->affected_rows($result);
 	}
 
-   static function gc($max)
+	static function gc($max)
 	{
 		global $db;
 
 		logger(LOGINFOS, 'Session-Garbage-Cleaner called', __FILE__, __LINE__);
-		$db->query('DELETE FROM sessions WHERE permanent = 0 AND time < ?', 'i', time() - $max - 1); // Give a bonus-second bonus for the case: Valid Called, invalid written... 
+		$db->query('DELETE FROM sessions WHERE permanent = 0 AND time < ?', 'i', time() - $max - 1); // Give a bonus-second bonus for the case: Valid Called, invalid written...
 
 		return true;
 	}

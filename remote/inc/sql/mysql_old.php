@@ -26,7 +26,7 @@ class Database extends DatabaseFrame
 
 	function __destruct()
 	{
-		 mysql_close($this->link);
+		mysql_close($this->link);
 	}
 
 	function query($qry, $types = '')
@@ -70,7 +70,7 @@ class Database extends DatabaseFrame
 		else
 			$this->error($qry, mysql_errno($this->link), mysql_error($this->link), __LINE__);
 	}
-	
+
 	function affected_rows()
 	{
 		return mysql_affected_rows($this->link);
@@ -94,7 +94,7 @@ class Database extends DatabaseFrame
 	function fetch($res)
 	{
 		$arr = mysql_fetch_assoc($res);
-		
+
 		if(is_array($arr) && count($arr))
 		{
 			foreach($arr as $key => $val)
@@ -103,7 +103,6 @@ class Database extends DatabaseFrame
 
 		return $arr;
 	}
-	
 }
 
 ?>

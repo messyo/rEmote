@@ -25,6 +25,10 @@ img { border: 0px; }
 hr  { color: #0000aa; }
 td  { text-align: left; vertical-align: top; }
 
+table { border-collapse: collapse; }
+
+thead { border-bottom: 1px solid black; }
+
 thead td {
 	font-weight: bold;
 	color: black;
@@ -70,55 +74,40 @@ label, span.label {
 	font-style: italic;
 }
 
-div.error {
-	border: 2px solid red;
+div.error, div.notify, div.success {
+	border-style: solid;
+	border-width: 2px;
 	padding-top: 12px;
 	padding-right: 12px;
 	padding-bottom: 12px;
 	padding-left: 45px;
-	color: red;
 	font-weight: bold;
-	background: url(../../images/newblue/messagebox_warning.png);
 	background-repeat: no-repeat;
 	background-position: 5px 5px;
-	background-color: #ffdddd;
 	margin-bottom: 15px;
 	font-size: 16px;
 	text-align: left;
+}
+
+div.error {
+	border-color: red;
+	color: red;
+	background-color: #ffdddd;
+	background-image: url(../../images/newblue/messagebox_warning.png);
 }
 
 div.notify {
-	border: 2px solid blue;
-	padding-top: 12px;
-	padding-right: 12px;
-	padding-bottom: 12px;
-	padding-left: 45px;
+	border-color: blue;
 	color: blue;
-	font-weight: bold;
-	background: url(../../images/newblue/messagebox_info.png);
-	background-repeat: no-repeat;
-	background-position: 5px 5px;
 	background-color: #ddddff;
-	margin-bottom: 15px;
-	font-size: 16px;
-	text-align: left;
+	background-image: url(../../images/newblue/messagebox_info.png);
 }
 
 div.success {
-	border: 2px solid green;
-	padding-top: 12px;
-	padding-right: 12px;
-	padding-bottom: 12px;
-	padding-left: 45px;
+	border-color: green;
 	color: green;
-	font-weight: bold;
-	background: url(../../images/newblue/messagebox_ok.png);
-	background-repeat: no-repeat;
-	background-position: 5px 5px;
 	background-color: #ddffdd;
-	margin-bottom: 15px;
-	font-size: 16px;
-	text-align: left;
+	background-image: url(../../images/newblue/messagebox_ok.png);
 }
 
 div#footer {
@@ -173,6 +162,17 @@ div#loginbox table {
 	color: #aaa;
 }
 
+
+
+
+
+
+
+
+
+
+
+
 #tupload {
 	width: 350px;
 	float: right;
@@ -225,6 +225,13 @@ div#loginbox table {
 	background-color: transparent;
 }
 
+
+
+
+
+
+
+
 #topmenu {
 	margin-left: 100px;
 	margin-top: 0px;
@@ -273,6 +280,18 @@ div.progress div {
 	             white  1px -1px 0;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
 #menu1 span, #menu1active span { display: none; }
 #menu1:before { content:url(../../images/newblue/gmenu_torrents.png); }
 #menu1:hover:before, #menu1active:before { content:url(../../images/newblue/menu_torrents.png); }
@@ -296,6 +315,12 @@ div.progress div {
 #menu6 span, #menu6active span { display: none; }
 #menu6:before { content:url(../../images/newblue/gmenu_logout.png); }
 #menu6:hover:before, #menu6active:before { content:url(../../images/newblue/menu_logout.png); }
+
+
+
+
+
+
 
 
 
@@ -374,14 +399,11 @@ div.contentoftable {
 
 #torrenttable {
 	width: 100%;
-	border-collapse: collapse;
 	border: 1px solid black;
 }
 
 
-tr.row1 td, .row1 {
-	background: #dfdfff;
-}
+tr.row1 td, .row1 { background: #dfdfff; }
 
 #torrenttable td {
 	text-align: center;
@@ -394,15 +416,18 @@ tr.row1 td, .row1 {
 }
 
 
+
+
+
+
+
+
+
 td.tableheadline {
 	background: url(../../images/newblue/header_medium.png);
 	height: 32px;
 	text-indent: 10px;
 	font-size: 14px;
-}
-
-thead {
-	border-bottom: 1px solid black;
 }
 
 td.tableheadline div#tshow {
@@ -440,6 +465,18 @@ td.tableheadline div {
 	height: 16px;
 	margin-top: 5px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 #sidebarspeed div.progress {
 	margin-left: 18px;
@@ -545,7 +582,6 @@ div.addfield input, .longinput {
 
 table#folder {
 	width: 100%;
-	border-collapse: collapse;
 	margin-top: 20px;
 }
 
@@ -721,7 +757,6 @@ table#rtstats td {
 
 table#logtable {
 	margin: 10px;
-	border-collapse: collapse;
 }
 
 table#logtable td {
@@ -748,7 +783,6 @@ input.yes { font-weight: bold; width: 140px; text-align: center; padding: 4px; b
 input.no  { font-weight: bold; width: 140px; text-align: center; padding: 4px; border: 1px solid black; color: white; background-color: red; margin-left: 40px; }
 
 table#settingstable {
-	border-collapse: collapse;
 }
 
 
@@ -802,7 +836,6 @@ div#xmlrpcsignature li {
 }
 
 #cookietable, #usertable, #sessiontable, #feedstable, #jobtable, #highlighttable, #sfvtable {
-	border-collapse: collapse;
 	border: 1px solid black;
 	margin-top: 20px;
 }
@@ -886,7 +919,6 @@ div#iconfolder div {
 }
 
 #rsstable {
-	border-collapse: collapse;
 	width: 100%;
 }
 

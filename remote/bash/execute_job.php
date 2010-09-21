@@ -17,7 +17,7 @@ if(!isset($_SERVER['argv']) || !count($_SERVER['argv']))
 }
 
 ini_set('error_reporting',    E_ALL);
-ini_set('max_execution_time',	0);
+ini_set('max_execution_time', 0);
 
 // Provide This Class for the whole error-Handling-Stuff
 class smallRender
@@ -101,7 +101,7 @@ switch($h['function'])
 		if(($command = getBin('unzip')) === false)
 			break;
 		shell_exec(sprintf('%s %s %s -qq -d %s',
-			         $command,
+						$command,
 						$settings['overwriteunpack'] ? ' -o' : '-n',
 						escapeshellarg($file1),
 						escapeshellarg($file2)));
@@ -111,7 +111,7 @@ switch($h['function'])
 		if(($command = getBin('unrar')) === false)
 			break;
 		$re = shell_exec(sprintf('%s x -o%s -inull %s %s > /dev/null',
-			         $command,
+						$command,
 						$settings['overwriteunpack'] ? '+' : '-',
 						escapeshellarg($file1),
 						escapeshellarg($file2)));
@@ -124,7 +124,7 @@ switch($h['function'])
 		if(($command = getBin('tar')) === false)
 			break;
 		shell_exec(sprintf('%s -xf%s %s %s',
-			         $command,
+						$command,
 						$settings['overwriteunpack'] ? ' --overwrite' : 'k',
 						escapeshellarg($file1),
 						escapeshellarg($file2)));
@@ -137,7 +137,7 @@ switch($h['function'])
 		$rdir = realdirname($file2);
 		chdir($rdir);
 		shell_exec(sprintf('%s -cf %s %s',
-			         $command,
+						$command,
 						escapeshellarg($file1),
 						escapeshellarg(substr($file2, strlen($rdir)))));
 		chdir($dir);
@@ -152,9 +152,9 @@ switch($h['function'])
 		$rdir = realdirname($file2);
 		chdir($rdir);
 		shell_exec(sprintf('%s -cf - %s | %s > %s',
-			         $command,
+						$command,
 						escapeshellarg(substr($file2, strlen($rdir))),
-			         $command2,
+						$command2,
 						escapeshellarg($file1)));
 		chdir($dir);
 		$success = is_file($file1);
@@ -166,7 +166,7 @@ switch($h['function'])
 		$rdir = realdirname($file2);
 		chdir($rdir);
 		shell_exec(sprintf('%s -0rq %s %s',
-			         $command,
+						$command,
 						escapeshellarg($file1),
 						escapeshellarg(substr($file2, strlen($rdir)))));
 		chdir($dir);
@@ -179,7 +179,7 @@ switch($h['function'])
 		$rdir = realdirname($file2);
 		chdir($rdir);
 		shell_exec(sprintf('%s a %s %s',
-			         $command,
+						$command,
 						escapeshellarg($file1),
 						escapeshellarg(substr($file2, strlen($rdir)))));
 		chdir($dir);

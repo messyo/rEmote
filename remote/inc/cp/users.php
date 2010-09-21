@@ -9,7 +9,7 @@ function checkName($edit = 0)
 
 	if(!isset($_POST['name']) || trim($_POST['name']) == '')
 		return $lng['invalidname'];
-	
+
 	$result = $db->query('SELECT COUNT(*) AS anz FROM users WHERE name = ? AND uid != ?', 'si', $_POST['name'], $edit);
 	$h = $db->fetch($result);
 	if(intval($h['anz']) > 0)
@@ -128,13 +128,13 @@ else if(isset($_POST['confirm']))
 			{
 				$success = $lng['userdeleted'];
 				// Now, if real multiuser is activated, delete all his torrents
-		
+
 				if($settings['real_multiuser'])
 				{
 					$result = $db->query("SELECT hash FROM torrents WHERE uid = {$_POST['delete']}");
 					while($h = $db->fetch($result))
 						$rpc->request('d.erase', array($hash));
-		
+
 					// Kick the torrents out of the table
 					$db->query("DELETE FROM torrents WHERE uid = {$_POST['delete']}");
 				}
@@ -329,7 +329,7 @@ if($db->num_rows($result))
 			$expires = date("d.m.Y H:i:s", $h['time'] + $settings['session_lifetime']);
 		else
 			$expires = $lng['never'];
-      $name = $h['name'];
+		$name = $h['name'];
 		$links  = "<a href=\"controlpanel.php?mod=$mod&amp;killsession={$h['sid']}$sid\" title=\"{$lng['killsession']}\"><img src=\"{$imagedir}delete.png\"  alt=\"Kill\" /></a>";
 		$cpout .= "<tr><td>$name</td><td>$time</td><td>$expires</td><td>$links</td></tr>";
 	}

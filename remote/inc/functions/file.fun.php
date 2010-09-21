@@ -126,10 +126,10 @@ function full_copy( $source, $target )
 function make_permission_table($file)
 {
 	global $imagedir, $lng;
-	
+
 	$no  = "";
 	$yes = " checked=\"checked\"";
-	
+
 	$p = fileperms($file);
 
 	$ret  = '<table class="permtable">';
@@ -244,7 +244,7 @@ function insertPid($jid, $pid)
 function insertJob($uid, $function, $file1, $file2, $options = '')
 {
 	global $db;
-	
+
 	if($_SESSION['lastjcheck'] == 0)
 		$_SESSION['lastjcheck'] = time();
 
@@ -278,7 +278,7 @@ function executeJob($function, $file1, $file2, $options = '')
 		fatal("Missing Binarys, check Logfile", __FILE__, __LINE__);
 	$jid = insertJob($_SESSION['uid'], $function, $file1, $file2, $options);
 	$pid = shell_exec(sprintf('%s %s %s %s %d > /dev/null & echo $!',
-		         $nohup,
+					$nohup,
 					$php,
 					escapeshellarg($script),
 					escapeshellarg(TO_ROOT),
@@ -307,7 +307,7 @@ function chmodR($path, $mode)
 {
 	if(is_file($path))
 	{
-   	return @chmod($path, $mode);
+		return @chmod($path, $mode);
 	}
 	else
 	{
@@ -315,7 +315,7 @@ function chmodR($path, $mode)
 		$allWorked = @chmod($path, $mode);
 		foreach($dir as $file)
 		{
-      	if($file == '..' || $file == '.')
+			if($file == '..' || $file == '.')
 				continue;
 
 			$allWorked &= chmodR("$path/$file", $mode);
