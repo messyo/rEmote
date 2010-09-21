@@ -87,7 +87,7 @@ if(!$isdir)
 			break;
 		case '.sfv':
 			$actionsarr['display'] = 'show.png';
-         $actionsarr['checksfv'] = 'checksfv.png';
+			$actionsarr['checksfv'] = 'checksfv.png';
 			break;
 	}
 }
@@ -304,7 +304,7 @@ if(isset($_GET['action']) && isset($actionsarr[$_GET['action']]))
 					if($v_save)
 						$file = $v_dir.getname($v_dir, $v_name);
 					else
-               	$file = $settings['tmpdir'].getname($settings['tmpdir'], $v_name);
+						$file = $settings['tmpdir'].getname($settings['tmpdir'], $v_name);
 
 					// Let's check on nobody is trieing to write (AND DOWNLOAD!) files he should not download
 					if(!is_valid_file($file, false))
@@ -317,7 +317,7 @@ if(isset($_GET['action']) && isset($actionsarr[$_GET['action']]))
 					if(!checkWrite(realdirname($file), true))
 						break;
 
-               $out->addNotify(escapeshellarg($file));
+					$out->addNotify(escapeshellarg($file));
 
 					if($borg)
 						$return = shell_exec(sprintf('%s -a %s -bs %d%s -o %s %s',
@@ -368,14 +368,14 @@ if(isset($_GET['action']) && isset($actionsarr[$_GET['action']]))
 						$_SESSION['tfiles'][$object] = array($file, !$v_save);
 						$obj = $isdir ? 'dir' : 'file';
 						$robj = rawurlencode($object);
-               	$out->redirect("filedetails.php?$obj=$robj&action=dntorrent&".SID);
+						$out->redirect("filedetails.php?$obj=$robj&action=dntorrent&".SID);
 					}
 
 				}
 			}
 			break;
 		case 'edittorrent':
-		   $dialog = 'edittorrent';
+			$dialog = 'edittorrent';
 			$torrent = file_get_contents($object);
 			$len     = strlen($torrent);
 			if(($start = strpos($torrent, '8:announce')) === false)
@@ -407,7 +407,7 @@ if(isset($_GET['action']) && isset($actionsarr[$_GET['action']]))
 
 			if(isset($_POST['newannounce']))
 			{
-         	$newann = $_POST['newannounce'];
+				$newann = $_POST['newannounce'];
 				if($newann == $announce)
 					break;
 				if(!is_writable($object))
@@ -486,27 +486,37 @@ if(isset($_GET['action']) && isset($actionsarr[$_GET['action']]))
 
 			if(posix_getuid() != fileowner($object))
 			{
-         	$out->addError($lng['npermission']);
+				$out->addError($lng['npermission']);
 				break;
 			}
-         $p = 0;
+         $mode = 0;
 			
-			$p += (isset($_POST['perms_ur']) && ($_POST['perms_ur'] == 'true')) ? 0400 : 0000;
-         $p += (isset($_POST['perms_gr']) && ($_POST['perms_gr'] == 'true')) ? 0040 : 0000;
-         $p += (isset($_POST['perms_or']) && ($_POST['perms_or'] == 'true')) ? 0004 : 0000;
-			
-			$p += (isset($_POST['perms_uw']) && ($_POST['perms_uw'] == 'true')) ? 0200 : 0000;
-         $p += (isset($_POST['perms_gw']) && ($_POST['perms_gw'] == 'true')) ? 0020 : 0000;
-         $p += (isset($_POST['perms_ow']) && ($_POST['perms_ow'] == 'true')) ? 0002 : 0000;
-			
-			$p += (isset($_POST['perms_ux']) && ($_POST['perms_ux'] == 'true')) ? 0100 : 0000;
-         $p += (isset($_POST['perms_gx']) && ($_POST['perms_gx'] == 'true')) ? 0010 : 0000;
-			$p += (isset($_POST['perms_ox']) && ($_POST['perms_ox'] == 'true')) ? 0001 : 0000;
+			$mode += (isset($_POST['perms_ur']) && ($_POST['perms_ur'] == 'true')) ? 0400 : 0000;
+			$mode += (isset($_POST['perms_gr']) && ($_POST['perms_gr'] == 'true')) ? 0040 : 0000;
+			$mode += (isset($_POST['perms_or']) && ($_POST['perms_or'] == 'true')) ? 0004 : 0000;
 
-			if(@chmod($object, $p))
-				$out->addSuccess($lng['saved']);
+			$mode += (isset($_POST['perms_uw']) && ($_POST['perms_uw'] == 'true')) ? 0200 : 0000;
+			$mode += (isset($_POST['perms_gw']) && ($_POST['perms_gw'] == 'true')) ? 0020 : 0000;
+			$mode += (isset($_POST['perms_ow']) && ($_POST['perms_ow'] == 'true')) ? 0002 : 0000;
+
+			$mode += (isset($_POST['perms_ux']) && ($_POST['perms_ux'] == 'true')) ? 0100 : 0000;
+			$mode += (isset($_POST['perms_gx']) && ($_POST['perms_gx'] == 'true')) ? 0010 : 0000;
+			$mode += (isset($_POST['perms_ox']) && ($_POST['perms_ox'] == 'true')) ? 0001 : 0000;
+
+			if($isdir && isset($_POST['perms_recoursive']) && ($_POST['perms_recoursive'] == 'true'))
+			{
+				if(chmodR($object, $mode))
+					$out->addSuccess($lng['saved']);
+				else
+					$out->addError($lng['somenotsaved']);
+			}
 			else
-				$out->addError($lng['notsaved']);
+			{
+				if(@chmod($object, $mode))
+					$out->addSuccess($lng['saved']);
+				else
+					$out->addError($lng['notsaved']);
+			}
 
 			clearstatcache();
 			break;
@@ -566,7 +576,7 @@ if(!isset($dialog))
 			if($img == '')
 				continue;
 			$actions     .= "<li><a href=\"filedetails.php?$prefix=$encobject&amp;action=$act$sid\" title=\"{$lng[$act]}\"><img src=\"$imagedir$img\" alt=\"$act\" />&nbsp;<span>{$lng[$act]}</span></a></li>";
-		}	
+		}
 		$actions     .= '</ul>';
 	}
 	else
@@ -583,7 +593,7 @@ else
 			$sizeoptions = '';
 			foreach($chunksizes as $s)
 			{
-         	$c = (($s == $v_size) ? ' selected="selected"' : '');
+				$c = (($s == $v_size) ? ' selected="selected"' : '');
 				$sizeoptions .= "<option value=\"$s\"$c>". format_bytes(pow(2,$s)).'</option>';
 			}
 			
@@ -619,7 +629,7 @@ else
 
 			break;
 		case 'checksfv':
-         $content = $table;
+			$content = $table;
 			break;
 	}
 }

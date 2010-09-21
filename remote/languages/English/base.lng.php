@@ -33,6 +33,7 @@ $lng['language']     = 'Language';
 $lng['save']         = 'Save';
 $lng['saved']        = 'Successfully saved';
 $lng['notsaved']     = 'Data could not be saved';
+$lng['somenotsaved'] = 'Some changes could not be saved';
 $lng['help']         = 'Help';
 $lng['nobinary']     = 'No binary for your request found';
 $lng['orphaned']     = '- Orphaned -';

@@ -33,6 +33,7 @@ $lng['language']     = 'Sprache';
 $lng['save']         = 'Speichern';
 $lng['saved']        = 'Erfolgreich gespeichert';
 $lng['notsaved']     = 'Speicherung nicht erfolgreich';
+$lng['somenotsaved'] = 'Einige Änderungen konnten nicht gespeichert werden';
 $lng['help']         = 'Hilfe';
 $lng['nobinary']     = 'Keine Programmdatei für Ihre Anfrage gefunden';
 $lng['orphaned']     = '- Verwaist -';

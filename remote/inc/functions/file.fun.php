@@ -303,4 +303,26 @@ function realdirname($path)
 	return($dir);
 }
 
+function chmodR($path, $mode)
+{
+	if(is_file($path))
+	{
+   	return @chmod($path, $mode);
+	}
+	else
+	{
+		$dir = scandir($path);
+		$allWorked = @chmod($path, $mode);
+		foreach($dir as $file)
+		{
+      	if($file == '..' || $file == '.')
+				continue;
+
+			$allWorked &= chmodR("$path/$file", $mode);
+		}
+
+		return $allWorked;
+	}
+}
+
 ?>
