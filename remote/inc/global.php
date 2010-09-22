@@ -27,6 +27,13 @@ $group_arr   = array('grpnone', 'tracker', 'status', 'message', 'traffic');
 $refresh_arr = array('refoff', 'refwhole', 'refall', 'refsidebar' );
 $source_arr  = array('private', 'public', 'both');
 
+
+// What the hell?
+// Why can't this be php default?
+if(function_exists('date_default_timezome_set'))
+	date_default_timezone_set(date_default_timezone_get());
+
+
 require_once(TO_ROOT.'config.php');
 require_once(TO_ROOT.'inc/render.php');
 require_once(TO_ROOT.'inc/sql/database.php');
