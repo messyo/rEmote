@@ -64,7 +64,7 @@ $lng['refsidebar']   = 'Sidebar';
 
 // SHOUTBOX
 $lng['shoutbox']     = 'Shoutbox';
-$lng['shout']        = 'Schreiben';
+$lng['shout']        = 'Shout!';
 
 // LOGIN
 
@@ -96,10 +96,10 @@ $lng['addinvurl']    = 'Invalid Download-URL';
 $lng['downloaderr']  = 'Error on downloading the torrent';
 $lng['torrexists']   = 'Torrent already exists';
 $lng['invalidfile']  = 'File is not a torrent-file';
-$lng['tornotfound']  = 'Torrent-file not found';
+$lng['tornotfound']  = 'Torrent file not found';
 $lng['notadded']     = 'Torrent could not be added';
 $lng['tadded']       = 'Torrent has been added';
-$lng['torrent2big']  = 'The Torrentfile is to big';
+$lng['torrent2big']  = 'The torrent file is too big';
 
 // TORRENT
 
@@ -162,7 +162,7 @@ $lng['hash']         = 'Hash';
 $lng['hashthis']     = 'Hash this torrent';
 $lng['details']      = 'Details';
 $lng['viewdetls']    = 'View torrent details';
-$lng['delconfirm']   = 'Do you really want to delete this torrent? (The Downloaded Data will not be deleted)';
+$lng['delconfirm']   = 'Do you really want to delete this torrent? (The downloaded data will not be deleted)';
 $lng['mhashconf']    = 'Do you really want to hash multiple torrents? This could cause high load over a long period of time on your machine.';
 $lng['gotodir']      = 'Show Folder';
 $lng['down_rate']    = 'Downrate';
@@ -185,15 +185,15 @@ $lng['paste']        = 'Paste';
 $lng['nomkdir']      = 'Folder could not be created';
 $lng['normdir']      = 'Could not remove folder';
 $lng['nodelfile']    = 'File could not be deleted';
-$lng['markcopy']     = 'The \\1 \'\\2\' is marked to copy';
-$lng['markcut']      = 'The \\1 \'\\2\' is marked to cut';
-$lng['nocopydir']    = 'Could not mark folder for copy';
-$lng['nocutdir']     = 'Could not mark folder for cut';
-$lng['nocopyfile']   = 'Could not mark file for copy';
-$lng['nocutfile']    = 'Could not mark file for cut';
+$lng['markcopy']     = 'The \\1 \'\\2\' is marked for copying';
+$lng['markcut']      = 'The \\1 \'\\2\' is marked for cutting';
+$lng['nocopydir']    = 'Could not mark folder for copying';
+$lng['nocutdir']     = 'Could not mark folder for cutting';
+$lng['nocopyfile']   = 'Could not mark file for copying';
+$lng['nocutfile']    = 'Could not mark file for cutting';
 $lng['pastenothin']  = 'Nothing to paste';
 $lng['pastetarget']  = 'Could not paste: Invalid target';
-$lng['pastenorm']    = 'Could not remove source-file/folder';
+$lng['pastenorm']    = 'Could not remove source file/folder';
 $lng['pasteerror']   = 'Could not paste file/folder';
 $lng['nodown']       = 'Could not prepare for downloading';
 $lng['invfolder']    = 'Invalid folder';
@@ -206,7 +206,7 @@ $lng['folder_home']  = 'Home';
 $lng['download']     = 'Download';
 $lng['showdetails']  = 'Show details';
 $lng['open']         = 'Open';
-$lng['copycutmark']  = 'The following files and folders are marked to copy/cut:';
+$lng['copycutmark']  = 'The following files and folders are marked for copying/cutting:';
 $lng['file']         = 'File';
 $lng['dir']          = 'Folder';
 $lng['fbdelconf']    = 'Do you really want to delete this file/folder?';
@@ -234,33 +234,33 @@ $lng['archzip']      = 'Archivate to Zip';
 $lng['archrar']      = 'Archivate to Rar';
 $lng['archtargz']    = 'Archivate to TarGZ';
 $lng['archtarbz2']   = 'Archivate to TarBZ2';
-$lng['fadd']         = 'Add this Torrent';
-$lng['faddstart']    = 'Add and start this Torrent';
-$lng['faddpublic']   = 'Add this Torrent public';
-$lng['faddstartpu']  = 'Add and start this Torrent public';
-$lng['mktorrent']    = 'Create Torrent-File';
-$lng['nosaveopt']    = 'No saving-method selected';
-$lng['tannounce']    = 'Announce-URL';
+$lng['fadd']         = 'Add this torrent';
+$lng['faddstart']    = 'Add and start this torrent';
+$lng['faddpublic']   = 'Add this torrent public';
+$lng['faddstartpu']  = 'Add and start this torrent public';
+$lng['mktorrent']    = 'Create torrent File';
+$lng['nosaveopt']    = 'No save method selected';
+$lng['tannounce']    = 'Announce URL';
 $lng['tchunksize']   = 'Size of chunks';
-$lng['saveoptions']  = 'Savingoptions';
+$lng['saveoptions']  = 'Saving options';
 $lng['tsave']        = 'Save';
 $lng['tdown']        = 'Download';
 $lng['tadd']         = 'add to rTorrent';
 $lng['invaliddir']   = 'Invalid directory.';
 $lng['invalidname']  = 'Invalid name';
 $lng['invalidurl']   = 'Invalid URL';
-$lng['tcreated']     = 'Torrentfile created';
-$lng['tnotcreated']  = 'Torrentfile could not be created';
+$lng['tcreated']     = 'Torrent file created';
+$lng['tnotcreated']  = 'Torrent file could not be created';
 $lng['dntorrent']    = 'Download created torrentfile';
 $lng['edittorrent']  = 'Edit torrent';
 $lng['fadd']         = 'Add torrent';
 $lng['faddpublic']   = 'Add torrent as public';
 $lng['faddstart']    = 'Start torrent';
 $lng['faddstartpu']  = 'start torrent public';
-$lng['dirnowrite']   = 'Not all File-Operations may be available.';
+$lng['dirnowrite']   = 'Not all file operations may be available.';
 $lng['checksfv']     = 'Check Files';
-$lng['sfvhash']      = 'SFV-Hash';
-$lng['calchash']     = 'Calculated Hash';
+$lng['sfvhash']      = 'SFV hash';
+$lng['calchash']     = 'Calculated hash';
 $lng['passed']       = 'Passed';
 $lng['sfvpassed']    = 'All hashes are correct';
 $lng['sfvfailed']    = 'One or more hashes are not correct';
@@ -295,14 +295,14 @@ $lng['down_from']    = 'Down from';
 
 // FEEDS
 
-$lng['norsssrc']     = 'No RSS-Sources found';
+$lng['norsssrc']     = 'No RSS Sources found';
 $lng['readthis']     = 'Read this feed';
 $lng['couldntread']  = 'Could not read feed';
 $lng['choosefeed']   = 'Please select a feed';
 $lng['rss']          = 'RSS';
 $lng['rsstort']      = 'Add to rTorrent';
 $lng['openlink']     = 'Open Link';
-$lng['norssitem']    = 'No such RSS-item. Maybe the item is deprecated.';
+$lng['norssitem']    = 'No such RSS item. Maybe the item is deprecated.';
 $lng['nodescr']      = 'Item has no description';
 
 // JOBS
@@ -311,7 +311,7 @@ $lng['joblist']      = 'Joblist';
 $lng['nojobs']       = 'No Jobs to display';
 $lng['job']          = 'Job';
 $lng['starttime']    = 'Starttime';
-$lng['jobunabled']   = 'Unabled to Start';
+$lng['jobunabled']   = 'Unable to Start';
 $lng['jobcomplete']  = 'Complete';
 $lng['jobrunning']   = 'Running';
 $lng['joberror']     = 'Error';
@@ -319,21 +319,19 @@ $lng['jobdied']      = 'Died';
 $lng['jobaborted']   = 'Aborted';
 $lng['jobcopy']      = 'Copy \\1 to \\2';
 $lng['jobmove']      = 'Copy \\1 to \\2';
-$lng['jobarchtar']   = 'Archivate \\2';
+$lng['jobarchtar']   = 'Archive \\2';
 $lng['jobarchtarbz2']
-							= 'Archivate (tar.bz2) \\2';
-$lng['jobarchzip']   = 'Archivate (ZIP) \\2';
-$lng['jobarchrar']   = 'Archivate (RAR) \\2';
+							= 'Archive (tar.bz2) \\2';
+$lng['jobarchzip']   = 'Archive (ZIP) \\2';
+$lng['jobarchrar']   = 'Archive (RAR) \\2';
 $lng['jobunzip']     = 'Extract \\1';
 $lng['jobunrar']     = 'Extract \\1';
 $lng['jobuntar']     = 'Extract \\1';
 $lng['jobstarted']   = 'Job has been started.';
-$lng['doinstall']    = 'Bitte führen Sie zuerst den Installer aus.';
-$lng['goinstall']    = 'Zum Installer';
 $lng['jobnostarted'] = 'Job could not be started.';
 $lng['jobsfinished'] = '\\1 Job(s) have finished. (\\2 remaining)';
 
-$lng['doinstall']    = 'Please run Install/Upgrade-Script';
+$lng['doinstall']    = 'Please run the install/upgrade script';
 $lng['goinstall']    = 'Go To Installer';
 
 ?>

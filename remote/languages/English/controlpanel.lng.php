@@ -12,19 +12,19 @@ $lng['cplog']       = 'Log';
 $lng['cpxmlrpc']    = 'XMLRPC';
 
 $lng['invalidint']  = 'Invalid interval';
-$lng['invalidexpr'] = 'Ungültiges expression';
+$lng['invalidexpr'] = 'Invalid expression';
 
 // INFO
 
 $lng['memusage']    = 'Memory usage';
-$lng['versioncli']  = 'rTorrent-version';
-$lng['versionlib']  = 'libtorrent-version';
-$lng['versionrem']  = 'Frontend-version';
+$lng['versioncli']  = 'rTorrent version';
+$lng['versionlib']  = 'libtorrent version';
+$lng['versionrem']  = 'Frontend version';
 $lng['pid']         = 'PID';
 $lng['who']         = 'Who';
 $lng['memory']      = 'Memory';
 $lng['uptime']      = 'Uptime';
-$lng['rtstats']     = 'rTorrent-stats';
+$lng['rtstats']     = 'rTorrent stats';
 $lng['hostname']    = 'Hostname';
 $lng['credits']     = 'Credits';
 $lng['dellog']      = 'Empty log';
@@ -43,13 +43,13 @@ $lng['feeddownld']  = 'Downloadable';
 $lng['allowhtml']   = 'Allow HTML';
 $lng['editfeed']    = 'Edit this feed';
 $lng['killfeed']    = 'Delete this feed';
-$lng['feedlinkdld'] = 'Links are torrent-downloads';
+$lng['feedlinkdld'] = 'Links are torrent downloads';
 $lng['feedlinkndl'] = 'Links are websites';
 $lng['feeddscrhtm'] = 'Allow HTML in description';
 $lng['feeddscrnht'] = 'Forbid HTML in description';
 $lng['newfeed']     = 'New feed';
 $lng['editfeed']    = 'Edit feed';
-$lng['feedlongdld'] = 'Link-items are torrent-download-links?';
+$lng['feedlongdld'] = 'Link items are torrent download links?';
 $lng['feedlonghtm'] = 'Allow HTML in description';
 $lng['highlights']  = 'Hightlights';
 $lng['newhigh']     = 'New Highlightrule';
