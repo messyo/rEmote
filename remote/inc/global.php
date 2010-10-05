@@ -30,7 +30,7 @@ $source_arr  = array('private', 'public', 'both');
 
 // What the hell?
 // Why can't this be php default?
-if(function_exists('date_default_timezome_set'))
+if(function_exists('date_default_timezone_set'))
 	date_default_timezone_set(date_default_timezone_get());
 
 
