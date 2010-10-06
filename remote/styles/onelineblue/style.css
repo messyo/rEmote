@@ -471,8 +471,8 @@ td.tableheadline div {
 	overflow: hidden;
 }
 
-#torrenttable td.statusimg span { display: none; width: 94px; height: 18px; position: absolute; background: white; padding: 4px; border: 1px solid black;}
-#torrenttable td.statusimg:hover span { display: block; }
+#torrenttable td.statustd span.controls { display: none; width: 94px; height: 18px; position: absolute; background: white; padding: 4px; border: 1px solid black;}
+#torrenttable td.statustd:hover span.controls { display: block; }
 
 #torrenttable td              { font-size: 11px; overflow: hidden; white-space: nowrap; }
 #torrenttable td.name a       { text-decoration: none; display: block; width: 270px; overflow: hidden; height: 18px; }

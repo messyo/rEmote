@@ -41,7 +41,7 @@ $listhead   = '<tr><td>&nbsp;</td><td>{l_name}</td><td>{l_done}</td><td>{l_eta}<
 // $listbody   = '<tr class=\"row$l_even\" id=\"torrent$l_hash\"><td rowspan=\"2\" class=\"statusimg\">$l_statusimg</td><td colspan=\"11\" class=\"name\">$l_name<span class=\"torrentmessage\">$l_message</span></td></tr>';
 // $listbody  .= '<tr class=\"row$l_even\"><td class=\"links\">$l_links</td><td class=\"done\">$l_done</td><td class=\"eta\">$l_eta</td><td class=\"upspeed\">$l_sup</td><td class=\"downspeed\">$l_sdwn</td>';
 // $listbody  .= '<td class=\"seeded\">$l_seeded</td><td class=\"completed\">$l_completed</td><td class=\"size\">$l_size</td><td class=\"peers\">$l_peers</td><td class=\"ratio\">$l_ratio</td><td class=\"check\">$l_check</td></tr>';
-$listbody   = "\n".'<tr class="row{l_even}" id="torrent{l_hash}"><td class="statusimg">{l_statusimg}<span>{l_links}</span></td><td class="name">{l_name}</td>';
+$listbody   = "\n".'<tr class="row{l_even}" id="torrent{l_hash}"><td class="statustd"><span class="statusimg">{l_statusimg}</span><span class="controls">{l_links}</span></td><td class="name">{l_name}</td>';
 $listbody  .= '<td class="done">{l_done}</td><td class="eta">{l_eta}</td><td class="upspeed">{l_sup}</td><td class="downspeed">{l_sdwn}</td>';
 $listbody  .= '<td class="seeded">{l_seeded}</td><td class="completed">{l_completed}</td><td class="size">{l_size}</td><td class="peers">{l_peers}</td><td class="ratio">{l_ratio}</td><td class="check">{l_check}</td></tr>';
 

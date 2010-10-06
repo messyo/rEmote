@@ -77,6 +77,7 @@ ini_set('session.gc_propability',   1);
 ini_set('session.use_cookies',      $settings['session_use_cookies']);
 ini_set('session.use_only_cookies', 0);
 ini_set('max_execution_time',       $settings['max_exec_time']);
+ini_set('magic_quotes_runtime',     0);
 
 session_name($settings['session_name']);
 
@@ -95,7 +96,7 @@ if(!defined('NO_GC') && mt_rand(1, SESSION_GC_DIVISOR) == SESSION_GC_DIVISOR)
 }
 
 
-// Strip MagicQuotes
+// Strip MagicQuotes GetPostCookie
 if(get_magic_quotes_gpc())
 {
 	$process = array(&$_GET, &$_POST, &$_COOKIE, &$_REQUEST);
