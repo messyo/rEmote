@@ -385,7 +385,7 @@ tr.row1 td, .row1 {
 
 #torrenttable td {
 	text-align: center;
-	font-size: 12px;
+	font-size: 11px;
 	padding: 4px;
 }
 
@@ -474,13 +474,13 @@ td.tableheadline div {
 #torrenttable td.statustd span.controls { display: none; width: 94px; height: 18px; position: absolute; background: white; padding: 4px; border: 1px solid black;}
 #torrenttable td.statustd:hover span.controls { display: block; }
 
-#torrenttable td              { font-size: 11px; overflow: hidden; white-space: nowrap; }
-#torrenttable td.name a       { text-decoration: none; display: block; width: 270px; overflow: hidden; height: 18px; }
+#torrenttable td              { overflow: hidden; white-space: nowrap;}
+#torrenttable td.name a       { text-decoration: none; display: block; width: 270px; overflow: hidden; height: 14px; }
 #torrenttable td.name a:hover { text-decoration: underline; }
 #torrenttable td.upspeed, #torrenttable td.downspeed { text-align: left; width: 70px; }
 #torrenttable td.status      { width: 20px; }
 #torrenttable td.check       { width: 20px; }
-#torrenttable td.check input { padding: 2px; }
+#torrenttable td.check input { padding: 0px; height: 12px; margin: 0px; }
 #torrenttable td.done        { width: 5%; }
 #torrenttable td.links       { width: 94px;}
 #torrenttable span.speedhighlight { font-weight: bold; }
