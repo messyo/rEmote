@@ -1,7 +1,7 @@
 <?php
 
 $stylesheets = array('styles/onelineblue/style.css');
-$imagedir    = 'images/newblue/';
+$imagedir    = 'images/onelineblue/';
 $fileimgs    = 'images/filetypes/';
 $dynimgs     = 'styles/newblue/dynimgs/';
 $smileyimgs  = 'images/newblue/smileys/';
@@ -38,9 +38,6 @@ $trows = 1;
  */
 
 $listhead   = '<tr><td>&nbsp;</td><td>{l_name}</td><td>{l_done}</td><td>{l_eta}</td><td colspan="2">{l_sup} {lngspeed} {l_sdwn}</td><td>{l_seeded}</td><td>{l_completed}</td><td>{l_size}</td><td>{l_peers}</td><td>{l_ratio}</td><td>{l_check}</td></tr>';
-// $listbody   = '<tr class=\"row$l_even\" id=\"torrent$l_hash\"><td rowspan=\"2\" class=\"statusimg\">$l_statusimg</td><td colspan=\"11\" class=\"name\">$l_name<span class=\"torrentmessage\">$l_message</span></td></tr>';
-// $listbody  .= '<tr class=\"row$l_even\"><td class=\"links\">$l_links</td><td class=\"done\">$l_done</td><td class=\"eta\">$l_eta</td><td class=\"upspeed\">$l_sup</td><td class=\"downspeed\">$l_sdwn</td>';
-// $listbody  .= '<td class=\"seeded\">$l_seeded</td><td class=\"completed\">$l_completed</td><td class=\"size\">$l_size</td><td class=\"peers\">$l_peers</td><td class=\"ratio\">$l_ratio</td><td class=\"check\">$l_check</td></tr>';
 $listbody   = "\n".'<tr class="row{l_even}" id="torrent{l_hash}"><td class="statustd"><span class="statusimg">{l_statusimg}</span><span class="controls">{l_links}</span></td><td class="name">{l_name}</td>';
 $listbody  .= '<td class="done">{l_done}</td><td class="eta">{l_eta}</td><td class="upspeed">{l_sup}</td><td class="downspeed">{l_sdwn}</td>';
 $listbody  .= '<td class="seeded">{l_seeded}</td><td class="completed">{l_completed}</td><td class="size">{l_size}</td><td class="peers">{l_peers}</td><td class="ratio">{l_ratio}</td><td class="check">{l_check}</td></tr>';
@@ -67,23 +64,24 @@ $numcolumns = 12;  // Number of columns in Table-Line
  * Enter pictures for Hover-Effects to be precached
  */
 
-$precache   = array('menu_torrents.png',
-							'menu_upload.png',
-							'menu_files.png',
-							'menu_feeds.png',
-							'menu_cp.png',
-							'menu_logout.png',
-							'empty1.png',
-							'empty2.png',
-							'empty3.png',
-							'empty4.png',
-							'empty5.png',
-							'empty6.png',
-							'empty7.png',
-							'empty8.png',
-							'empty9.png',
-							'empty10.png',
-							);
+$precache   = array(
+	'menu_torrents.png',
+	'menu_upload.png',
+	'menu_files.png',
+	'menu_feeds.png',
+	'menu_cp.png',
+	'menu_logout.png',
+	'empty1.png',
+	'empty2.png',
+	'empty3.png',
+	'empty4.png',
+	'empty5.png',
+	'empty6.png',
+	'empty7.png',
+	'empty8.png',
+	'empty9.png',
+	'empty10.png',
+);
 
 /*
  * Sorticons, displayed when sorting torrent-list
