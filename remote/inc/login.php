@@ -64,7 +64,8 @@ if(isset($_POST['login']))
       	$_SESSION['boxpositions'] = array(
          	array(1,2,3,4,5,6), // SIDEBAR
 				array(), // TOP
-				array()  // BOTTOM
+				array(), // BOTTOM
+				array()  // RIGHT
 			);
 		}
 		

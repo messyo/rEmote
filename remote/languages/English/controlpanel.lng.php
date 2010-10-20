@@ -132,7 +132,7 @@ $lng['usernameexi'] = 'Username already exists';
 
 // MYCP
 $lng['mycpaccount'] = 'Account';
-$lng['mycpboxarea'] = 'Postitions';
+$lng['mycpboxarea'] = 'Positions';
 
 // MYCP-ACCOUNT
 
@@ -177,6 +177,7 @@ $lng['boxarea_-1']  = 'Not Visible';
 $lng['boxarea_0']   = 'Sidebar';
 $lng['boxarea_1']   = 'Above torrents';
 $lng['boxarea_2']   = 'Below torrents';
+$lng['boxarea_3']   = 'Sidebar right';
 $lng['moveup']      = 'Hoch';
 $lng['movedown']    = 'Runter';
 

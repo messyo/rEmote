@@ -21,6 +21,13 @@ DEFINE('USER',     1);
 DEFINE('ADMIN',    2);
 DEFINE('SUADMIN',  3);
 
+//BOXAREAS
+DEFINE('BOX_NONE',   -1);
+DEFINE('BOX_SIDE',    0);
+DEFINE('BOX_TOP',     1);
+DEFINE('BOX_BOTTOM',  2);
+DEFINE('BOX_RIGHT',   3);
+
 //VIEW/SOURCE/GROUP
 $view_arr    = array('main', 'started', 'stopped', 'complete', 'incomplete', 'seeding');
 $group_arr   = array('grpnone', 'tracker', 'status', 'message', 'traffic');

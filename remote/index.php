@@ -280,23 +280,28 @@ if($settings['shoutbox'] && ($_SESSION['shoutbox'] > 1))
 
 $content .= "$table<tr><td colspan=\"$numcolumns\"><div class=\"multilinks\">$multilinks</div></td></tr></table></form>";
 
-$sidebar = $boxareatop = $boxareabottom = $sidebarclass = '';
-if(count($_SESSION['boxpositions'][0]))
+$sidebar = $boxareatop = $boxareabottom = $sidebarclass = $rightbar = $rightbarclass = '';
+if(count($_SESSION['boxpositions'][BOX_SIDE]))
 {
-	$sidebar       = $boxArea->renderArea($_SESSION['boxpositions'][0], 'sidebar');
+	$sidebar       = $boxArea->renderArea($_SESSION['boxpositions'][BOX_SIDE], 'sidebar');
 	$sidebarclass  = ' withsidebar';
 }	
-if(count($_SESSION['boxpositions'][1]))
-	$boxareatop    = $boxArea->renderArea($_SESSION['boxpositions'][1], 'boxareatop');
-if(count($_SESSION['boxpositions'][2]))
-	$boxareabottom = $boxArea->renderArea($_SESSION['boxpositions'][2], 'boxareabottom');
+if(count($_SESSION['boxpositions'][BOX_RIGHT]))
+{
+	$rightbar      = $boxArea->renderArea($_SESSION['boxpositions'][BOX_RIGHT], 'rightbar');
+	$rightbarclass  = ' withrightbar';
+}	
+if(count($_SESSION['boxpositions'][BOX_TOP]))
+	$boxareatop    = $boxArea->renderArea($_SESSION['boxpositions'][BOX_TOP], 'boxareatop');
+if(count($_SESSION['boxpositions'][BOX_BOTTOM]))
+	$boxareabottom = $boxArea->renderArea($_SESSION['boxpositions'][BOX_BOTTOM], 'boxareabottom');
 
 
 if(addJobChecker())
 	$m = $out->getMessages();
 else
 	$m = '';
-$out->content = "<!-- loggedin --><div id=\"main\">$header$sidebar<div id=\"content\" class=\"contentoftable$sidebarclass\">$m$boxareatop$content$boxareabottom</div></div>";
+$out->content = "<!-- loggedin --><div id=\"main\">$header$sidebar$rightbar<div id=\"content\" class=\"contentoftable$sidebarclass$rightbarclass\">$m$boxareatop$content$boxareabottom</div></div>";
 
 $out->jsinfos['trows']    = "$trows";
 $out->jsinfos['refreshinterval'] = $_SESSION['refinterval'];

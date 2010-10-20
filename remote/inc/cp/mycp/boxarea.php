@@ -5,10 +5,6 @@ if(!defined('IN_MYCP'))
 
 require_once(TO_ROOT.'inc/boxarea.php');
 
-define('BOX_NONE', -1);
-define('BOX_SIDE',  0);
-define('BOX_TOP',   1);
-define('BOX_BOTT',  2);
 
 $possible_boxes = array(
 	BoxArea::BOX_SPEEDSTATS       => array('label' => 'boxspeed',    'visible' => true                                                              ),
@@ -22,10 +18,11 @@ $possible_boxes = array(
 
 
 $areas = array(
-	BOX_NONE => array(),
-	BOX_SIDE => array(),
-	BOX_TOP  => array(),
-	BOX_BOTT => array()
+	BOX_NONE   => array(),
+	BOX_SIDE   => array(),
+	BOX_TOP    => array(),
+	BOX_BOTTOM => array(),
+	BOX_RIGHT  => array(),
 );
 
 foreach($possible_boxes as $k => $v)

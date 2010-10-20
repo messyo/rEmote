@@ -176,6 +176,7 @@ $lng['boxarea_-1']  = 'Ausgeblendet';
 $lng['boxarea_0']   = 'Sidebar';
 $lng['boxarea_1']   = 'Über den Torrents';
 $lng['boxarea_2']   = 'Unter den Torrents';
+$lng['boxarea_3']   = 'Sidebar rechts';
 $lng['moveup']      = 'Move up';
 $lng['movedown']    = 'Move down';
 

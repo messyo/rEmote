@@ -13,6 +13,7 @@ body#bodysmall {
 	border: 1px solid black;
 	margin: 10px;
 	overflow: hidden;
+	clear: both;
 }
 
 #content {
@@ -176,7 +177,7 @@ div#loginbox table {
 #tupload {
 	width: 350px;
 	float: right;
-	height: 44px;
+	height: 40px;
 	padding-top: 5px;
 }
 
@@ -325,7 +326,7 @@ div.boxarea div.box {
 	margin-right: 20px;
 }
 
-div#sidebar div.box {
+div#sidebar div.box, div#rightbar div.box {
 	float: none;
 	width: 100%;
 	margin-right: 0;
@@ -358,15 +359,26 @@ div#sidebar {
 	width: 140px;
 	float: left;
 	margin-top: 10px;
-	margin-left: 5px;
+	margin-left: 10px;
+	font-size: 12px;
+}
+
+div#rightbar {
+	width: 140px;
+	float: right;
+	margin-top: 10px;
+	margin-right: 10px;
+	font-size: 12px;
 }
 
 
-div#sidebar input.text, div#sidebar input.longtext, div#sidebar select, div#sidebar textarea {
+div#sidebar input.text, div#sidebar input.longtext, div#sidebar select, div#sidebar textarea,
+div#rightbar input.text, div#rightbar input.longtext, div#rightbar select, div#rightbar textarea {
 	width: 125px;
 }
 
-div#sidebar input, div#sidebar select, div#sidebar textarea {
+div#sidebar input, div#sidebar select, div#sidebar textarea,
+div#rightbar input, div#rightbar select, div#rightbar textarea {
 	margin-top: 4px;
 }
 
@@ -383,12 +395,16 @@ div.boxarea div.boxcontent div.progress {
 	width: 125px;
 }
 
-div#sidebar div#boxrefresh input.text {
+div#sidebar div#boxrefresh input.text, div#rightbar div#boxrefresh input.text {
 	width: 40px;
 }
 
 div.withsidebar {
 	margin-left: 150px;
+}
+
+div.withrightbar {
+	margin-right: 150px;
 }
 
 div.contentoftable {
@@ -996,20 +1012,20 @@ div#boxshoutbox {
 	width: 480px;
 }
 
-div#sidebar div#boxshoutbox {
-	width: 160px;
+div#sidebar div#boxshoutbox, div#rightbar div#boxshoutbox{
+	width: 140px;
 }
 
-div#sidebar div#shouts {
+div#sidebar div#shouts, div#rightbar div#shouts {
 	height: 200px;
 	overflow: auto;
 }
 
-div#sidebar div#shouts table {
+div#sidebar div#shouts table, div#rightbar div#shouts table {
 	font-size: 11px;
 }
 
-div#sidebar div#shout input[type=text] {
+div#sidebar div#shout input[type=text], div#rightbar div#shout input[type=text] {
 	width: 99%;
 }
 
