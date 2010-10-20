@@ -267,17 +267,6 @@ else
 
 $boxArea = new BoxArea();
 
-$shoutbox_top    = '';
-$shoutbox_bottom = '';
-if($settings['shoutbox'] && ($_SESSION['shoutbox'] > 1))
-{
-	$shoutbox = new Shoutbox();
-	if($_SESSION['shoutbox'] == 2)
-		$shoutbox_top    = "<fieldset class=\"box\"><legend>{$lng['shoutbox']}</legend>".$shoutbox->makeShoutbox()."</fieldset>";
-	else
-		$shoutbox_bottom = "<fieldset class=\"box\"><legend>{$lng['shoutbox']}</legend>".$shoutbox->makeShoutbox()."</fieldset>";
-}
-
 $content .= "$table<tr><td colspan=\"$numcolumns\"><div class=\"multilinks\">$multilinks</div></td></tr></table></form>";
 
 $sidebar = $boxareatop = $boxareabottom = $sidebarclass = $rightbar = $rightbarclass = '';

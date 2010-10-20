@@ -108,16 +108,31 @@ if(isset($_GET['move']) && isset($possible_boxes[$_GET['move']]) && isset($_GET[
 			}
 		}	
 	}
+	// All actions are performed so write it to the database
+	$db->query('DELETE FROM boxpositions WHERE uid = ?', 'i', $_SESSION['uid']);
+	$qryfront = 'INSERT INTO boxpositions (uid, boxid, area, position) VALUES ';
+	$qryvals = array();
+
+	$x = 0;
+	foreach($_SESSION['boxpositions'] as $akey => $a)
+	{
+		foreach($a as $box)
+			$qryvals[] = '(' . $_SESSION['uid'] . ',' . $box . ',' . $akey . ',' . $x++.')';
+	}
+
+	$qry = $qryfront.implode(', ', $qryvals);
+	$db->query($qry);
 }
 
 
 // End of actions
 
+
 foreach($_SESSION['boxpositions'] as $akey => $a)
 {
 	foreach($a as $box)
 	{
-   	$areas[$akey][] = $box;                                        // PUT ELEMENT IN CORRECT AREA ...
+		$areas[$akey][] = $box;                                        // PUT ELEMENT IN CORRECT AREA ...
 		unset($areas[BOX_NONE][array_search($box, $areas[BOX_NONE])]);	// AND REMOVE IT FROM "NONE"-Section
 	}
 }

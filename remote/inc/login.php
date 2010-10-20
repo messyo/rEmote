@@ -47,13 +47,19 @@ if(isset($_POST['login']))
 		$_SESSION['refinterval']  = intval($uinfo['refinterval']);
 		$_SESSION['refmode']      = intval($uinfo['refmode']);
 		$_SESSION['detailsstyle'] = intval($uinfo['detailsstyle']);
-		$_SESSION['shoutbox']     = intval($uinfo['shoutbox']);
 		$_SESSION['hostnames']    = ord($uinfo['hostnames']);
 		$_SESSION['bitfields']    = ord($uinfo['bitfields']);
 		$_SESSION['lng']          = $uinfo['language'];
 		$_SESSION['style']        = $uinfo['design'];
 
 		$result = $db->query('SELECT boxid, area FROM boxpositions WHERE uid = ? ORDER BY position ASC', 'i', $_SESSION['uid']);
+		$_SESSION['boxpositions'] = array(
+			array(), // SIDEBAR
+			array(), // TOP
+			array(), // BOTTOM
+			array()  // RIGHT
+		);
+
 		if($db->num_rows($result))
 		{
 			while($h = $db->fetch($result))
@@ -61,12 +67,7 @@ if(isset($_POST['login']))
 		}
 		else
 		{
-      	$_SESSION['boxpositions'] = array(
-         	array(1,2,3,4,5,6), // SIDEBAR
-				array(), // TOP
-				array(), // BOTTOM
-				array()  // RIGHT
-			);
+      	$_SESSION['boxpositions'][BOX_SIDE] = 	array(1,2,3,4,5,6);
 		}
 		
 		
