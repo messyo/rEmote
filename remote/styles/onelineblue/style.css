@@ -314,16 +314,28 @@ div.progress div {
 	left: -10px;
 }
 
-
-div#sidebar {
-	width: 140px;
-	float: left;
-	margin-top: 10px;
-	margin-left: 5px;
+div.boxarea {
+	overflow: hidden;
 	font-size: 12px;
 }
 
-div#sidebar h2 {
+div.boxarea div.box {
+	width: 160px;
+	float: left;
+	margin-right: 20px;
+}
+
+div#sidebar div.box {
+	float: none;
+	width: 100%;
+	margin-right: 0;
+}
+
+div#boxareabottom {
+	margin-top: 10px;
+}
+
+div.boxarea h2 {
 	background: url(../../images/newblue/header_small.png);
 	height: 17px;
 	font-size: 14px;
@@ -337,6 +349,19 @@ div#sidebar h2 {
 	margin-bottom: 0px;
 }
 
+div.boxarea h2:first-letter {
+	color: orange;
+	font-style: italic;
+}
+
+div#sidebar {
+	width: 140px;
+	float: left;
+	margin-top: 10px;
+	margin-left: 5px;
+}
+
+
 div#sidebar input.text, div#sidebar input.longtext, div#sidebar select, div#sidebar textarea {
 	width: 125px;
 }
@@ -345,12 +370,8 @@ div#sidebar input, div#sidebar select, div#sidebar textarea {
 	margin-top: 4px;
 }
 
-div#sidebar h2:first-letter {
-	color: orange;
-	font-style: italic;
-}
 
-div.sidebarcontent {
+div.boxarea div.boxcontent {
 	padding: 10px 5px 5px 5px;
 	border-left: 1px solid black;
 	border-right: 1px solid black;
@@ -358,17 +379,19 @@ div.sidebarcontent {
 	margin-bottom: 10px;
 }
 
-div.sidebarcontent div.progress {
+div.boxarea div.boxcontent div.progress {
 	width: 125px;
 }
 
-div#sidebarrefresh input.text {
+div#sidebar div#boxrefresh input.text {
 	width: 40px;
 }
 
+div.withsidebar {
+	margin-left: 150px;
+}
 
 div.contentoftable {
-	margin-left: 150px;
 	min-height: 300px;
 }
 
@@ -441,19 +464,19 @@ td.tableheadline div {
 	margin-top: 5px;
 }
 
-#sidebarspeed div.progress {
+#boxspeed div.progress {
 	margin-left: 18px;
 	width: 108px;
 	margin-bottom: 2px;
 }
 
-#sidebarspeed div.label, #sidebarbandwith div.label {
+#boxspeed div.label, #boxbandwith div.label {
 	width: 16px;
 	height: 16px;
 	float: left;
 }
 
-#sidebarbandwith input.num {
+#boxbandwith input.num {
 	margin-top: 2px;
 }
 
@@ -966,7 +989,15 @@ div#shouts table span.hint {
 }
 
 div#shout input[type=text] {
-	width: 600px;
+	width: 400px;
+}
+
+div#boxshoutbox {
+	width: 480px;
+}
+
+div#sidebar div#boxshoutbox {
+	width: 160px;
 }
 
 div#sidebar div#shouts {

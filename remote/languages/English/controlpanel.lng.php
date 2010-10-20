@@ -12,19 +12,19 @@ $lng['cplog']       = 'Log';
 $lng['cpxmlrpc']    = 'XMLRPC';
 
 $lng['invalidint']  = 'Invalid interval';
-$lng['invalidexpr'] = 'Invalid expression';
+$lng['invalidexpr'] = 'Ungültiges expression';
 
 // INFO
 
 $lng['memusage']    = 'Memory usage';
-$lng['versioncli']  = 'rTorrent version';
-$lng['versionlib']  = 'libtorrent version';
-$lng['versionrem']  = 'Frontend version';
+$lng['versioncli']  = 'rTorrent-version';
+$lng['versionlib']  = 'libtorrent-version';
+$lng['versionrem']  = 'Frontend-version';
 $lng['pid']         = 'PID';
 $lng['who']         = 'Who';
 $lng['memory']      = 'Memory';
 $lng['uptime']      = 'Uptime';
-$lng['rtstats']     = 'rTorrent stats';
+$lng['rtstats']     = 'rTorrent-stats';
 $lng['hostname']    = 'Hostname';
 $lng['credits']     = 'Credits';
 $lng['dellog']      = 'Empty log';
@@ -43,13 +43,13 @@ $lng['feeddownld']  = 'Downloadable';
 $lng['allowhtml']   = 'Allow HTML';
 $lng['editfeed']    = 'Edit this feed';
 $lng['killfeed']    = 'Delete this feed';
-$lng['feedlinkdld'] = 'Links are torrent downloads';
+$lng['feedlinkdld'] = 'Links are torrent-downloads';
 $lng['feedlinkndl'] = 'Links are websites';
 $lng['feeddscrhtm'] = 'Allow HTML in description';
 $lng['feeddscrnht'] = 'Forbid HTML in description';
 $lng['newfeed']     = 'New feed';
 $lng['editfeed']    = 'Edit feed';
-$lng['feedlongdld'] = 'Link items are torrent download links?';
+$lng['feedlongdld'] = 'Link-items are torrent-download-links?';
 $lng['feedlonghtm'] = 'Allow HTML in description';
 $lng['highlights']  = 'Hightlights';
 $lng['newhigh']     = 'New Highlightrule';
@@ -131,6 +131,10 @@ $lng['qnewpass']    = 'Do your really want to reset the password of "\\1"?';
 $lng['usernameexi'] = 'Username already exists';
 
 // MYCP
+$lng['mycpaccount'] = 'Account';
+$lng['mycpboxarea'] = 'Postitions';
+
+// MYCP-ACCOUNT
 
 $lng['viewoptions'] = 'View Options';
 $lng['refoptions']  = 'Default refresh-mode';
@@ -159,5 +163,21 @@ $lng['shouttop']    = 'Above torrents';
 $lng['shoutbottom'] = 'Below Torrents';
 $lng['showhosts']   = 'Show hostnames';
 $lng['showbfields'] = 'Show Bitfields for Peers';
+
+// MYCP-BOXAREAS
+
+$lng['boxspeed']    = 'Bandwith-Usage';
+$lng['boxdisk']     = 'Diskusage';
+$lng['boxbandwith'] = 'Bandwith-Settings';
+$lng['boxfilter']   = 'Filter';
+$lng['boxrefresh']  = 'Refresh';
+$lng['boxserver']   = 'Serverinformation';
+$lng['boxshoutbox'] = 'Shoutbox';
+$lng['boxarea_-1']  = 'Not Visible';
+$lng['boxarea_0']   = 'Sidebar';
+$lng['boxarea_1']   = 'Above torrents';
+$lng['boxarea_2']   = 'Below torrents';
+$lng['moveup']      = 'Hoch';
+$lng['movedown']    = 'Runter';
 
 ?>

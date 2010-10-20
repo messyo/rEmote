@@ -7,12 +7,10 @@ require_once('inc/global.php');
 require_once('inc/defines/torrent.php');
 require_once('inc/functions/list.fun.php');
 require_once('inc/header.php');
-require_once('inc/sidebar.php');
+require_once('inc/boxarea.php');
 require_once('inc/template.php');
 if($settings['real_multiuser'])
 	require_once('inc/functions/torrents.fun.php');
-if($settings['shoutbox'] && ($_SESSION['shoutbox'] > 0))
-	require_once('inc/shoutbox.php');
 
 $content = '';
 if($settings['usermessage'] != '')
@@ -267,6 +265,8 @@ else
 	$table .= "<tr><td colspan=\"$numcolumns\"><div class=\"notify\">{$lng['notorrents']}</div></tr>";
 }
 
+$boxArea = new BoxArea();
+
 $shoutbox_top    = '';
 $shoutbox_bottom = '';
 if($settings['shoutbox'] && ($_SESSION['shoutbox'] > 1))
@@ -278,15 +278,25 @@ if($settings['shoutbox'] && ($_SESSION['shoutbox'] > 1))
 		$shoutbox_bottom = "<fieldset class=\"box\"><legend>{$lng['shoutbox']}</legend>".$shoutbox->makeShoutbox()."</fieldset>";
 }
 
-$content .= "$shoutbox_top$table<tr><td colspan=\"$numcolumns\"><div class=\"multilinks\">$multilinks</div></td></tr></table></form>$shoutbox_bottom";
-$sidebar = sidebar_render();
+$content .= "$table<tr><td colspan=\"$numcolumns\"><div class=\"multilinks\">$multilinks</div></td></tr></table></form>";
+
+$sidebar = $boxareatop = $boxareabottom = $sidebarclass = '';
+if(count($_SESSION['boxpositions'][0]))
+{
+	$sidebar       = $boxArea->renderArea($_SESSION['boxpositions'][0], 'sidebar');
+	$sidebarclass  = ' withsidebar';
+}	
+if(count($_SESSION['boxpositions'][1]))
+	$boxareatop    = $boxArea->renderArea($_SESSION['boxpositions'][1], 'boxareatop');
+if(count($_SESSION['boxpositions'][2]))
+	$boxareabottom = $boxArea->renderArea($_SESSION['boxpositions'][2], 'boxareabottom');
 
 
 if(addJobChecker())
 	$m = $out->getMessages();
 else
 	$m = '';
-$out->content = "<!-- loggedin --><div id=\"main\">$header<div id=\"sidebar\">$sidebar</div><div id=\"content\" class=\"contentoftable\">$m$content</div></div>";
+$out->content = "<!-- loggedin --><div id=\"main\">$header$sidebar<div id=\"content\" class=\"contentoftable$sidebarclass\">$m$boxareatop$content$boxareabottom</div></div>";
 
 $out->jsinfos['trows']    = "$trows";
 $out->jsinfos['refreshinterval'] = $_SESSION['refinterval'];

@@ -138,6 +138,7 @@ else if(isset($_POST['confirm']))
 					// Kick the torrents out of the table
 					$db->query("DELETE FROM torrents WHERE uid = {$_POST['delete']}");
 				}
+				$db->query("DELETE FROM boxpositions WHERE uid = {$_POST['delete']}");
 				logger(LOGUSERS, "User {$_POST['delete']} ($name) was deleted by {$_SESSION['uid']} ({$_SESSION['username']})", __FILE__, __LINE__);
 			}
 			else

@@ -130,6 +130,10 @@ $lng['qnewpass']    = 'Wollen sie wirklich das Passwort von "\\1" zurücksetzen?
 $lng['usernameexi'] = 'Username existiert bereits';
 
 // MYCP
+$lng['mycpaccount'] = 'Account';
+$lng['mycpboxarea'] = 'Postitionen';
+
+// MYCP-ACCOUNT
 
 $lng['viewoptions'] = 'Ansichtsoptionen';
 $lng['refoptions']  = 'Standard Aktualisierungsmodus';
@@ -159,4 +163,20 @@ $lng['shoutbottom'] = 'Unter den Torrents';
 $lng['showhosts']   = 'Zeige Hostnamen';
 $lng['showbfields'] = 'Zeige Bitfelder für Peers';
 
-?>
+// MYCP-BOXAREAS
+
+$lng['boxspeed']    = 'Bandbreitenauslastung';
+$lng['boxdisk']     = 'Festplattenauslastung';
+$lng['boxbandwith'] = 'Bandbreiteneinstellung';
+$lng['boxfilter']   = 'Filter';
+$lng['boxrefresh']  = 'Aktualisierung';
+$lng['boxserver']   = 'Serverinformationen';
+$lng['boxshoutbox'] = 'Shoutbox';
+$lng['boxarea_-1']  = 'Ausgeblendet';
+$lng['boxarea_0']   = 'Sidebar';
+$lng['boxarea_1']   = 'Über den Torrents';
+$lng['boxarea_2']   = 'Unter den Torrents';
+$lng['moveup']      = 'Move up';
+$lng['movedown']    = 'Move down';
+
+?> 

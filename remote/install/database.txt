@@ -101,3 +101,9 @@ uid|int(11)|
 message|text|
 time|int(16)|
 hash|varchar(40)|
+
+[boxpositions]
+uid|int(11)|PK
+boxid|int(3)|PK
+area|int(1)|
+position|int(3)|

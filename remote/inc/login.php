@@ -52,6 +52,23 @@ if(isset($_POST['login']))
 		$_SESSION['bitfields']    = ord($uinfo['bitfields']);
 		$_SESSION['lng']          = $uinfo['language'];
 		$_SESSION['style']        = $uinfo['design'];
+
+		$result = $db->query('SELECT boxid, area FROM boxpositions WHERE uid = ? ORDER BY position ASC', 'i', $_SESSION['uid']);
+		if($db->num_rows($result))
+		{
+			while($h = $db->fetch($result))
+      		$_SESSION['boxpositions'][intval($h['area'])][] = intval($h['boxid']);
+		}
+		else
+		{
+      	$_SESSION['boxpositions'] = array(
+         	array(1,2,3,4,5,6), // SIDEBAR
+				array(), // TOP
+				array()  // BOTTOM
+			);
+		}
+		
+		
 		if(isset($_POST['stay']) && $_POST['stay'] == 'true')
 		{
 			$permanent = 1;  /* This variable has to been set to tell session-management it is a permanent session. */
@@ -156,7 +173,8 @@ $out->content .= $out->getMessages();
 $out->content .= "<h1>{$lng['logintext']}</h1><form action=\"$url\" method=\"post\"><table>";
 $out->content .= "<tr><td><label for=\"iusername\">{$lng['username']}</label></td><td><input type=\"text\" name=\"username\" id=\"iusername\"/></td></tr>";
 $out->content .= "<tr><td><label for=\"ipassword\">{$lng['password']}</label></td><td><input type=\"password\" name=\"password\" id=\"ipassword\" /></td></tr>";
-$out->content .= "<tr><td>&nbsp;</td><td><input type=\"checkbox\" name=\"stay\" value=\"true\" id=\"istay\" />&nbsp;&nbsp;<label class=\"hint\" for=\"istay\">{$lng['stayinhint']}</label></td></tr>";
+if($settings['session_use_cookies'])
+	$out->content .= "<tr><td>&nbsp;</td><td><input type=\"checkbox\" name=\"stay\" value=\"true\" id=\"istay\" />&nbsp;&nbsp;<label class=\"hint\" for=\"istay\">{$lng['stayinhint']}</label></td></tr>";
 $out->content .= "<tr><td><input type=\"hidden\" name=\"login\" value=\"true\" /></td><td><input type=\"submit\" value=\"{$lng['login']}\" /></td></tr>";
 $out->content .= "</table></form></div>";
 $out->renderPage($lng['logintext'], false);
