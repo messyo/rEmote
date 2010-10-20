@@ -36,8 +36,8 @@ if(isset($_POST['save']))
 		$salt = makeRandomStr(10, false);
 		$count = intval($db->one_result($db->query('SELECT COUNT(*) AS c FROM users'), 'c'));
 		if($count == 0)
-			$db->query('INSERT INTO users (name, password, salt, status, dir, rootdir, viewchange, sortord, refchange, viewmode, groupmode, sourcemode, sortkey, refinterval, refmode, detailsstyle, language, design, sidebar, shoutbox) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
-				'sssissisiiiiiiiissii',
+			$db->query('INSERT INTO users (name, password, salt, status, dir, rootdir, viewchange, sortord, refchange, viewmode, groupmode, sourcemode, sortkey, refinterval, refmode, detailsstyle, language, design, sidebar, ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+				'sssissisiiiiiiiissi',
 				$v_name,
 				sha1($v_pass.$salt),
 				$salt,
@@ -56,7 +56,6 @@ if(isset($_POST['save']))
 				2,
 				$_SESSION['language'],
 				$db->one_result($db->query('SELECT value FROM settings WHERE skey = ?', 's', 'default_style'), 'value'),
-				0,
 				0);
 	}
 }

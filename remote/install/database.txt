@@ -91,7 +91,6 @@ detailsstyle|tinyint(4)|
 language|varchar(16)|
 design|varchar(16)|
 sidebar|tinyint(4)|
-shoutbox|tinyint(4)|
 hostnames|bit(1)|
 bitfields|bit(1)|
 
