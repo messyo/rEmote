@@ -3,7 +3,7 @@ ini_set('error_reporting',          E_ALL);
 ini_set('session.use_cookies',      false);
 ini_set('session.use_only_cookies', 0);
 
-
+session_name('remote-install-sid');
 session_start();
 if(SID != '')
 {
