@@ -469,7 +469,7 @@ if(isset($_GET['action']) && isset($actionsarr[$_GET['action']]))
 				}
 				else
 				{
-					$out->addError($lng['nosfvfile']);
+					$out->addError($lng['sfvfailed']);
 					break;
 				}
 			}
@@ -498,7 +498,7 @@ if(isset($_GET['action']) && isset($actionsarr[$_GET['action']]))
 				// $intHash = hash_file('crc32b', $path);
 
 				if(is_valid_file($path) && is_readable($path))
-					$intHash = str_pad(bin2hex(hash_file('crc32b', $path, true)), 8, '0', STR_PAD_LEFT);
+					$intHash = str_pad(dechex(crc32(file_get_contents($path))), 8, '0', STR_PAD_LEFT);
 				else
 					$intHash = '';
 
