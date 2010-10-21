@@ -205,16 +205,21 @@ switch($ending)
 			$content .= htmlspecialchars($parts[count($parts) - 1], ENT_QUOTES).'<br />';
 		}
 		break;
+	default:
+		$out->addError($lng['nodisplay']);
+		$content = '';
+		break;
 }
 
-if(!isset($content) || $content == '')
+if(!isset($content))
 {
 	$out->addError($lng['internerror']);
-	$content = $out->getMessages(Render::ERROR);
+	$content = '';
 }
 
+$messages = $out->getMessages(Render::ERROR);
 $headline = htmlspecialchars($object, ENT_QUOTES);
-$out->content = "<div id=\"main\"><div id=\"content\"><h2>$headline</h2>$content</div></div>";
+$out->content = "<div id=\"main\"><div id=\"content\"><h2>$headline</h2>$messages$content</div></div>";
 $out->renderPage($settings['html_title'], true, true);
 
 ?>

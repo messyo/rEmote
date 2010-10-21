@@ -91,6 +91,13 @@ if(!$isdir)
 			break;
 	}
 }
+else // is dir
+{
+	$actionsarr['checksfv'] = 'checksfv.png';
+}
+
+
+
 
 if(getBin('tar', false) !== false)
 {
@@ -435,8 +442,42 @@ if(isset($_GET['action']) && isset($actionsarr[$_GET['action']]))
 
 			break;
 		case 'checksfv':
-			$files = file($object);
-			$dir   = dirname($object);
+			if($isdir)
+			{
+				// Get SFV-File from inside the dir
+				$dirct = scandir($object);
+				foreach($dirct as $f)
+				{
+					if($f == '..' || $f == '.')
+						continue;
+
+					if(is_dir("$object/$f"))
+						continue;
+
+					$pathinfo = pathinfo($f);
+					if($pathinfo['extension'] == 'sfv')
+					{
+						$sfvfile = "$object/$f";
+						break;
+					}
+				}
+
+				if(isset($sfvfile))
+				{
+					$files = file($sfvfile);
+					$dir   = dirname($sfvfile);
+				}
+				else
+				{
+					$out->addError($lng['nosfvfile']);
+					break;
+				}
+			}
+			else
+			{
+				$files = file($object);
+				$dir   = dirname($object);
+			}
 
 			$no  = "<img src=\"{$imagedir}button_cancel.png\" alt=\"{$lng['no']}\" />";
 			$yes = "<img src=\"{$imagedir}button_ok.png\" alt=\"{$lng['yes']}\" />";

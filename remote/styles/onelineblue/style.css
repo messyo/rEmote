@@ -603,7 +603,8 @@ table#folder tr:hover td         { background: #ddddff; }
 table#folder td.icon             { width: 20px; }
 table#folder td.filename a       { text-decoration: none; }
 table#folder td.filename a:hover { text-decoration: underline; }
-table#folder td.actions          { width: 80px; }
+table#folder td.actions          { width: 136px; }
+table#folder td.actions a img    { margin-left: 2px; }
 
 div#filebrowser {
 	padding: 5px;

@@ -229,6 +229,7 @@ $lng['downzip']      = 'Download als Zip';
 $lng['downtargz']    = 'Download als Tar.Gz';
 $lng['downtarbz2']   = 'Download als TarBZ2';
 $lng['display']      = 'Anzeigen';
+$lng['nodisplay']    = 'Dieser Dateityp kann nicht angezeigt werden.';
 $lng['archtar']      = 'Archiviere als Tar';
 $lng['archrar']      = 'Archiviere als Rar';
 $lng['archzip']      = 'Archiviere als Zip';
@@ -260,6 +261,7 @@ $lng['calchash']     = 'Berechneter Hash';
 $lng['passed']       = 'Bestanden';
 $lng['sfvpassed']    = 'Alle Prüfsummen sind richtig.';
 $lng['sfvfailed']    = 'Eine oder mehrere Prüfsummen sind falsch.';
+$lng['nosfvfile']    = 'Keine SFV-Datei gefunden.';
 
 // DETAILS
 

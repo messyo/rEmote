@@ -235,20 +235,24 @@ if($_SESSION['fileview'] == 0)
 		{
 			$line  = "<tr><td class=\"icon\"><img src=\"{$imagedir}folder.png\" alt=\"F\" /></td><td class=\"filename\"><a href=\"filebrowser.php?change_dir=$rdir$sid\">$filename</a></td>";
 			$line .= "<td class=\"actions\"><a title=\"{$lng['information']}\" href=\"filedetails.php?dir=$rdir$sid\" onclick=\"return popupfun( this );\"><img src=\"{$imagedir}fileinfo.png\" alt=\"I\" /></a>";
+			$line .= "<a title=\"{$lng['checksfv']}\"  class=\"fbchecksfv\"  href=\"filebrowser.php?action=checksfv&amp;dir=$rdir$sid\" onclick=\"return popupfun( this );\"><img src=\"{$imagedir}checksfv.png\" alt=\"C\" /></a>";
 			$line .= "<a title=\"{$lng['delete']}\"    class=\"fbdelete\"    href=\"filebrowser.php?action=deldir&amp;dir=$rdir$sid\" onclick=\"return showConfirm( this, 'fdel' );\"><img src=\"{$imagedir}editdelete.png\" alt=\"K\" /></a>";
 			$line .= "<a title=\"{$lng['copy']}\"      class=\"fbcopy\"      href=\"filebrowser.php?action=copydir&amp;dir=$rdir$sid\"><img src=\"{$imagedir}editcopy.png\" alt=\"Cp\" /></a>";
 			$line .= "<a title=\"{$lng['cut']}\"       class=\"fbcut\"       href=\"filebrowser.php?action=cutdir&amp;dir=$rdir$sid\"><img src=\"{$imagedir}editcut.png\" alt=\"Ct\" /></a>";
-			$line .= "<a title=\"{$lng['download']}\"  class=\"fbdownload\"  href=\"filedetails.php?action=downzip&amp;dir=$rdir$sid\"><img src=\"{$imagedir}download.png\" alt=\"D\" /></a></td></tr>";
+			$line .= "<a title=\"{$lng['download']}\"  class=\"fbdownload\"  href=\"filedetails.php?action=downzip&amp;dir=$rdir$sid\"><img src=\"{$imagedir}download.png\" alt=\"D\" /></a>";
+			$line .= "<a title=\"{$lng['mktorrent']}\" class=\"fbmktorrent\" href=\"filedetails.php?action=mktorrent&amp;dir=$rdir$sid\" onclick=\"return popupfun( this );\"><img src=\"{$imagedir}mktorrent.png\" alt=\"T\" /></a></td></tr>";
 			$dirs .= $line;
 		}
 		else
 		{
 			$line  = "<tr><td class=\"icon\"><img src=\"{$fileimgs}small/" . get_icon(strtolower(substr($file, -4))) . "\" alt=\"_\" /></td><td class=\"filename\">$filename</td>";
 			$line .= "<td class=\"actions\"><a title=\"{$lng['information']}\" href=\"filedetails.php?file=$rdir$sid\" onclick=\"return popupfun( this );\"><img src=\"{$imagedir}fileinfo.png\" alt=\"I\" /></a>";
+			$line .= "<a title=\"{$lng['display']}\"   class=\"fbdisplay\"   href=\"filedisplay.php?file=$rdir$sid\" onclick=\"return popupfun( this );\"><img src=\"{$imagedir}show.png\" alt=\"S\" /></a>";
 			$line .= "<a title=\"{$lng['delete']}\"    class=\"fbdelete\"    href=\"filebrowser.php?action=delfile&amp;file=$rdir$sid\" onclick=\"return showConfirm( this, 'fdel' );\"><img src=\"{$imagedir}editdelete.png\" alt=\"K\" /></a>";
 			$line .= "<a title=\"{$lng['copy']}\"      class=\"fbcopy\"      href=\"filebrowser.php?action=copyfile&amp;file=$rdir$sid\"><img src=\"{$imagedir}editcopy.png\" alt=\"Cp\" /></a>";
 			$line .= "<a title=\"{$lng['cut']}\"       class=\"fbcut\"       href=\"filebrowser.php?action=cutfile&amp;file=$rdir$sid\"><img src=\"{$imagedir}editcut.png\" alt=\"Ct\" /></a>";
-			$line .= "<a title=\"{$lng['download']}\"  class=\"fbdownload\"  href=\"filedetails.php?action=download&amp;file=$rdir$sid\"><img src=\"{$imagedir}download.png\" alt=\"D\" /></a></td></tr>";
+			$line .= "<a title=\"{$lng['download']}\"  class=\"fbdownload\"  href=\"filedetails.php?action=download&amp;file=$rdir$sid\"><img src=\"{$imagedir}download.png\" alt=\"D\" /></a>";
+			$line .= "<a title=\"{$lng['mktorrent']}\" class=\"fbmktorrent\" href=\"filedetails.php?action=mktorrent&amp;file=$rdir$sid\" onclick=\"return popupfun( this );\"><img src=\"{$imagedir}mktorrent.png\" alt=\"T\" /></a></td></tr>";
 			$files .= $line;
 		}
 	}
