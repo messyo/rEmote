@@ -221,7 +221,7 @@ class Render
 		{
 			$time = 'Created in ' . round(microtime(true) - $starttime, 6) . 's (MySQL: ' . $db->get_time(6) . 's - '.$db->get_count().' Queries | XMLRPC: '.round($rpc->time, 6)."s - $rpc->count Requests)";
 			if($settings['debug_mode'])
-				$debug = '<table style="margin: auto;"><tr><td><span style="color: red;">DEBUG-MODE ACTIVATED. PLEASE DEAKTIVATE IN RUNTIME-ENVIRONMENT</span></td></tr><tr><td style="vertical-align: top; text-align: left;"><pre style="font-size: 11px;">'.print_r($_SESSION, true).'</pre></td><td style="vertical-align: top; text-align: left;"><pre>'.print_r($_POST, true).'</pre></td><td style="vertical-align: top; text-align: left;"><pre>'.print_r($_GET, true).'</pre></td></tr></table>';
+				$debug = '<table style="margin: auto;"><tr><td colspan="3"><span style="color: red;">DEBUG-MODE ACTIVATED. PLEASE DEACTIVATE ON PRODUCTIVE-ENVIRONMENTS</span></td></tr><tr><td style="vertical-align: top; text-align: left;"><pre style="font-size: 11px;">'.print_r($_SESSION, true).'</pre></td><td style="vertical-align: top; text-align: left;"><pre>'.print_r($_POST, true).'</pre></td><td style="vertical-align: top; text-align: left;"><pre>'.print_r($_GET, true).'</pre></td></tr></table>';
 			else
 				$debug = '';
 			echo "<div id=\"footer\">$time$debug</div>";

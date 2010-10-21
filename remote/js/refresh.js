@@ -50,10 +50,10 @@ function stats_refresh( data )
 
 	document.title = data[0];
 
-	document.getElementById('sidebarup').innerHTML = data[1];
-	document.getElementById('sidebardown').innerHTML = data[2];
-	document.getElementById('sidebardisk').innerHTML = data[3];
-	document.getElementById('sidebardisk').innerHTML = data[3];
+	document.getElementById('boxup').innerHTML = data[1];
+	document.getElementById('boxdown').innerHTML = data[2];
+	document.getElementById('boxdisk').innerHTML = data[3];
+	document.getElementById('boxdisk').innerHTML = data[3];
 	
 	if(data[4] != '')
 	{
@@ -61,7 +61,7 @@ function stats_refresh( data )
 		document.getElementById('shouts').innerHTML = shouts;
 	}
 	if(data[5] != '')
-		document.getElementById('sidebarload').innerHTML = data[5];
+		document.getElementById('boxload').innerHTML = data[5];
 
 	/* Start shifted by 5 as title and the 4 Sidebar-Values are sent at first */
 	if(data.length < 5)
