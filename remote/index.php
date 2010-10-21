@@ -272,18 +272,18 @@ $content .= "$table<tr><td colspan=\"$numcolumns\"><div class=\"multilinks\">$mu
 $sidebar = $boxareatop = $boxareabottom = $sidebarclass = $rightbar = $rightbarclass = '';
 if(count($_SESSION['boxpositions'][BOX_SIDE]))
 {
-	$sidebar       = $boxArea->renderArea($_SESSION['boxpositions'][BOX_SIDE], 'sidebar');
+	$sidebar       = $boxArea->renderArea($_SESSION['boxpositions'][BOX_SIDE], 'sidebar', BOX_SIDE);
 	$sidebarclass  = ' withsidebar';
 }	
 if(count($_SESSION['boxpositions'][BOX_RIGHT]))
 {
-	$rightbar      = $boxArea->renderArea($_SESSION['boxpositions'][BOX_RIGHT], 'rightbar');
+	$rightbar      = $boxArea->renderArea($_SESSION['boxpositions'][BOX_RIGHT], 'rightbar', BOX_RIGHT);
 	$rightbarclass  = ' withrightbar';
 }	
 if(count($_SESSION['boxpositions'][BOX_TOP]))
-	$boxareatop    = $boxArea->renderArea($_SESSION['boxpositions'][BOX_TOP], 'boxareatop');
+	$boxareatop    = $boxArea->renderArea($_SESSION['boxpositions'][BOX_TOP], 'boxareatop', BOX_TOP);
 if(count($_SESSION['boxpositions'][BOX_BOTTOM]))
-	$boxareabottom = $boxArea->renderArea($_SESSION['boxpositions'][BOX_BOTTOM], 'boxareabottom');
+	$boxareabottom = $boxArea->renderArea($_SESSION['boxpositions'][BOX_BOTTOM], 'boxareabottom', BOX_BOTTOM);
 
 
 if(addJobChecker())

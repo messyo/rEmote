@@ -85,7 +85,7 @@ class BoxArea
 	const BOX_SERVERSTATS      = 6;
 	const BOX_SHOUTBOX         = 7;
 
-	public function renderBoxSpeedstats()
+	public function renderBoxSpeedstats($pos, $anz)
 	{
    	global $settings, $global, $imagedir, $lng;
 		
@@ -100,7 +100,7 @@ class BoxArea
 		return $box;
 	}
 	
-	public function renderBoxDiskstats()
+	public function renderBoxDiskstats($pos, $anz)
 	{
 		global $lng;
 
@@ -115,7 +115,7 @@ class BoxArea
 		return $box;
 	}
 
-	public function renderBoxBandwithsettings()
+	public function renderBoxBandwithsettings($pos, $anz)
 	{
 		global $imagedir, $lng, $global, $qsid;
 
@@ -131,7 +131,7 @@ class BoxArea
 		return $box;
 	}
 
-	public function renderBoxFilter()
+	public function renderBoxFilter($pos, $anz)
 	{
 		global $lng, $qsid, $ftext;
 
@@ -143,7 +143,7 @@ class BoxArea
 		return $box;
 	}
 
-	public function renderBoxRefreshsettings()
+	public function renderBoxRefreshsettings($pos, $anz)
 	{
 		global $lng, $refresh_arr, $qsid;
 
@@ -164,7 +164,7 @@ class BoxArea
 		return $box;
 	}
 
-	public function renderBoxServerstats()
+	public function renderBoxServerstats($pos, $anz)
 	{
 		global $lng, $global;
 
@@ -180,13 +180,17 @@ class BoxArea
 		return $box;
 	}
 
-	public function renderBoxShoutbox()
+	public function renderBoxShoutbox($pos, $anz)
 	{
 		global $lng;
 
 		$shoutbox = new Shoutbox();
 
-		$box  = "<div class=\"box\" id=\"boxshoutbox\"><h2>{$lng['shoutbox']}</h2>";
+		$width = '';
+		if(($pos == BOX_TOP) || ($pos == BOX_BOTTOM))
+			$width = ' style="width: '.(100/$anz).'%;"';
+
+		$box  = "<div class=\"box\" id=\"boxshoutbox\"$width><h2>{$lng['shoutbox']}</h2>";
 		$box .= "<div class=\"boxcontent\">";
 		$box .= $shoutbox->makeShoutbox();
 		$box .= '</div></div>';
@@ -197,46 +201,46 @@ class BoxArea
 
 
 
-	public function renderBox($boxname)
+	public function renderBox($boxname, $pos, $anz)
 	{
 		global $settings;
 
    	switch($boxname)
 		{
 			case BoxArea::BOX_SPEEDSTATS:
-            return $this->renderBoxSpeedstats();
+            return $this->renderBoxSpeedstats($pos, $anz);
 
 			case BoxArea::BOX_DISKSTATS:
-            return $this->renderBoxDiskstats();
+            return $this->renderBoxDiskstats($pos, $anz);
 
 			case BoxArea::BOX_BANDWITHSETTINGS:
-            return $this->renderBoxBandwithsettings();
+            return $this->renderBoxBandwithsettings($pos, $anz);
 
 			case BoxArea::BOX_FILTER:
-            return $this->renderBoxFilter();
+            return $this->renderBoxFilter($pos, $anz);
 
 			case BoxArea::BOX_REFRESHSETTINGS: 
-            return $this->renderBoxRefreshsettings();
+            return $this->renderBoxRefreshsettings($pos, $anz);
 
 			case BoxArea::BOX_SERVERSTATS:
 				if(($_SESSION['status'] <= USER) || !$settings['user_see_serverinfo'])
 					return '';
-            return $this->renderBoxServerstats();
+            return $this->renderBoxServerstats($pos, $anz);
 
 			case BoxArea::BOX_SHOUTBOX:
 				if(!$settings['shoutbox'])
 					return '';
-            return $this->renderBoxShoutbox();
+            return $this->renderBoxShoutbox($pos, $anz);
 		}
 	}
 
-	public function renderArea($boxes, $id)
+	public function renderArea($boxes, $id, $pos)
 	{
 		$str = '';
 
    	foreach($boxes as $b)
 		{
-			$str .= $this->renderBox($b);
+			$str .= $this->renderBox($b, $pos, count($boxes));
 		}
 
 		return "<div class=\"boxarea\" id=\"$id\">$str</div>";
