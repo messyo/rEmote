@@ -72,19 +72,23 @@ function actions( file , type , ev)
 		box.style.width = "200px";
 		if(type == 'dir')
 		{
-			box.innerHTML += "<a href=\"filebrowser.php?change_dir="             + file + "&amp;" + sid + "\" title=\"" + lngopen         + "\">" + lngopen        + "</a>";
-			box.innerHTML += "<a href=\"filedetails.php?dir="                    + file + "&amp;" + sid + "\" title=\"" + lngshowdetails  + "\" onclick=\"return popupfun( this );\">" + lngshowdetails + "</a>";
-			box.innerHTML += "<a href=\"filebrowser.php?action=deldir&amp;dir="  + file + "&amp;" + sid + "\" title=\"" + lngdelete       + "\" onclick=\"return showConfirm( this, 'fdel');\">" + lngdelete      + "</a>";
-			box.innerHTML += "<a href=\"filebrowser.php?action=copydir&amp;dir=" + file + "&amp;" + sid + "\" title=\"" + lngcopy         + "\">" + lngcopy        + "</a>";
-			box.innerHTML += "<a href=\"filebrowser.php?action=cutdir&amp;dir="  + file + "&amp;" + sid + "\" title=\"" + lngcut          + "\">" + lngcut         + "</a>";
+			box.innerHTML += "<a href=\"filebrowser.php?change_dir="               + file + "&amp;" + sid + "\" title=\"" + lngopen         + "\">"                                                + lngopen        + "</a>";
+			box.innerHTML += "<a href=\"filedetails.php?dir="                      + file + "&amp;" + sid + "\" title=\"" + lngshowdetails  + "\" onclick=\"return popupfun( this );\">"           + lngshowdetails + "</a>";
+			box.innerHTML += "<a href=\"filedetails.php?action=checksfv&amp;dir="  + file + "&amp;" + sid + "\" title=\"" + lngchecksfv     + "\" onclick=\"return popupfun( this );\">"           + lngchecksfv    + "</a>";
+			box.innerHTML += "<a href=\"filebrowser.php?action=deldir&amp;dir="    + file + "&amp;" + sid + "\" title=\"" + lngdelete       + "\" onclick=\"return showConfirm( this, 'fdel');\">" + lngdelete      + "</a>";
+			box.innerHTML += "<a href=\"filebrowser.php?action=copydir&amp;dir="   + file + "&amp;" + sid + "\" title=\"" + lngcopy         + "\">"                                                + lngcopy        + "</a>";
+			box.innerHTML += "<a href=\"filebrowser.php?action=cutdir&amp;dir="    + file + "&amp;" + sid + "\" title=\"" + lngcut          + "\">"                                                + lngcut         + "</a>";
+			box.innerHTML += "<a href=\"filedetails.php?action=mktorrent&amp;dir=" + file + "&amp;" + sid + "\" title=\"" + lngmktorrent    + "\" onclick=\"return popupfun( this );\">"           + lngmktorrent   + "</a>";
 		}
 		else
 		{
-			box.innerHTML += "<a href=\"filedetails.php?file="                     + file + "&amp;" + sid + "\" title=\"" + lngshowdetails  + "\" onclick=\"return popupfun( this );\" >" + lngshowdetails + "</a>";
-			box.innerHTML += "<a href=\"filebrowser.php?action=delfile&amp;file="  + file + "&amp;" + sid + "\" title=\"" + lngdelete       + "\" onclick=\"return showConfirm( this, 'fdel' );\">" + lngdelete      + "</a>";
-			box.innerHTML += "<a href=\"filebrowser.php?action=copyfile&amp;file=" + file + "&amp;" + sid + "\" title=\"" + lngcopy         + "\">" + lngcopy        + "</a>";
-			box.innerHTML += "<a href=\"filebrowser.php?action=cutfile&amp;file="  + file + "&amp;" + sid + "\" title=\"" + lngcut          + "\">" + lngcut         + "</a>";
-			box.innerHTML += "<a href=\"filedetails.php?action=download&amp;file=" + file + "&amp;" + sid + "\" title=\"" + lngdownload     + "\">" + lngdownload    + "</a>";
+			box.innerHTML += "<a href=\"filedetails.php?file="                      + file + "&amp;" + sid + "\" title=\"" + lngshowdetails  + "\" onclick=\"return popupfun( this );\" >"           + lngshowdetails + "</a>";
+			box.innerHTML += "<a href=\"filedisplay.php?file="                      + file + "&amp;" + sid + "\" title=\"" + lngdisplay      + "\" onclick=\"return popupfun( this );\" >"           + lngdisplay     + "</a>";
+			box.innerHTML += "<a href=\"filebrowser.php?action=delfile&amp;file="   + file + "&amp;" + sid + "\" title=\"" + lngdelete       + "\" onclick=\"return showConfirm( this, 'fdel' );\">" + lngdelete      + "</a>";
+			box.innerHTML += "<a href=\"filebrowser.php?action=copyfile&amp;file="  + file + "&amp;" + sid + "\" title=\"" + lngcopy         + "\">"                                                 + lngcopy        + "</a>";
+			box.innerHTML += "<a href=\"filebrowser.php?action=cutfile&amp;file="   + file + "&amp;" + sid + "\" title=\"" + lngcut          + "\">"                                                 + lngcut         + "</a>";
+			box.innerHTML += "<a href=\"filedetails.php?action=download&amp;file="  + file + "&amp;" + sid + "\" title=\"" + lngdownload     + "\">"                                                 + lngdownload    + "</a>";
+			box.innerHTML += "<a href=\"filedetails.php?action=mktorrent&amp;file=" + file + "&amp;" + sid + "\" title=\"" + lngmktorrent    + "\" onclick=\"return popupfun( this );\" >"           + lngmktorrent   + "</a>";
 		}
 	}
 

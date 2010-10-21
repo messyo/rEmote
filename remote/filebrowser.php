@@ -261,7 +261,19 @@ if($_SESSION['fileview'] == 0)
 else
 {
 	$out->jsinfos['browsetype'] = 'icon';
-	$out->addJSLang('open', 'showdetails', 'delete', 'copy', 'cut', 'fbdelconf', 'download');
+	$out->addJSLang(
+		'open',
+		'showdetails',
+		'delete',
+		'copy',
+		'cut',
+		'fbdelconf',
+		'download',
+		'mktorrent',
+		'display',
+		'checksfv'
+	);
+
 	$content = '<div id="iconfolder">';
 	foreach($data as $file)
 	{
