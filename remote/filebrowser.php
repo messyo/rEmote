@@ -235,7 +235,7 @@ if($_SESSION['fileview'] == 0)
 		{
 			$line  = "<tr><td class=\"icon\"><img src=\"{$imagedir}folder.png\" alt=\"F\" /></td><td class=\"filename\"><a href=\"filebrowser.php?change_dir=$rdir$sid\">$filename</a></td>";
 			$line .= "<td class=\"actions\"><a title=\"{$lng['information']}\" href=\"filedetails.php?dir=$rdir$sid\" onclick=\"return popupfun( this );\"><img src=\"{$imagedir}fileinfo.png\" alt=\"I\" /></a>";
-			$line .= "<a title=\"{$lng['checksfv']}\"  class=\"fbchecksfv\"  href=\"filebrowser.php?action=checksfv&amp;dir=$rdir$sid\" onclick=\"return popupfun( this );\"><img src=\"{$imagedir}checksfv.png\" alt=\"C\" /></a>";
+			$line .= "<a title=\"{$lng['checksfv']}\"  class=\"fbchecksfv\"  href=\"filedetails.php?action=checksfv&amp;dir=$rdir$sid\" onclick=\"return popupfun( this );\"><img src=\"{$imagedir}checksfv.png\" alt=\"C\" /></a>";
 			$line .= "<a title=\"{$lng['delete']}\"    class=\"fbdelete\"    href=\"filebrowser.php?action=deldir&amp;dir=$rdir$sid\" onclick=\"return showConfirm( this, 'fdel' );\"><img src=\"{$imagedir}editdelete.png\" alt=\"K\" /></a>";
 			$line .= "<a title=\"{$lng['copy']}\"      class=\"fbcopy\"      href=\"filebrowser.php?action=copydir&amp;dir=$rdir$sid\"><img src=\"{$imagedir}editcopy.png\" alt=\"Cp\" /></a>";
 			$line .= "<a title=\"{$lng['cut']}\"       class=\"fbcut\"       href=\"filebrowser.php?action=cutdir&amp;dir=$rdir$sid\"><img src=\"{$imagedir}editcut.png\" alt=\"Ct\" /></a>";

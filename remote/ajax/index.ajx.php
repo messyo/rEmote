@@ -23,6 +23,7 @@ function error_handler($code, $text, $file, $line)
 define('IS_REFRESH', true);
 require_once(TO_ROOT.'inc/defines/torrent.php');
 require_once(TO_ROOT.'inc/functions/list.fun.php');
+require_once(TO_ROOT.'inc/boxarea.php');
 session_write_close();
 
 set_error_handler('error_handler');
@@ -45,9 +46,15 @@ $free = format_bytes($free); $total = format_bytes($total);
 
 $output .= ", '<div>{$lng['freespace']}:<br />$free/$total</div>".progressbar($progress).'\'';
 
-if($settings['shoutbox'] && ($_SESSION['shoutbox'] > 0))
+if($settings['shoutbox']
+	&& (
+		in_array(BoxArea::BOX_SHOUTBOX, $_SESSION['boxpositions'][BOX_SIDE])
+		|| in_array(BoxArea::BOX_SHOUTBOX, $_SESSION['boxpositions'][BOX_TOP])
+		|| in_array(BoxArea::BOX_SHOUTBOX, $_SESSION['boxpositions'][BOX_BOTTOM])
+		|| in_array(BoxArea::BOX_SHOUTBOX, $_SESSION['boxpositions'][BOX_RIGHT])
+		)
+	)
 {
-	require_once(TO_ROOT.'inc/shoutbox.php');
 	$shoutbox = new Shoutbox;
 	$shoutboxcontent = addslashes($shoutbox->getShouts());
 }
