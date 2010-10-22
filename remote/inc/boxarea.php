@@ -107,7 +107,7 @@ class BoxArea
 		$free = disk_free_space($_SESSION['dir']); $total = disk_total_space($_SESSION['dir']); $progress = ($total - $free) / $total * 100;
 		$free = format_bytes($free); $total = format_bytes($total);
 		
-		$box  = "<div class=\"box\" id=\"boxdisk\"><h2>{$lng['diskspace']}</h2><div class=\"boxcontent\">";
+		$box  = "<div class=\"box\" id=\"boxdiskstats\"><h2>{$lng['diskspace']}</h2><div class=\"boxcontent\" id=\"boxdisk\">";
 		$box .= "<div>{$lng['freespace']}:<br />$free/$total</div>";
 		$box .= progressbar($progress);
 		$box .= '</div></div>';
