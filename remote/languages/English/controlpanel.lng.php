@@ -114,7 +114,6 @@ $lng['users']       = 'Users';
 $lng['edituser']    = 'Edit this user';
 $lng['killuser']    = 'Delete this user';
 $lng['homedir']     = 'Home-directory';
-$lng['admin']       = 'Administrator';
 $lng['userdeleted'] = 'User has been deleted';
 $lng['notdeleted']  = 'Could not be deleted';
 $lng['qkilluser']   = 'Do you really want to delete user \\1?';
@@ -131,6 +130,7 @@ $lng['qnewpass']    = 'Do your really want to reset the password of "\\1"?';
 $lng['usernameexi'] = 'Username already exists';
 
 // MYCP
+
 $lng['mycpaccount'] = 'Account';
 $lng['mycpboxarea'] = 'Positions';
 
@@ -163,6 +163,7 @@ $lng['shouttop']    = 'Above torrents';
 $lng['shoutbottom'] = 'Below Torrents';
 $lng['showhosts']   = 'Show hostnames';
 $lng['showbfields'] = 'Show Bitfields for Peers';
+$lng['detailsmode'] = 'Default mode for torrent details';
 
 // MYCP-BOXAREAS
 

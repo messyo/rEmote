@@ -8,7 +8,7 @@ function loadOptions()
 {
 	global $db;
 
-	$uinfo = $db->fetch($db->query('SELECT viewchange, sortord, refchange, viewmode, groupmode, sourcemode, sortkey, refinterval, refmode, detailsstyle, hostnames, bitfields, language, design, sidebar FROM users WHERE uid = ?', 'i', $_SESSION['uid']));
+	$uinfo = $db->fetch($db->query('SELECT viewchange, sortord, refchange, viewmode, groupmode, sourcemode, sortkey, refinterval, refmode, detailsstyle, hostnames, bitfields, language, design, detailsmode FROM users WHERE uid = ?', 'i', $_SESSION['uid']));
 	$opt['viewchange']   = ord($uinfo['viewchange']);
 	$opt['refchange']    = ord($uinfo['refchange']);
 	$opt['sortord']      = $uinfo['sortord'];
@@ -23,6 +23,7 @@ function loadOptions()
 	$opt['bitfields']    = ord($uinfo['bitfields']);
 	$opt['lng']          = $uinfo['language'];
 	$opt['style']        = $uinfo['design'];
+	$opt['detailsmode']  = intval($uinfo['detailsmode']);
 
 	return($opt);
 }
@@ -31,8 +32,8 @@ function writeOptions($opt)
 {
 	global $db;
 
-	$db->query('UPDATE users SET viewchange = ?, sortord = ?, refchange = ?, viewmode = ?, groupmode = ?, sourcemode = ?, sortkey = ?, refinterval = ?, refmode = ?, detailsstyle = ?, hostnames = ?, bitfields = ?, language = ?, design = ? WHERE uid = ?',
-		'isiiiiiiiiiissi',
+	$db->query('UPDATE users SET viewchange = ?, sortord = ?, refchange = ?, viewmode = ?, groupmode = ?, sourcemode = ?, sortkey = ?, refinterval = ?, refmode = ?, detailsstyle = ?, hostnames = ?, bitfields = ?, language = ?, design = ?, detailsmode = ? WHERE uid = ?',
+		'isiiiiiiiiiissii',
 		$opt['viewchange']   ,
 		$opt['sortord']      ,
 		$opt['refchange']    ,
@@ -47,6 +48,7 @@ function writeOptions($opt)
 		$opt['bitfields']    ,
 		$opt['lng']          ,
 		$opt['style']        ,
+		$opt['detailsmode']  ,
 		$_SESSION['uid']);
 
 	if($db->affected_rows())
@@ -55,11 +57,12 @@ function writeOptions($opt)
 		return false;
 }
 
-$sort_arr    = array('ASC', 'DESC');
-$details_arr = array('samepage', 'popup', 'inline');
-$shout_arr   = array('shoutoff', 'shoutside', 'shouttop', 'shoutbottom');
-$hosts_arr   = array('no', 'yes');
-$sortkey_arr = array(NAME             => 'name',
+$sort_arr     = array('ASC', 'DESC');
+$details_arr  = array('samepage', 'popup', 'inline');
+$detailsm_arr = array('filetree', 'filelist', 'infos', 'tracker', 'peers');
+$shout_arr    = array('shoutoff', 'shoutside', 'shouttop', 'shoutbottom');
+$hosts_arr    = array('no', 'yes');
+$sortkey_arr  = array(NAME             => 'name',
 							PERCENT_COMPLETE => 'done',
 							ETA              => 'eta',
 							UP_RATE          => 'up_rate',
@@ -113,6 +116,8 @@ if(isset($_POST['save']))
 		$options['style'] = $_POST['style'];
 	if(isset($_POST['details']) && isset($details_arr[$_POST['details']]))
 		$options['detailsstyle'] = $_POST['details'];
+	if(isset($_POST['detailsm']) && isset($detailsm_arr[$_POST['detailsm']]))
+		$options['detailsmode'] = $_POST['detailsm'];
 	if(isset($_POST['hostnames']) && isset($hosts_arr[$_POST['hostnames']]))
 		$options['hostnames'] = $_POST['hostnames'];
 	if(isset($_POST['bitfields']) && isset($hosts_arr[$_POST['bitfields']]))
@@ -128,6 +133,7 @@ if(isset($_POST['save']))
 	$_SESSION['hostnames']    = $options['hostnames'];
 	$_SESSION['bitfields']    = $options['bitfields'];
 	$_SESSION['style']        = $options['style'];
+	$_SESSION['detailsmode']  = $options['detailsmode'];
 
 
 	//Password Change
@@ -229,6 +235,16 @@ foreach($details_arr as $key => $val)
 }
 $details_dropdown .= "</select>";
 
+$detailsm_dropdown = '<select name="detailsm">';
+foreach($detailsm_arr as $key => $val)
+{
+	if($options['detailsmode'] == $key)
+		$detailsm_dropdown .= "<option value=\"$key\" selected=\"selected\">{$lng[$val]}</option>";
+	else
+		$detailsm_dropdown .= "<option value=\"$key\">{$lng[$val]}</option>";
+}
+$detailsm_dropdown .= "</select>";
+
 $hostnames_dropdown = '<select name="hostnames">';
 foreach($hosts_arr as $key => $val)
 {
@@ -327,6 +343,7 @@ $box_settings  = "<fieldset class=\"box\" id=\"accsettingsbox\"><legend>{$lng['a
 $box_settings .= "<tr><td>{$lng['language']}</td><td>$lang_dropdown</td></tr>";
 $box_settings .= "<tr><td>{$lng['style']}</td><td>$style_dropdown</td></tr>";
 $box_settings .= "<tr><td>{$lng['opendetails']}</td><td>$details_dropdown</td></tr>";
+$box_settings .= "<tr><td>{$lng['detailsmode']}</td><td>$detailsm_dropdown</td></tr>";
 $box_settings .= "<tr><td>{$lng['showhosts']}</td><td>$hostnames_dropdown</td></tr>";
 if($settings['showbitfields'])
 	$box_settings .= "<tr><td>{$lng['showbfields']}</td><td>$bitfields_dropdown</td></tr>";

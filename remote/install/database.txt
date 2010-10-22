@@ -90,9 +90,9 @@ refmode|tinyint(4)|
 detailsstyle|tinyint(4)|
 language|varchar(16)|
 design|varchar(16)|
-sidebar|tinyint(4)|
 hostnames|bit(1)|
 bitfields|bit(1)|
+detailsmode|int(4)|
 
 [shouts]
 sid|int(11)|AI,PK
@@ -106,3 +106,10 @@ uid|int(11)|PK
 boxid|int(3)|PK
 area|int(1)|
 position|int(3)|
+
+[extlinks]
+lid|int(11)|AI,PK
+uid|int(11)|
+public|bit(1)|
+label|varchar(255)|
+url|varchar(255)|

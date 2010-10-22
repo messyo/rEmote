@@ -130,6 +130,7 @@ $lng['qnewpass']    = 'Wollen sie wirklich das Passwort von "\\1" zurücksetzen?
 $lng['usernameexi'] = 'Username existiert bereits';
 
 // MYCP
+
 $lng['mycpaccount'] = 'Account';
 $lng['mycpboxarea'] = 'Postitionen';
 
@@ -162,6 +163,7 @@ $lng['shouttop']    = 'Über den Torrents';
 $lng['shoutbottom'] = 'Unter den Torrents';
 $lng['showhosts']   = 'Zeige Hostnamen';
 $lng['showbfields'] = 'Zeige Bitfelder für Peers';
+$lng['detailsmode'] = 'Standardmodus für Torrent Details';
 
 // MYCP-BOXAREAS
 

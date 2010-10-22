@@ -35,7 +35,7 @@ if($settings['real_multiuser'] && ($_SESSION['status'] == 1))
 if(isset($_GET['mod']) && isset($mod_arr[$_GET['mod']]))
 	$mod = $_GET['mod'];
 else
-	$mod = $settings['details_def_mode'];
+	$mod = $_SESSION['detailsmode'];
 
 $detailsmenu = '<ul class="tabs">';
 foreach($mod_arr as $k => $v)

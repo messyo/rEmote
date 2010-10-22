@@ -55,7 +55,7 @@ $submit = '';
 if($_SESSION['detailsstyle'] > 0)
 {
 	$out->jsinfos['detailsstyle']   = $_SESSION['detailsstyle'];
-	$out->jsinfos['detailsdefmode'] = $settings['details_def_mode'];
+	$out->jsinfos['detailsdefmode'] = $_SESSION['detailsmode'];
 	$dlink = '<a onclick="return popupfun( this );" href="details.php?hash=%s%s" title="%s"%s>%s</a>';
 	if($_SESSION['detailsstyle'] > 1)
 	{

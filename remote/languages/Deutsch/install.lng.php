@@ -1,4 +1,4 @@
-<?php
+<?
 
 // GENERAL
 
@@ -42,6 +42,7 @@ $lng['dir']         = 'Verzeichnis';
 
 $lng['settings']    = 'Einstellungen';
 $lng['adding']      = 'Füge Option "\\1" ein';
+$lng['deleting']    = 'Entferne Option "\\1"';
 $lng['settingsu2d'] = 'Alle Einstellungen aktualisiert';
 $lng['newsettings'] = 'Neue Optionen wurden hinzugefügt. Wechseln Sie nach der Installation in das Einstellungs-Menü unter Control-Panel, um sie anzupassen.';
 $lng['errorins']    = 'Fehler beim Hinzufügen neuer Optionen';

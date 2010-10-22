@@ -20,7 +20,6 @@
 ('user_see_serverinfo', 'Users can see Serverinfo', 0, 'yn', '', '0', 0, '0')
 ('binary_mktorrent', 'mktorrent', 2, 'bin', '', './bin/mktorrent', 0, './bin/mktorrent')
 ('binary_tar', 'tar', 2, 'bin', '', '/bin/tar', 0, '/bin/tar')
-('details_def_mode', 'Default Mode on calling Torrent Details', 0, 'php|int|$input = "<select name=\\"$skey\\">";\r\n$mod_arr = array(''filetree'', ''filelist'', ''infos'', ''tracker'', ''peers'');\r\n\r\nforeach($mod_arr as $k => $v)\r\n{\r\n    if($k == $value)\r\n        $checked = '' selected="selected"'';\r\n    else\r\n        $checked = '''';\r\n    $input .= "<option value=\\"$k\\"$checked>{$lng[$v]}</option>";\r\n}\r\n$input .= ''</select>'';\r\nunset($mod_arr);\r\nunset($checked);\r\nunset($k);\r\nunset($v);', '', '0', 0, '0')
 ('real_multiuser', 'Real-Mulituser-Mode', 0, 'yn', 'if(isset($_POST[$skey]) && ($_POST[$skey] == ''yes'')) $value = 1; else $value = 0; if($value == 1) { require_once(TO_ROOT.''inc/functions/torrents.fun.php''); add_missing_hashes(); }', '0', 0, '0')
 ('max_torrent_size', 'Maximum Size of a Torrent-File', 0, 'int', '', '2048000', 0, '2048000')
 ('binary_unrar', 'unrar', 2, 'bin', '', '/usr/bin/unrar', 0, '/usr/bin/unrar')

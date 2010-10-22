@@ -29,7 +29,6 @@ $lng['binary_php']           = 'php-cli';
 $lng['binary_bzip2']         = 'bzip2';
 $lng['binary_wget']          = 'wget';
 $lng['binary_nohup']         = 'nohup';
-$lng['details_def_mode']     = 'Standardmodus für Torrent Details';
 $lng['real_multiuser']       = 'Real-Multiuser-Mode';
 $lng['showinvisiblefiles']   = 'Zeige unsichtbare Dateien und Ordner';
 $lng['disable_sem']          = 'Deaktiviere Semaphoren';
@@ -79,7 +78,6 @@ $lng['help_binary_php']           = 'PHP-Commandline-Interpreter-Programmdatei. 
 $lng['help_binary_bzip2']         = 'bzip2-Programmdatei';
 $lng['help_binary_wget']          = 'wget-Programmdatei';
 $lng['help_binary_nohup']         = 'nohup-Programmdatei';
-$lng['help_details_def_mode']     = 'Standardmodus, um die Torrent Details aufzurufen.';
 $lng['help_debug_mode']           = 'Debug Modus. Aktiviert das Debugging Modul. Aus Sicherheitsgründen NICHT aktivieren, solange Sie nicht genau wissen, was Sie tun.';
 $lng['help_real_multiuser']       = 'Falls der Real-Multiuser-Mode aktiviert ist, kann jeder User nur seine eigenen Torrents sehen. Falls nicht aktiviert können alle User alle Torrents sehen. Bitte beachten Sie, dass (auch wenn der Real-Multiuser-Modus aktiviert ist) rTorrent jedes Torrent nur EINMAL laden kann.';
 $lng['help_max_torrent_size']     = 'Die maximale Größe einer Torrent-Datei, die rEmote erlaubt (in Bytes). Setze den Wert auf \'0\' für beliebige Größe.';
@@ -88,6 +86,6 @@ $lng['help_default_dir']          = 'Standard Home-Verzeichnis. Wird als Standar
 $lng['help_disable_sem']          = 'Die Semaphore sperrt das hinzufügen von Torrents. So ist es nicht möglich dass 2 User gleichzeitig Torrents hinzufügen und sich so in die Quere kommen (zum Beispiel beim eingestellten Verzeichnis). Aktivieren Sie diese Option um diese Sperrung zu deaktivieren.';
 $lng['help_shoutbox']             = 'Aktiviert die Shoutbox, diese muss auch noch jeder User in seinem MyCP aktivieren';
 $lng['help_allowtmp']             = 'Erlaubt das User auch ins Temporäre verzeichnis schreiben dürfen (kopieren/erstellen)';
-$lng['help_showbitfields']        = 'Zeigt in einer Grafik an, welche Anteile am Torrent bereits vorhanden sind, beziehungsweise welche Anteile bei Peers vorhanden sind. <br /><br />ACHTUNG:Funktioniert nicht ohne Patch an rTorrent (http://libtorrent.rakshasa.no/ticket/2053).';
+$lng['help_showbitfields']        = 'Zeigt in einer Grafik an, welche Anteile am Torrent bereits vorhanden sind, beziehungsweise welche Anteile bei Peers vorhanden sind. ACHTUNG:Funktioniert nicht ohne Patch an rTorrent (http://libtorrent.rakshasa.no/ticket/2053).';
 
 ?>

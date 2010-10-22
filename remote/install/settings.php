@@ -34,12 +34,18 @@ else
 			}
 		}
 	}
+	// Delete old Keys
+	$deprecated = array('details_def_mode');
+	if(count($deprecated))
+		$db->query('DELETE FROM `settings` WHERE `skey` IN (\''.implode('\', \'', $deprecated).'\')');
+	
 
 	if($first == false)
 	{
 		$db->query('DELETE FROM cache WHERE ckey = ?', 's', 'settings');
 		$qry = 'INSERT INTO `settings` (`skey`, `defaultname`, `gid`, `inputtype`, `onsave`, `value`, `sortid`, `defaultvalue`) VALUES '.$qry;
 		$res = $db->query($qry);
+
 
 		$out .= "<div class=\"small\">$details</div>";
 		if($db->affected_rows($res))
@@ -49,6 +55,7 @@ else
 			$success = false;
 			$out .= "<div class=\"error\">{$lng['errorins']}</div>";
 		}
+
 	}
 	else
 		$out .= "<div class=\"success\">{$lng['settingsu2d']}</div>";
