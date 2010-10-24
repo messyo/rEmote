@@ -1100,3 +1100,8 @@ a.addoption {
 	font-size: 12px;
 }
 
+#boxlinklist ul
+{
+	margin: 0;
+	padding: 0;
+}

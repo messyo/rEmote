@@ -1072,3 +1072,9 @@ a.addoption {
 	color: #0000aa;
 	font-size: 12px;
 }
+
+#boxlinklist ul
+{
+	margin: 0;
+	padding: 0;
+}

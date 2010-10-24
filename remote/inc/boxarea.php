@@ -208,18 +208,26 @@ class BoxArea
 			$width = ' style="width: '.(100/$anz).'%;"';
 		
 		$box  = "<div class=\"box\" id=\"boxlinklist\"$width><h2>{$lng['linklist']}</h2>";
-		$box .= "<div class=\"boxcontent\"><ul>";
-		$result = $db->query('SELECT label, url FROM extlinks WHERE uid = ? OR public = 1 ORDER BY label ASC', 'i', $_SESSION['uid']);
-		$list = array();
+		$box .= "<div class=\"boxcontent\">";
 		
-		while($h = $db->fetch($result))
-      	$list[$db->out($h['label'])] = $db->out($h['url']);
+		
+		if(false === ($l = cache_get('extlinks')))
+		{
+			$result = $db->query('SELECT label, url FROM extlinks WHERE uid = ? OR public = 1 ORDER BY label ASC', 'i', $_SESSION['uid']);
+			$list = array();
+			
+			while($h = $db->fetch($result))
+				$list[$db->out($h['label'])] = $db->out($h['url']);
 
-		$l = '';
-		foreach($list as $label => $url)
-      	$l .= "<li><a href=\"$url\" title=\"$label\">$label</a></li>";
-		
-		$box .= $l.'</ul></div></div>';
+			$l = '<ul>';
+			foreach($list as $label => $url)
+				$l .= "<li><a href=\"$url\" title=\"$label\">$label</a></li>";
+			$l .= '</ul>';
+
+			cache_put('extlinks', $l, $_SESSION['uid'], time() + (60*60*24*7));
+		}
+
+		$box .= $l.'</div></div>';
 
    	return $box;
 	}

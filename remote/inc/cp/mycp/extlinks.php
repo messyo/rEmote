@@ -6,7 +6,7 @@ if(!defined('IN_MYCP'))
 $lid = 'new';
 $url = $checked = $label = $checked = '';
 $public = false;
-
+$changed = false;
 
 $all = false;
 $urlext = '';
@@ -23,6 +23,7 @@ if(isset($_GET['delete']) && is_numeric($_GET['delete']))
 		$db->query('DELETE FROM extlinks WHERE lid = ?', 'i', $_GET['delete']);
 	else
 		$db->query('DELETE FROM extlinks WHERE lid = ? AND uid = ?', 'ii', $_GET['delete'], $_SESSION['uid']);
+	$changed = true;
 }
 
 if(isset($_POST['save']))
@@ -55,7 +56,14 @@ if(isset($_POST['save']))
 		$out->addSuccess($lng['saved']);
 		$url = $checked = $label = $checked = '';
 		$public = false;
+		$changed = true;
 	}
+}
+
+
+if($changed)
+{
+	$db->query('DELETE FROM cache WHERE ckey = ?', 's', 'extlinks');
 }
 
 if($all)
