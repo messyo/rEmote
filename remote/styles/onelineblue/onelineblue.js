@@ -1,8 +1,23 @@
+function fade( obj, opacity )
+{
+	obj.style.opacity = opacity;
+	obj.style.filter  = "alpha(opacity="+parseInt(opacity*100)+")";
+}
+
+function keyDownFun(e)
+{
+	if(!e)
+		e = window.event;
+
+	if(e.keyCode == 27)
+		hideConfirm();
+}
 
 function showConfirm( link , action )
 {
 	var text;
 	var confadd = '&confirm=true';
+	var con, bgObj;
 	
 	if(action == "del")
 		text = lngdelconfirm;
@@ -19,24 +34,53 @@ function showConfirm( link , action )
 	}
 	else
 		con.style.display = "block";
+	
+	if(!(bgObj = document.getElementById('bgObj')))
+	{
+		bgObj = document.createElement('div');
+		bgObj.id = "bgObj";
+		bgObj.className = "framebox";
+		var body = document.getElementsByTagName('BODY');
+		body[0].insertBefore( bgObj, document.getElementById("main"));
+	}
+	else
+		bgObj.style.display = "block";
 
 	form  = '<input type="submit" value="' + lngyes + '" class="yes" onclick="location.href = \'' + link.href + confadd + '\';" />';
 	form += '<input type="submit" value="' + lngno  + '" class="no" onclick="hideConfirm();" />';
 	con.innerHTML = "<div><div><p>" + text + "</p><p id=\"confbuttons\">"+ form + "</p></div></div>";
-   
-	for(var count = 1; count <= 10; count += 1)
-   	setTimeout("con.style.backgroundImage = \"url(images/newblue/empty" + count + ".png)\";", count * 50);
+   con.style.zIndex = 999;
+   bgObj.style.zIndex = 998;
+   bgObj.style.backgroundColor = 'black';
+
+	var max = 0.7;
+
+	fade(bgObj, 0.0);
+	setTimeout(function(){ fade(bgObj, max/12 *  1); }, 1000/12 *  1);
+	setTimeout(function(){ fade(bgObj, max/12 *  2); }, 1000/12 *  2);
+	setTimeout(function(){ fade(bgObj, max/12 *  3); }, 1000/12 *  3);
+	setTimeout(function(){ fade(bgObj, max/12 *  4); }, 1000/12 *  4);
+	setTimeout(function(){ fade(bgObj, max/12 *  5); }, 1000/12 *  5);
+	setTimeout(function(){ fade(bgObj, max/12 *  6); }, 1000/12 *  6);
+	setTimeout(function(){ fade(bgObj, max/12 *  7); }, 1000/12 *  7);
+	setTimeout(function(){ fade(bgObj, max/12 *  8); }, 1000/12 *  8);
+	setTimeout(function(){ fade(bgObj, max/12 *  9); }, 1000/12 *  9);
+	setTimeout(function(){ fade(bgObj, max/12 * 10); }, 1000/12 * 10);
+	setTimeout(function(){ fade(bgObj, max/12 * 11); }, 1000/12 * 11);
+	setTimeout(function(){ fade(bgObj, max/12 * 12); }, 1000/12 * 12);
 
 	return false;
 }
 
 function hideConfirm()
 {
+	var con, bgObj;
+	
 	if(con = document.getElementById('confirm'))
-	{
-		con.style.backgroundImage = "none";
 		con.style.display = "none";
-	}
+	
+	if(bgObj = document.getElementById('bgObj'))
+		bgObj.style.display = "none";
 }
 
 function adaptWidth()
@@ -63,5 +107,6 @@ function adaptWidth()
 
 }
 
-window.addEventListener('load',   adaptWidth, false);
-window.addEventListener('resize', adaptWidth, false);
+window.addEventListener('load',     adaptWidth, false);
+window.addEventListener('resize',   adaptWidth, false);
+window.addEventListener('keypress', keyDownFun, false);
