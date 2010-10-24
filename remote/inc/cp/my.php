@@ -9,7 +9,8 @@ define('IN_MYCP', true);
 
 $sub_array = array(
 	'account',
-	'boxarea'
+	'boxarea',
+	'extlinks'
 );
 
 if(isset($_GET['sub']) && isset($sub_array[$_GET['sub']]))

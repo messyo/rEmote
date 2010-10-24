@@ -84,6 +84,7 @@ class BoxArea
 	const BOX_REFRESHSETTINGS  = 5;
 	const BOX_SERVERSTATS      = 6;
 	const BOX_SHOUTBOX         = 7;
+	const BOX_LINKLIST         = 8;
 
 	public function renderBoxSpeedstats($pos, $anz)
 	{
@@ -197,6 +198,31 @@ class BoxArea
 		
 		return $box;
 	}
+	
+	public function renderBoxLinklist($pos, $anz)
+	{
+		global $lng, $db;
+		
+		$width = '';
+		if(($pos == BOX_TOP) || ($pos == BOX_BOTTOM))
+			$width = ' style="width: '.(100/$anz).'%;"';
+		
+		$box  = "<div class=\"box\" id=\"boxlinklist\"$width><h2>{$lng['linklist']}</h2>";
+		$box .= "<div class=\"boxcontent\"><ul>";
+		$result = $db->query('SELECT label, url FROM extlinks WHERE uid = ? OR public = 1 ORDER BY label ASC', 'i', $_SESSION['uid']);
+		$list = array();
+		
+		while($h = $db->fetch($result))
+      	$list[$db->out($h['label'])] = $db->out($h['url']);
+
+		$l = '';
+		foreach($list as $label => $url)
+      	$l .= "<li><a href=\"$url\" title=\"$label\">$label</a></li>";
+		
+		$box .= $l.'</ul></div></div>';
+
+   	return $box;
+	}
 
 
 
@@ -231,6 +257,8 @@ class BoxArea
 				if(!$settings['shoutbox'])
 					return '';
             return $this->renderBoxShoutbox($pos, $anz);
+			case BoxArea::BOX_LINKLIST:
+				return $this->renderBoxLinklist($pos, $anz);
 		}
 	}
 

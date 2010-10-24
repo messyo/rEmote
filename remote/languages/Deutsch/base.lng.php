@@ -61,6 +61,7 @@ $lng['refoff']       = 'AUS';
 $lng['refwhole']     = 'ganze Seite';
 $lng['refall']       = 'Alle Werte';
 $lng['refsidebar']   = 'Sidebar';
+$lng['linklist']     = 'Link-Liste';
 
 // SHOUTBOX
 $lng['shoutbox']     = 'Shoutbox';

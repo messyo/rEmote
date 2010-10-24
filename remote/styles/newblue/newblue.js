@@ -25,7 +25,9 @@ function showConfirm( link , action )
 	con.innerHTML = "<div><div><p>" + text + "</p><p id=\"confbuttons\">"+ form + "</p></div></div>";
    
 	for(var count = 1; count <= 10; count += 1)
-   	setTimeout("con.style.backgroundImage = \"url(images/newblue/empty" + count + ".png)\";", count * 50);
+   	setTimeout(function(){
+				con.style.opacity = max
+			}, count * 50);
 
 	return false;
 }

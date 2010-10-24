@@ -131,8 +131,9 @@ $lng['usernameexi'] = 'Username already exists';
 
 // MYCP
 
-$lng['mycpaccount'] = 'Account';
-$lng['mycpboxarea'] = 'Positions';
+$lng['mycpaccount']  = 'Account';
+$lng['mycpboxarea']  = 'Contents';
+$lng['mycpextlinks'] = 'Link-list';
 
 // MYCP-ACCOUNT
 
@@ -174,6 +175,7 @@ $lng['boxfilter']   = 'Filter';
 $lng['boxrefresh']  = 'Refresh';
 $lng['boxserver']   = 'Serverinformation';
 $lng['boxshoutbox'] = 'Shoutbox';
+$lng['boxlinklist'] = 'Link-list';
 $lng['boxarea_-1']  = 'Not Visible';
 $lng['boxarea_0']   = 'Sidebar';
 $lng['boxarea_1']   = 'Above torrents';
@@ -181,5 +183,13 @@ $lng['boxarea_2']   = 'Below torrents';
 $lng['boxarea_3']   = 'Sidebar right';
 $lng['moveup']      = 'Hoch';
 $lng['movedown']    = 'Runter';
+
+// MYCP-LINKLIST
+
+$lng['label']       = 'Label';
+$lng['invalidurl']  = 'Invalid URL';
+$lng['invalidlab']  = 'Invalud Label';
+$lng['alllinks']    = 'Display all links';
+$lng['ownlinks']    = 'Display only my own links';
 
 ?>

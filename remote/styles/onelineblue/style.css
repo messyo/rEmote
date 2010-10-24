@@ -846,13 +846,13 @@ div#xmlrpcsignature li {
 	font-weight: normal;
 }
 
-#cookietable, #usertable, #sessiontable, #feedstable, #jobtable, #highlighttable, #sfvtable {
+#cookietable, #usertable, #sessiontable, #feedstable, #jobtable, #highlighttable, #sfvtable, #extlinktable {
 	border-collapse: collapse;
 	border: 1px solid black;
 	margin-top: 20px;
 }
 
-#cookietable td, #usertable td, #sessiontable td, #feedstable td, #jobtable td, #highlighttable td, #sfvtable td {
+#cookietable td, #usertable td, #sessiontable td, #feedstable td, #jobtable td, #highlighttable td, #sfvtable td, #extlinktable td {
 	padding: 4px;
 	border: 1px solid black;
 }

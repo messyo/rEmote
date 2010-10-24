@@ -13,7 +13,8 @@ $possible_boxes = array(
 	BoxArea::BOX_FILTER           => array('label' => 'boxfilter',   'visible' => true                                                              ),
 	BoxArea::BOX_REFRESHSETTINGS  => array('label' => 'boxrefresh',  'visible' => true                                                              ),
 	BoxArea::BOX_SERVERSTATS      => array('label' => 'boxserver',   'visible' => (($_SESSION['status'] > USER) || $settings['user_see_serverinfo'])),
-	BoxArea::BOX_SHOUTBOX         => array('label' => 'boxshoutbox', 'visible' => $settings['shoutbox']                                             )
+	BoxArea::BOX_SHOUTBOX         => array('label' => 'boxshoutbox', 'visible' => $settings['shoutbox']                                             ),
+	BoxArea::BOX_LINKLIST         => array('label' => 'boxlinklist', 'visible' => true                                                              )
 );
 
 

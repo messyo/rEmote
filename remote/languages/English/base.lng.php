@@ -65,6 +65,7 @@ $lng['refsidebar']   = 'Sidebar';
 // SHOUTBOX
 $lng['shoutbox']     = 'Shoutbox';
 $lng['shout']        = 'Schreiben';
+$lng['linklist']     = 'Link-List';
 
 // LOGIN
 
