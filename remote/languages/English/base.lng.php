@@ -61,6 +61,8 @@ $lng['refoff']       = 'OFF';
 $lng['refwhole']     = 'Whole page';
 $lng['refall']       = 'All stats';
 $lng['refsidebar']   = 'Sidebar';
+$lng['onlinelist']   = 'Who\'s online?';
+$lng['nobodyon']     = 'Exept for you, nobody is online';
 
 // SHOUTBOX
 $lng['shoutbox']     = 'Shoutbox';

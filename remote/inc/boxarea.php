@@ -85,6 +85,7 @@ class BoxArea
 	const BOX_SERVERSTATS      = 6;
 	const BOX_SHOUTBOX         = 7;
 	const BOX_LINKLIST         = 8;
+	const BOX_ONLINELIST       = 9;
 
 	public function renderBoxSpeedstats($pos, $anz)
 	{
@@ -231,8 +232,37 @@ class BoxArea
 
    	return $box;
 	}
+	
+	public function renderBoxOnlinelist($pos, $anz)
+	{
+		global $lng, $db, $settings;
+		
+		$width = '';
+		if(($pos == BOX_TOP) || ($pos == BOX_BOTTOM))
+			$width = ' style="width: '.(100/$anz).'%;"';
+		
+		$box  = "<div class=\"box\" id=\"boxonlinelist\"$width><h2>{$lng['onlinelist']}</h2>";
+		$box .= "<div class=\"boxcontent\">";
 
+		$result = $db->query('SELECT DISTINCT u.name FROM users u, sessions s WHERE u.uid = s.uid AND u.uid != ? AND s.time > ?',
+			'ii',
+			$_SESSION['uid'],
+			time() - $settings['display_as_online']);
 
+		if($db->num_rows($result))
+		{
+			$l = '<ul>';
+      	while($h = $db->fetch($result))
+				$l .= '<li>'.$db->out($h['name']).'</li>';
+			$l .= '</ul>';
+		}
+		else
+			$l = "<span class=\"hint\">{$lng['nobodyon']}</span>";
+
+		$box .= $l.'</div></div>';
+
+   	return $box;
+	}
 
 
 	public function renderBox($boxname, $pos, $anz)
@@ -265,8 +295,12 @@ class BoxArea
 				if(!$settings['shoutbox'])
 					return '';
             return $this->renderBoxShoutbox($pos, $anz);
+			
 			case BoxArea::BOX_LINKLIST:
 				return $this->renderBoxLinklist($pos, $anz);
+			
+			case BoxArea::BOX_ONLINELIST:
+				return $this->renderBoxOnlinelist($pos, $anz);
 		}
 	}
 

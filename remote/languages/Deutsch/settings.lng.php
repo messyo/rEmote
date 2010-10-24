@@ -48,6 +48,8 @@ $lng['shoutbox']             = 'Shoutbox an';
 $lng['allowtmp']             = 'User dürfen ins Temp-Verzeichnis schreiben';
 $lng['showbitfields']        = 'Zeige Bitfelder bei Torrents und Peers';
 
+$lng['display_as_online']    = 'Zeit in der ein User als online gezeigt wird';
+
 $lng['help_cookie_path']          = 'Pfad, auf den Cookies beschränkt werden (z.B. falls man mehrere Instanzen von rEmote parallel betreiben will). Diese Einstellung ist empfohlen aber nicht zwingend nötig.';
 $lng['help_default_lng']          = 'Standardsprache, falls keine Sprache gewählt wurde oder gewählte Sprache nicht geladen werden kann.';
 $lng['help_default_style']        = 'Standardstyle, falls kein Style gewählt wurde oder gewählter Style nicht geladen werden kann.';
@@ -87,5 +89,6 @@ $lng['help_disable_sem']          = 'Die Semaphore sperrt das hinzufügen von To
 $lng['help_shoutbox']             = 'Aktiviert die Shoutbox, diese muss auch noch jeder User in seinem MyCP aktivieren';
 $lng['help_allowtmp']             = 'Erlaubt das User auch ins Temporäre verzeichnis schreiben dürfen (kopieren/erstellen)';
 $lng['help_showbitfields']        = 'Zeigt in einer Grafik an, welche Anteile am Torrent bereits vorhanden sind, beziehungsweise welche Anteile bei Peers vorhanden sind. ACHTUNG:Funktioniert nicht ohne Patch an rTorrent (http://libtorrent.rakshasa.no/ticket/2053).';
+$lng['help_display_as_online']    = 'Während dieses Zeitraums, seit der letzten aktivität des Nutzers, wird dieser in der online-Liste als online angezeigt (in Sekunden)';
 
 ?>

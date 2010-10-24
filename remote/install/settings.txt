@@ -36,3 +36,4 @@
 ('shoutbox', 'Activate Shoutbox', 0, 'yn', '', '0', 0, '0')
 ('allowtmp', 'Users can write to tmp-dir', 4, 'yn', '', '1', 0, '1')
 ('showbitfields', 'Display Bitfields for Torrents and Peers', 0, 'yn', '', 0, 0, 0)
+('display_as_online', 'Time to display User as online', 3, 'int', '', '300', 0, '300')

@@ -1078,3 +1078,6 @@ a.addoption {
 	margin: 0;
 	padding: 0;
 }
+
+#boxonlinelist ul { margin: 0; padding-left: 24px; }
+#boxonlinelist ul li { list-style-type: none; list-style-image: url('../../images/onelineblue/useronline.png'); }

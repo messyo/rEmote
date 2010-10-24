@@ -7,14 +7,15 @@ require_once(TO_ROOT.'inc/boxarea.php');
 
 
 $possible_boxes = array(
-	BoxArea::BOX_SPEEDSTATS       => array('label' => 'boxspeed',    'visible' => true                                                              ),
-	BoxArea::BOX_DISKSTATS        => array('label' => 'boxdisk',     'visible' => true                                                              ),
-	BoxArea::BOX_BANDWITHSETTINGS => array('label' => 'boxbandwith', 'visible' => true                                                              ),
-	BoxArea::BOX_FILTER           => array('label' => 'boxfilter',   'visible' => true                                                              ),
-	BoxArea::BOX_REFRESHSETTINGS  => array('label' => 'boxrefresh',  'visible' => true                                                              ),
-	BoxArea::BOX_SERVERSTATS      => array('label' => 'boxserver',   'visible' => (($_SESSION['status'] > USER) || $settings['user_see_serverinfo'])),
-	BoxArea::BOX_SHOUTBOX         => array('label' => 'boxshoutbox', 'visible' => $settings['shoutbox']                                             ),
-	BoxArea::BOX_LINKLIST         => array('label' => 'boxlinklist', 'visible' => true                                                              )
+	BoxArea::BOX_SPEEDSTATS       => array('label' => 'boxspeed',      'visible' => true                                                              ),
+	BoxArea::BOX_DISKSTATS        => array('label' => 'boxdisk',       'visible' => true                                                              ),
+	BoxArea::BOX_BANDWITHSETTINGS => array('label' => 'boxbandwith',   'visible' => true                                                              ),
+	BoxArea::BOX_FILTER           => array('label' => 'boxfilter',     'visible' => true                                                              ),
+	BoxArea::BOX_REFRESHSETTINGS  => array('label' => 'boxrefresh',    'visible' => true                                                              ),
+	BoxArea::BOX_SERVERSTATS      => array('label' => 'boxserver',     'visible' => (($_SESSION['status'] > USER) || $settings['user_see_serverinfo'])),
+	BoxArea::BOX_SHOUTBOX         => array('label' => 'boxshoutbox',   'visible' => $settings['shoutbox']                                             ),
+	BoxArea::BOX_LINKLIST         => array('label' => 'boxlinklist',   'visible' => true                                                              ),
+	BoxArea::BOX_ONLINELIST       => array('label' => 'boxonlist',     'visible' => true                                                              )
 );
 
 

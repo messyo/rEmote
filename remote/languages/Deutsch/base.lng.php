@@ -62,6 +62,8 @@ $lng['refwhole']     = 'ganze Seite';
 $lng['refall']       = 'Alle Werte';
 $lng['refsidebar']   = 'Sidebar';
 $lng['linklist']     = 'Link-Liste';
+$lng['onlinelist']   = 'Wer ist online?';
+$lng['nobodyon']     = 'Außer dir ist keiner online';
 
 // SHOUTBOX
 $lng['shoutbox']     = 'Shoutbox';

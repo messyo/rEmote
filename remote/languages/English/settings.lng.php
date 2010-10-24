@@ -48,6 +48,8 @@ $lng['shoutbox']             = 'Use Shoutbox';
 $lng['allowtmp']             = 'Users can write to tmp-dir';
 $lng['showbitfields']        = 'Display Bitfields for Torrents and Peers';
 
+$lng['display_as_online']    = 'Time to display user as online';
+
 $lng['help_cookie_path']          = 'Path to restrict cookies (e.g. when you want multiple instances of rEmote). It\'s recommended, but in most cases not neccessary to set this.';
 $lng['help_default_lng']          = 'Default language when no language has been chosen or chosen language can not be loaded.';
 $lng['help_default_style']        = 'Default style when no style has been chosen or chosen style can not be loaded.';
@@ -86,5 +88,6 @@ $lng['help_disable_sem']          = 'A Semaphore locks prohibits adding Torrents
 $lng['help_shoutbox']             = 'Activates Shoutbox. Has to get activated by every User who wants to use it in his/her MyCP';
 $lng['help_allowtmp']             = 'Alows Users to write (copy/create) to Temporary dir';
 $lng['help_showbitfields']        = 'Displays a graphic which shows, what parts of the torrent are already loaded, or are available at the torrents peers. CAUTION: Will not work without Patch in rTorrent (http://libtorrent.rakshasa.no/ticket/2053).';
+$lng['help_display_as_online']    = 'During this time, after the users last activity, he is still displayed online in online-list (in seconds)';
 
 ?>

@@ -176,6 +176,7 @@ $lng['boxrefresh']  = 'Aktualisierung';
 $lng['boxserver']   = 'Serverinformationen';
 $lng['boxshoutbox'] = 'Shoutbox';
 $lng['boxlinklist'] = 'Link-Liste';
+$lng['boxonlist']   = 'Wer ist online';
 $lng['boxarea_-1']  = 'Ausgeblendet';
 $lng['boxarea_0']   = 'Sidebar';
 $lng['boxarea_1']   = 'Über den Torrents';
