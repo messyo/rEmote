@@ -287,7 +287,7 @@ class BoxArea
             return $this->renderBoxRefreshsettings($pos, $anz);
 
 			case BoxArea::BOX_SERVERSTATS:
-				if(($_SESSION['status'] <= USER) || !$settings['user_see_serverinfo'])
+				if(($_SESSION['status'] <= USER) && !$settings['user_see_serverinfo'])
 					return '';
             return $this->renderBoxServerstats($pos, $anz);
 
