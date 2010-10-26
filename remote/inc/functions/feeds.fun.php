@@ -102,18 +102,26 @@ function fetchRss($url, $id, $download, $ddir = '')
 
 						if($func & 2)
 						{
+							echo "In FNK2";
 							if($ddir == '')
 								$ddir = $_SESSION['dir'];
 
 							$durl = false;
 
 							if($download)
+							{
+								echo __LINE__."\n";
 								$durl = $items[$c]['link']['value'];
-							else if($items[$c]['enclosure']['attributes']['type'] == 'application/x-bittorrent')
-								$durl = $items[$c]['enclosure']['attributes']['url'];
+							}
+							else if(isset($items[$c]['enclosure']['attributes']['type']) && ($items[$c]['enclosure']['attributes']['type'] == 'application/x-bittorrent'))
+							{	$durl = $items[$c]['enclosure']['attributes']['url'];
 
+								echo __LINE__."\n";
+							
+							}
 							if($durl !== false)
 							{
+								echo "trieing to get Torrent\n";
 								set_directory($ddir);
 								get_torrent($durl, false, true);
 							}

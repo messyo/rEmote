@@ -177,12 +177,12 @@ class Render
 		$precachestring .= '</div>';
 
 		/* Generate Javascript-Variables */
-		$jsinfostring = '<script type="text/javascript">';
+		$jsinfostring = '<script type="text/javascript">/*<![CDATA[*/';
 		foreach($this->jslang as $val)
 			$jsinfostring .= "\n\tvar lng$val = '{$lng[$val]}';";
 		foreach($this->jsinfos as $key => $val)
 			$jsinfostring .= "\n\tvar $key = $val;";
-		$jsinfostring .= "\n</script>\n";
+		$jsinfostring .= "\n/*]]>*/</script>\n";
 
 		/* Generate Javascript-Files */
 		$javascriptsstring = "\n";

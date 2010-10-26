@@ -41,10 +41,13 @@ require_once($to_root.'inc/sql/'.$sql['type'].'.php');
 require_once($to_root.'inc/functions/base.fun.php');
 require_once($to_root.'inc/functions/torrents.fun.php');
 require_once($to_root.'inc/functions/add.fun.php');
+require_once($to_root.'inc/defines/feeds.php');
 require_once($to_root.'inc/functions/feeds.fun.php');
 
 $out = new smallRender();
 $db  = new Database($sql);
+
+logger(LOGDEBUG, 'process_feeds called', __FILE__, __LINE__);
 
 /*
  * Try to get settings out of cache.
@@ -56,15 +59,25 @@ if(!($settings = simple_cache_get('settings')))
 	$settings = get_and_rebuild_settings();
 }
 
+$result = $db->query('SELECT uid, dir FROM users');
+$userDirs = array();
+while($h = $db->fetch($result))
+	$userDirs[$h['uid']] = stripslashes($h['dir']);
+
+
 $result = $db->query('SELECT f.fid, f.url, f.interval, f.directory, f.uid, f.download, h.function FROM feeds f, highlightrules h WHERE f.uid = h.uid AND (h.fid = 0 OR h.fid = f.fid) AND h.function > 1');
 while($h = $db->fetch($result))
 {
 	$id = $h['fid'];
+	$_SESSION['uid'] = $h['uid'];
+   $_SESSION['dir'] = $userDirs[$h['uid']];
+
 	if(!cache_get("feed$id"))
 	{
-		if($items = fetchRss($h['url'], $id, ord($h['download']), $h['directory']))
+		if($items = fetchRss($h['url'], $id, $h['download'], $h['directory']))
 			cache_put("feed$id", $items, $h['uid'], time() + $h['interval']);
 	}
 }
+
 
 ?>
