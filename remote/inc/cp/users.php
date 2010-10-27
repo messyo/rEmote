@@ -328,7 +328,7 @@ if($db->num_rows($result))
 	while($h = $db->fetch($result))
 	{
 		$time = date("d.m.Y H:i:s", $h['time']);
-		if($h['permanent'])
+		if(!$h['permanent'])
 			$expires = date("d.m.Y H:i:s", $h['time'] + $settings['session_lifetime']);
 		else
 			$expires = $lng['never'];

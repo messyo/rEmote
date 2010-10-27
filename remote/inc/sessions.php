@@ -33,7 +33,7 @@ class SessionHandler
 
 	static function write($id, $data)
 	{
-		global $db, $settings, $permanent;
+		global $db, $settings;
 
 		if(SessionHandler::$sessionexisted)
 		{
@@ -48,11 +48,10 @@ class SessionHandler
 										$id);
 		}
 		else
-			$res = $db->query('INSERT INTO sessions (sid, data, time, permanent) VALUES (?, ?, ?, ?)', 'ssii',
+			$res = $db->query('INSERT INTO sessions (sid, data, time) VALUES (?, ?, ?)', 'ssi',
 									$id,
 									$data,
-									time(),
-									intval($permanent));
+									time());
 
 		return($db->affected_rows($res));
 	}

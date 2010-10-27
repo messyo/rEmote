@@ -99,7 +99,13 @@ if(isset($_POST['login']))
 
 		// Insert User-Id into Sessions-Table
 		session_write_close();
-		$db->query('UPDATE sessions SET uid = ? WHERE sid = ?', 'is', $_SESSION['uid'], session_id());
+		$db->query('UPDATE sessions SET uid = ?, permanent = ? WHERE sid = ?',
+			'iis',
+			$_SESSION['uid'],
+			$permanent,
+			session_id()
+		);
+
 		logger(LOGDEBUG, "User {$_SESSION['uid']} has logged in.", __FILE__, __LINE__);
 		$out->redirect($url);
 	}
