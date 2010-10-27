@@ -43,9 +43,11 @@ require_once($to_root.'inc/functions/torrents.fun.php');
 require_once($to_root.'inc/functions/add.fun.php');
 require_once($to_root.'inc/defines/feeds.php');
 require_once($to_root.'inc/functions/feeds.fun.php');
+require_once($to_root.'inc/rpc.php');
 
 $out = new smallRender();
 $db  = new Database($sql);
+$rpc = new RpcHandler($rpc_connect); 
 
 logger(LOGDEBUG, 'process_feeds called', __FILE__, __LINE__);
 
