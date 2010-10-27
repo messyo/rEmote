@@ -25,7 +25,7 @@ class SessionHandler
 		if($result && ($data = $db->fetch($result)))
 		{
 			SessionHandler::$sessionexisted = true;
-			if(($data['time'] > (time() - $settings['session_lifetime'])) || ord($data['permanent']))
+			if(($data['time'] > (time() - $settings['session_lifetime'])) || intval($data['permanent']))
 				return($data['data']);
 		}
 		return '';

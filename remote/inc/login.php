@@ -37,8 +37,8 @@ if(isset($_POST['login']))
 		$_SESSION['status']       = intval($uinfo['status']);
 		$_SESSION['dir']          = $uinfo['dir'];
 		$_SESSION['rootdir']      = $uinfo['rootdir'];
-		$_SESSION['viewchange']   = ord($uinfo['viewchange']);
-		$_SESSION['refchange']    = ord($uinfo['refchange']);
+		$_SESSION['viewchange']   = intval($uinfo['viewchange']);
+		$_SESSION['refchange']    = intval($uinfo['refchange']);
 		$_SESSION['sortord']      = $uinfo['sortord'];
 		$_SESSION['viewmode']     = intval($uinfo['viewmode']);
 		$_SESSION['groupmode']    = intval($uinfo['groupmode']);
@@ -47,8 +47,8 @@ if(isset($_POST['login']))
 		$_SESSION['refinterval']  = intval($uinfo['refinterval']);
 		$_SESSION['refmode']      = intval($uinfo['refmode']);
 		$_SESSION['detailsstyle'] = intval($uinfo['detailsstyle']);
-		$_SESSION['hostnames']    = ord($uinfo['hostnames']);
-		$_SESSION['bitfields']    = ord($uinfo['bitfields']);
+		$_SESSION['hostnames']    = intval($uinfo['hostnames']);
+		$_SESSION['bitfields']    = intval($uinfo['bitfields']);
 		$_SESSION['lng']          = $uinfo['language'];
 		$_SESSION['style']        = $uinfo['design'];
 		$_SESSION['detailsmode']  = intval($uinfo['detailsmode']);

@@ -33,8 +33,8 @@ while($h = $db->fetch($result))
 if(isset($_REQUEST['feedid']) && ($_REQUEST['feedid'] >= 0) && isset($feedarr[$_REQUEST['feedid']]))
 {
 	$feedid    = $_REQUEST['feedid'];
-	$download  = ord($feedarr[$feedid]['download']);
-	$allowhtml = ord($feedarr[$feedid]['allowhtml']);
+	$download  = intval($feedarr[$feedid]['download']);
+	$allowhtml = intval($feedarr[$feedid]['allowhtml']);
 }
 else
 	$feedid = 0;

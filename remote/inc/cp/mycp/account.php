@@ -9,8 +9,8 @@ function loadOptions()
 	global $db;
 
 	$uinfo = $db->fetch($db->query('SELECT viewchange, sortord, refchange, viewmode, groupmode, sourcemode, sortkey, refinterval, refmode, detailsstyle, hostnames, bitfields, language, design, detailsmode FROM users WHERE uid = ?', 'i', $_SESSION['uid']));
-	$opt['viewchange']   = ord($uinfo['viewchange']);
-	$opt['refchange']    = ord($uinfo['refchange']);
+	$opt['viewchange']   = intval($uinfo['viewchange']);
+	$opt['refchange']    = intval($uinfo['refchange']);
 	$opt['sortord']      = $uinfo['sortord'];
 	$opt['viewmode']     = intval($uinfo['viewmode']);
 	$opt['groupmode']    = intval($uinfo['groupmode']);
@@ -19,8 +19,8 @@ function loadOptions()
 	$opt['refinterval']  = intval($uinfo['refinterval']);
 	$opt['refmode']      = intval($uinfo['refmode']);
 	$opt['detailsstyle'] = intval($uinfo['detailsstyle']);
-	$opt['hostnames']    = ord($uinfo['hostnames']);
-	$opt['bitfields']    = ord($uinfo['bitfields']);
+	$opt['hostnames']    = intval($uinfo['hostnames']);
+	$opt['bitfields']    = intval($uinfo['bitfields']);
 	$opt['lng']          = $uinfo['language'];
 	$opt['style']        = $uinfo['design'];
 	$opt['detailsmode']  = intval($uinfo['detailsmode']);

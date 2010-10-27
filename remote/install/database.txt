@@ -17,8 +17,8 @@ uid|int(11)|
 name|varchar(255)|
 url|varchar(255)|
 interval|int(11)|
-download|bit(1)|
-allowhtml|bit(1)|
+download|tinyint(1)|
+allowhtml|tinyint(1)|
 directory|varchar(255)|
 
 [highlightrules]
@@ -28,7 +28,7 @@ uid|int(11)|
 name|varchar(255)|
 expression|varchar(255)|
 fields|tinyint(4)|
-regex|bit(1)|
+regex|tinyint(1)|
 function|tinyint(4)|
 
 [jobs]
@@ -53,7 +53,7 @@ message|varchar(1023)|
 sid|varchar(32)|PK
 uid|int(11)|
 time|int(16)|
-permanent|bit(1)|
+permanent|tinyint(1)|
 data|text|
 
 [settings]
@@ -78,9 +78,9 @@ salt|varchar(10)|
 status|tinyint(4)|
 rootdir|varchar(255)|
 dir|varchar(255)|
-viewchange|bit(1)|
+viewchange|tinyint(1)|
 sortord|varchar(4)|
-refchange|bit(1)|
+refchange|tinyint(1)|
 viewmode|tinyint(4)|
 groupmode|tinyint(4)|
 sourcemode|tinyint(4)|
@@ -90,8 +90,8 @@ refmode|tinyint(4)|
 detailsstyle|tinyint(4)|
 language|varchar(16)|
 design|varchar(16)|
-hostnames|bit(1)|
-bitfields|bit(1)|
+hostnames|tinyint(1)|
+bitfields|tinyint(1)|
 detailsmode|int(4)|
 
 [shouts]
@@ -110,6 +110,6 @@ position|int(3)|
 [extlinks]
 lid|int(11)|AI,PK
 uid|int(11)|
-public|bit(1)|
+public|tinyint(1)|
 label|varchar(255)|
 url|varchar(255)|

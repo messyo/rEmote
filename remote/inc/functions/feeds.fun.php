@@ -10,7 +10,7 @@ function read_highlights($id)
 		while($h = $db->fetch($result))
 		{
 			$expr = $h['expression'];
-			$regx = ord($h['regex']);
+			$regx = intval($h['regex']);
 			if($regx)
 				$expr = str_replace('/', '\/', $expr);
 
@@ -177,7 +177,7 @@ function getItems($id)
 	{
 		if($h = $db->fetch($db->query('SELECT url, `interval`, directory, download FROM feeds WHERE fid = ? AND uid = ?', 'ii', $id, $_SESSION['uid'])))
 		{
-			if($items = fetchRss($h['url'], $id, ord($h['download']), $h['directory']))
+			if($items = fetchRss($h['url'], $id, intval($h['download']), $h['directory']))
 				cache_put("feed$id", $items, $_SESSION['uid'], time() + $h['interval']);
 		}
 		else

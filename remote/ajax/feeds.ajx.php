@@ -23,7 +23,7 @@ $feedid = $_GET['feedid'];
 if(false === ($allowhtml = $db->one_result($db->query("SELECT allowhtml FROM feeds WHERE fid = $feedid"), 'allowhtml')))
 	exit("ERROR: Could not access Feed");
 
-$allowhtml = ord($allowhtml);
+$allowhtml = intval($allowhtml);
 
 if(!($items = getItems($feedid)))
 	exit("ERROR: {$lng['couldntread']}");

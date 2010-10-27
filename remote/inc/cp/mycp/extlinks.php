@@ -78,7 +78,7 @@ $table .= "<td>{$lng['label']}</td><td>{$lng['url']}</td><td>{$lng['public']}</t
 while($h = $db->fetch($result))
 {
 	$elid    = intval($h['lid']);
-	$epublic = ord($h['public']);
+	$epublic = intval($h['public']);
 	$elabel  = $db->out($h['label']);
 	$eurl    = $db->out($h['url']);
 	

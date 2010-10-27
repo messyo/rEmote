@@ -106,8 +106,9 @@ if($success)
 				$name = $h["Tables_in_{$sql['database']}"];
 				$t[$name] = array();
 				$res2 = $db->query("SHOW COLUMNS FROM $name");
+				
 				while($i = $db->fetch($res2))
-					$t[$name][] = $i['Field'];
+					$t[$name][$i['Field']] = $i['Type'];
 
 			}
 			$tl = explode('[', $tables);
@@ -132,10 +133,19 @@ if($success)
 								echo "=====  $p  =====<br />\n";
 							list($nm, $tp, $ar) = $tmparr;
 
-							if(!in_array($nm, $t[$name]))
+							if(!isset($t[$name][$nm]))
 							{
-								$details .= "<br />Trying to Alter $name to add $nm<br>\n";
+								$details .= "<br />Trying to Alter <b>$name</b> to add field <b>$nm</b><br>\n";
 								$db->query("ALTER TABLE $name ADD $nm $tp NOT NULL");
+							}
+							else
+							{
+                     	if($tp != $t[$name][$nm])
+								{
+									// Table Column has differen type
+									$details .= "<br>Trying to Alter <b>$name</b> to change field <b>$nm</b> from <i>{$t[$name][$nm]}</i> to <i>$tp</i>\n";
+									$db->query("ALTER TABLE $name CHANGE $nm $nm $tp");
+								}
 							}
 						}
 					}

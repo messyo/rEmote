@@ -211,15 +211,15 @@ else if($edit)
 			$v_expr  = $db->out($h['expression']);
 			$v_sin   = $h['fields'];
 			$v_func  = $h['function'];
-			$v_regex = ord($h['regex']);
+			$v_regex = intval($h['regex']);
 		}
 		else
 		{
 			$v_url  = $db->out($h['url']);
 			$v_dir  = $db->out($h['directory']);
 			$v_int  = intval($h['interval'])/60;
-			$v_down = ord($h['download']);
-			$v_html = ord($h['allowhtml']);
+			$v_down = intval($h['download']);
+			$v_html = intval($h['allowhtml']);
 		}
 	}
 	else
@@ -303,11 +303,11 @@ while($h = $db->fetch($result))
 
 	$row .= "<td>$url</td>";
 	$row .= "<td>$dir</td><td>".($h['interval']/60).'&nbsp;'.$lng['minutes'].'</td>';
-	if(ord($h['download']))
+	if(intval($h['download']))
 		$img1 = "<img src=\"{$imagedir}yes.png\" alt=\"yes\" />";
 	else
 		$img1 = "<img src=\"{$imagedir}no.png\" alt=\"no\" />";
-	if(ord($h['allowhtml']))
+	if(intval($h['allowhtml']))
 		$img2 = "<img src=\"{$imagedir}yes.png\" alt=\"yes\" />";
 	else
 		$img2 = "<img src=\"{$imagedir}no.png\" alt=\"no\" />";
@@ -332,7 +332,7 @@ if($db->num_rows($result))
 		$expression = htmlspecialchars($h['expression'], ENT_QUOTES);
 		$title      = (intval($h['fields']) & FEEDTITLE) ?  "<img src=\"{$imagedir}yes.png\" alt=\"yes\" />" : "<img src=\"{$imagedir}no.png\" alt=\"no\" />";
 		$descr      = (intval($h['fields']) & FEEDDESCR) ?  "<img src=\"{$imagedir}yes.png\" alt=\"yes\" />" : "<img src=\"{$imagedir}no.png\" alt=\"no\" />";
-		$regex      = ord($h['regex']) ? "<img src=\"{$imagedir}yes.png\" alt=\"yes\" />" : "<img src=\"{$imagedir}no.png\" alt=\"no\" />";
+		$regex      = intval($h['regex']) ? "<img src=\"{$imagedir}yes.png\" alt=\"yes\" />" : "<img src=\"{$imagedir}no.png\" alt=\"no\" />";
 		$highlight  = (intval($h['function']) & FEEDHIGHLIGHT) ?  "<img src=\"{$imagedir}yes.png\" alt=\"yes\" />" : "<img src=\"{$imagedir}no.png\" alt=\"no\" />";
 		$download   = (intval($h['function']) & FEEDDOWNLOAD ) ?  "<img src=\"{$imagedir}yes.png\" alt=\"yes\" />" : "<img src=\"{$imagedir}no.png\" alt=\"no\" />";
 

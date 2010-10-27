@@ -74,7 +74,7 @@ while($h = $db->fetch($result))
 
 	if(!cache_get("feed$id"))
 	{
-		if($items = fetchRss($h['url'], $id, $h['download'], $h['directory']))
+		if($items = fetchRss($h['url'], $id, intval($h['download']), $h['directory']))
 			cache_put("feed$id", $items, $h['uid'], time() + $h['interval']);
 	}
 }
