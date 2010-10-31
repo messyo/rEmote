@@ -365,7 +365,10 @@ if(isset($_GET['action']) && isset($actionsarr[$_GET['action']]))
 					}
 
 					if($v_add)
+					{
+						add_libtorrent_resume_data($file);
 						add_single_torrent($file, 'load', false, false);
+					}
 
 					if(!$v_save && !$v_down)
 						unlink($file);

@@ -80,7 +80,7 @@ function add_torrent($file, $action, $public, $delete = true)
 	return('');
 }
 
-function get_torrent($url, $public, $start = false)
+function get_torrent($url, $public, $start = false, $add_resume_data = false)
 {
 	global $settings, $lng;
 
@@ -113,7 +113,11 @@ function get_torrent($url, $public, $start = false)
 
 	shell_exec($command);
 	if(is_file($settings['tmpdir'].$filename))
+	{
+		if($add_resume_data)
+			add_libtorrent_resume_data($settings['tmpdir'].$filename);
 		return(add_torrent($settings['tmpdir'].$filename, $action, $public));
+	}
 	else
 	{
 		logger(LOGERROR, "File '$filename' could not be downloaded", __FILE__, __LINE__);

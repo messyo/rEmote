@@ -20,6 +20,11 @@ if(isset($_POST['add']))
 		$start = true;
 	else
 		$start = false;
+	
+	if(isset($_POST['add_resume_data']) && $_POST['add_resume_data'] == "true")
+		$add_resume_data = true;
+	else
+		$add_resume_data = false;
 
 	logger(LOGDEBUG, 'POST-Parameter "add" is given (start is '.intval($start).')', __FILE__, __LINE__);
 
@@ -66,7 +71,7 @@ if(isset($_POST['add']))
 		{
 			if($_POST["addbyurl$x"] != '')
 			{
-				if(($err = get_torrent($_POST["addbyurl$x"], $public, $start)) != '')
+				if(($err = get_torrent($_POST["addbyurl$x"], $public, $start, $add_resume_data)) != '')
 					$invalid[] = "{$_POST["addbyurl$x"]} - $err";
 				else
 					$added_anything = true;
@@ -78,7 +83,10 @@ if(isset($_POST['add']))
 		{
 			if($_FILES["addbyfile$x"]['size'])
 			{
-				logger(LOGDEBUG, 'Uploaded file (number '.$x.')', __FILE__, __LINE__);
+				logger(LOGDEBUG, 'Uploaded file (number '.$x.'), libtorrent resume-data is '.intval($add_resume_data), __FILE__, __LINE__);
+
+				if($add_resume_data)
+            	add_libtorrent_resume_data($_FILES["addbyfile$x"]['tmp_name']);
 
 				if(($err = add_file($_FILES["addbyfile$x"]['tmp_name'], $_FILES["addbyfile$x"]['name'], $public, $start)) != '')
 					$invalid[] = "{$_FILES["addbyfile$x"]['name']} - $err";
@@ -146,6 +154,7 @@ else
 
 $addbox    = "<fieldset class=\"box\"><legend>{$lng['add']}</legend>";
 $addbox   .= "<div id=\"addadd\"><input type=\"checkbox\" name=\"start\" value=\"true\" id=\"startbox\"$checked /><label for=\"startbox\">&nbsp;{$lng['addstart']}</label>";
+$addbox   .= "<input type=\"checkbox\" name=\"add_resume_data\"  value=\"true\" id=\"addresumebox\"  /><label for=\"addresumebox\">&nbsp;{$lng['addresumedat']}</label>";
 $addbox   .= "<input type=\"checkbox\" name=\"more\"  value=\"true\" id=\"morebox\"  /><label for=\"morebox\">&nbsp;{$lng['addmore']}</label>";
 if($settings['real_multiuser'])
 	$addbox   .= "<input type=\"checkbox\" name=\"public\"  value=\"true\" id=\"publicbox\"  /><label for=\"publicbox\">&nbsp;{$lng['addpublic']}</label>";

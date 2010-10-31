@@ -103,6 +103,7 @@ $lng['tornotfound']  = 'Torrent-Datei wurde nicht gefunden';
 $lng['notadded']     = 'Torrent konnte nicht hinzugefügt werden';
 $lng['tadded']       = 'Torrent wurde hinzugefügt';
 $lng['torrent2big']  = 'Die Torrentdatei ist zu groß';
+$lng['addresumedat'] = 'Vermeide Hash-Check';
 
 // TORRENT
 
