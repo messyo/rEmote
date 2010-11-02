@@ -1,0 +1,41 @@
+#!/bin/sh
+
+#####
+
+
+
+
+
+PIDFILE=/var/run/rtorrent.pid
+BINARY=/usr/local/bin/rtorrent
+USER=matze
+
+
+test -x $DAEMON || exit 0
+
+case "$1" in
+	start)
+		start-stop-daemon --start --quiet --background --user $USER --pidfile $PIDFILE --startas $DAEMON
+		;;
+	stop)
+		start-stop-daemon --stop --quiet --pidfile $PIDFILE --oknodo --startas $DAEMON
+		rm -f $PIDFILE
+		;;
+	restart)
+		$0 stop
+		sleep 3
+		$0 start
+		;;
+	force-reload)
+		if start-stop-daemon --stop --test --quiet --pidfile $PIDFILE --startas $DAEMON ; then
+			$0 restart
+		fi
+		;;
+	*)
+		echo "Usage: /etc/init.d/rtorrent {start|stop|restart|force-reload}"
+		exit 1
+	;;
+esac
+
+exit 0
+
