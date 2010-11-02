@@ -1,4 +1,14 @@
 #!/bin/sh
+### BEGIN INIT INFO
+# Provides: rtorrent
+# Required-Start:
+# Required-Stop:
+# Default-Start: 3 4 5
+# Default-Stop: 0 1 2 6
+# Short-Description: Startet rtorrent beim Systemstart.
+# Description: Startet rtorrent beim Systemstart.
+### END INIT INFO
+
 #############
 ###<Notes>###
 #############
