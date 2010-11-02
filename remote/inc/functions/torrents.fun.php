@@ -69,7 +69,7 @@ function get_files(&$str)
 	}
 	$infostart = $start;
 
-	if(false === ($start = strpos($file, '5:filesl', $start) + 7))
+	if(false === ($start = strpos($file, '5:filesl', $start)))
 	{
 		// SingleFile Torrent
 		if(false === preg_match('#6:lengthi([0-9]+)e#', $file, $matches))
@@ -84,7 +84,7 @@ function get_files(&$str)
 			logger(LOGERROR, 'Could not generate libtorrent resume-data as torrent could not be parsed', __FILE__, __LINE__);
 			return false;
 		}
-		$region = substr($file, $infostart, 10);
+		$region = substr($file, $start + 6, 10);
 		
 		if(false === preg_match('#([0-9]+)[^0-9]*#', $region, $matches))
 		{
@@ -97,6 +97,7 @@ function get_files(&$str)
 
 		return array(array('length' => $len, 'path' => array($name)));
 	}
+	$start += 7;
 
 	if(false === ($end = getEndOfList($start, $file)))
 	{
@@ -140,12 +141,35 @@ function get_files(&$str)
 		return false;
 }
 
-function generate_resume_data(&$str)
+function generate_resume_data(&$str, $dir = null)
 {
 	$files = get_files($str);
 	$filestr = '5:filesl';
 	$total_len = 0;
-	$dir = $_SESSION['dir'];
+	if(empty($dir))
+		$dir  = $_SESSION['dir'];
+	
+	if(false !== strpos($str, '5:filesl'))
+	{
+		if(false === ($start = strpos($str, '4:name')))
+		{
+			logger(LOGERROR, 'Could not generate libtorrent resume-data as torrent could not be parsed', __FILE__, __LINE__);
+			return false;
+		}
+		$region = substr($str, $start + 6, 10);
+		logger(LOGDEBUG, "Region is $region", __FILE__, __LINE__);
+		
+		if(false === preg_match('#([0-9]+)[^0-9]*#', $region, $matches))
+		{
+			logger(LOGERROR, 'Could not generate libtorrent resume-data as torrent could not be parsed', __FILE__, __LINE__);
+			return false;
+		}
+		$strlen = intval($matches[1]);
+		$start = strpos($str, ':', $start + 5) + 1;
+		$name = substr($str, $start, $strlen);
+		logger(LOGDEBUG, "Name is $name", __FILE__, __LINE__);
+		$dir .= "/$name/";
+	}
 
 	if(!preg_match("#12:piece lengthi([0-9]+)e#", $str, $matches))
 	{
@@ -159,22 +183,24 @@ function generate_resume_data(&$str)
 		$filestr .= 'd8:priorityi1e5:mtimei';
 		$total_len += $f['length'];
 		$path = implode('/', $f['path']);
-		if(!is_file("$dir/$path") || !is_readable("$dir/$path"))
+		if(!is_file("$dir$path") || !is_readable("$dir$path"))
 		{
 			logger(LOGERROR, 'Could not generate libtorrent resume-data as required File was not found', __FILE__, __LINE__);
 			return false;
 		}	
-		$filestr .= filemtime("$dir/$path").'ee'; // ee = End for INteger and end for dictionary...
+		$filestr .= filemtime("$dir$path").'ee'; // ee = End for INteger and end for dictionary...
 	}	
 	$filestr .= 'e';
 
 	$chunks = ceil($total_len/$chunk_len);
 	$resume = "17:libtorrent_resumed{$filestr}8:bitfieldi{$chunks}ee";
 
+   logger(LOGDEBUG, 'Resume data was generated', __FILE__, __LINE__);
+
 	return $resume;
 }
 
-function add_libtorrent_resume_data($path)
+function add_libtorrent_resume_data($path, $dir = null)
 {
 	if(!is_file($path) || !is_readable($path) || !is_writable($path))
 	{
@@ -183,7 +209,7 @@ function add_libtorrent_resume_data($path)
 	}
 
 	$str = file_get_contents($path);
-	if(false === ($resume = generate_resume_data($str)))
+	if(false === ($resume = generate_resume_data($str, $dir)))
 		return false;
 
 	$torrent = substr($str, 0, -1);
