@@ -15,11 +15,13 @@ test -x $DAEMON || exit 0
 
 case "$1" in
 	start)
-		start-stop-daemon --start --quiet --background --user $USER --pidfile $PIDFILE --startas $DAEMON
+		start-stop-daemon --start --quiet --background --chuid $USER --user $USER -d /home/$USER --startas $DAEMON
+		# läuft, aber noch nicht optimiert.
 		;;
 	stop)
-		start-stop-daemon --stop --quiet --pidfile $PIDFILE --oknodo --startas $DAEMON
-		rm -f $PIDFILE
+		start-stop-daemon --stop --quiet --user $USER --oknodo --startas $DAEMON
+		# läuft, aber ohne pid-file
+		#rm -f $PIDFILE
 		;;
 	restart)
 		$0 stop
