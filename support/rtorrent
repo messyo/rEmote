@@ -1,10 +1,16 @@
-#!/bin/sh
+#! /bin/sh
+### BEGIN INIT INFO
+# Provides: Startet rtorrent.
+# Required-Start:    
+# Required-Stop:     
+# Default-Start:     3 4 5
+# Default-Stop:      0 1 2 6
+# Short-Description: Kurze Beschreibung
+# Description:       Längere Bechreibung
+### END INIT INFO
+# Author: Name <email@domain.tld>
 
-#####
-
-
-
-
+# Aktionen
 
 PIDFILE=/var/run/rtorrent.pid
 BINARY=/usr/local/bin/rtorrent
