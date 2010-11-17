@@ -66,9 +66,8 @@ else
 $output .= ", '$shoutboxcontent'";
 
 
-if($_SESSION['status'] >= 2)
+if(($_SESSION['status'] >= 2) && ($l = fopen('/proc/loadavg', 'r')))
 {
-	$l = fopen('/proc/loadavg', 'r');
 	$loads = explode(' ', fgets($l));
 	fclose($l);
 	$perc = $loads[0] > 1 ? 100 : ($loads[0]*100);

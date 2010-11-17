@@ -172,11 +172,17 @@ class BoxArea
 
 		$box    = "<div class=\"box\" id=\"boxserver\"><h2>{$lng['serverinfo']}</h2>";
 		$box   .= "<div class=\"boxcontent\">rEmote: {$global['versions']['remote']}<br />rtorrent: {$global['versions']['rtorrent']}<br />libtorrent: {$global['versions']['libtorrent']}<hr />";
-		$l = fopen('/proc/loadavg', 'r');
-		$loads = explode(' ', fgets($l));
-		fclose($l);
-		$perc = $loads[0] > 1 ? 100 : ($loads[0]*100);
-		$box .= "<div id=\"boxload\"><div>{$lng['load']}: {$loads[0]} {$loads[1]} {$loads[2]}</div>".progressbar($perc, $perc.'%').'</div>';
+		if($l = @fopen('/proc/loadavg', 'r'))
+		{
+			$loads = explode(' ', fgets($l));
+			fclose($l);
+			$perc = $loads[0] > 1 ? 100 : ($loads[0]*100);
+			$box .= "<div id=\"boxload\"><div>{$lng['load']}: {$loads[0]} {$loads[1]} {$loads[2]}</div>".progressbar($perc, $perc.'%').'</div>';
+		}
+		else
+		{
+      	$box .= "<div id=\"boxload\">---</div>";
+		}	
 		$box .= '</div></div>';
 
 		return $box;
