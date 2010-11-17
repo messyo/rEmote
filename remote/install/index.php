@@ -61,7 +61,7 @@ else
 
 	if(isset($_SESSION['language']))
 		require(TO_ROOT.'languages/'.$_SESSION['language'].'/install.lng.php');
-	else if(!(@include(TO_ROOT.'languages/'.$_SESSION['language'].'/install.lng.php')))
+	else // if(!(@include(TO_ROOT.'languages/'.$_SESSION['language'].'/install.lng.php')))
 	{
 		$lng['title']     = 'Install rEmote';
 		$lng['chooselng'] = 'Please choose your language';

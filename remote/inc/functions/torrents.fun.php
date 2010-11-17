@@ -61,30 +61,29 @@ function quick_get_hash($file)
 
 function get_files(&$str)
 {
-	$file = $str;
-	if(false === ($start = strpos($file, '4:infod') + 6))
+	if(false === ($start = strpos($str, '4:infod')))
 	{
 		logger(LOGERROR, 'Could not generate libtorrent resume-data as torrent could not be parsed', __FILE__, __LINE__);
 		return false;
 	}
-	$infostart = $start;
+	$infostart = $start + 6;
 
-	if(false === ($start = strpos($file, '5:filesl', $start)))
+	if(false === ($start = strpos($str, '5:filesl', $infostart)))
 	{
 		// SingleFile Torrent
-		if(false === preg_match('#6:lengthi([0-9]+)e#', $file, $matches))
+		if(false === preg_match('#6:lengthi([0-9]+)e#', $str, $matches))
 		{
 			logger(LOGERROR, 'Could not generate libtorrent resume-data as torrent could not be parsed', __FILE__, __LINE__);
 			return false;
 		}
 		$len = $matches[1];
 		
-		if(false === ($start = strpos($file, '4:name', $infostart)))
+		if(false === ($start = strpos($str, '4:name', $infostart)))
 		{
 			logger(LOGERROR, 'Could not generate libtorrent resume-data as torrent could not be parsed', __FILE__, __LINE__);
 			return false;
 		}
-		$region = substr($file, $start + 6, 10);
+		$region = substr($str, $start + 6, 10);
 		
 		if(false === preg_match('#([0-9]+)[^0-9]*#', $region, $matches))
 		{
@@ -92,20 +91,20 @@ function get_files(&$str)
 			return false;
 		}
 		$strlen = intval($matches[1]);
-		$start = strpos($file, ':', $start + 5) + 1;
-		$name = substr($file, $start + 1, $strlen);
+		$start = strpos($str, ':', $start + 5) + 1;
+		$name = substr($str, $start + 1, $strlen);
 
 		return array(array('length' => $len, 'path' => array($name)));
 	}
 	$start += 7;
 
-	if(false === ($end = getEndOfList($start, $file)))
+	if(false === ($end = getEndOfList($start, $str)))
 	{
 		logger(LOGERROR, 'Could not generate libtorrent resume-data as torrent could not be parsed', __FILE__, __LINE__);
 		return false;
 	}
 
-	$filestr = substr($file, $start, $end - $start + 1);
+	$filestr = substr($str, $start, $end - $start + 1);
 	$end = 0;
 	$len = strlen($filestr);
 
