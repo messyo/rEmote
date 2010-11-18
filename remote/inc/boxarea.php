@@ -2,7 +2,6 @@
 
 class Shoutbox
 {
-	private $smileyPattern = '#(:\-\)|:\)|:\-\(|:\(|;\-\)|;\)|:\||:\-\||8\-\)|8\)|:O|:\-O)#';
 	private $smileys = array(
 		':-)' => 'smile.gif',
 		':)'  => 'smile.gif',
@@ -17,7 +16,9 @@ class Shoutbox
 		':O'  => 'shock.gif',
 		':-O' => 'shock.gif'
 	);
+	
 	private $usernamePattern = null;
+	private $smileyPattern   = null;
 
 
 	private function replaceSmileys($string)
@@ -27,13 +28,16 @@ class Shoutbox
 		if(is_array($string))
 			return "<img src=\"{$smileyimgs}{$this->smileys[$string[1]]}\" alt=\"{$string[1]}\" />";
 
+		if(empty($this->smileyPattern))
+      	$this->smileyPattern = '#(' . implode('|', array_map('preg_quote', array_keys($this->smileys))) . ')#';
+
 		return preg_replace_callback($this->smileyPattern, array($this, 'replaceSmileys'), $string);
 	}
 
 	private function highlightUsername($string)
 	{
 		if(empty($this->useranamePattern))
-			$this->usernamePattern = '#((^| )+)(' . preg_quote($_SESSION['username']) . ')(($| )+)#';
+			$this->usernamePattern = '#((^| )+)(' . preg_quote($_SESSION['username']) . ')(($| )+)#i';
 
    	$string = preg_replace($this->usernamePattern, '\\1<span class="highlight">\\3</span>\\4', $string);
 	
