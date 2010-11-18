@@ -2,8 +2,8 @@
 
 class Shoutbox
 {
-	var $smileyPattern = '#(:\-\)|:\)|:\-\(|:\(|;\-\)|;\)|:\||:\-\||8\-\)|8\)|:O|:\-O)#';
-	var $smileys = array(
+	private $smileyPattern = '#(:\-\)|:\)|:\-\(|:\(|;\-\)|;\)|:\||:\-\||8\-\)|8\)|:O|:\-O)#';
+	private $smileys = array(
 		':-)' => 'smile.gif',
 		':)'  => 'smile.gif',
 		':('  => 'sad.gif',
@@ -17,8 +17,10 @@ class Shoutbox
 		':O'  => 'shock.gif',
 		':-O' => 'shock.gif'
 	);
+	private $usernamePattern = null;
 
-	function replaceSmileys($string)
+
+	private function replaceSmileys($string)
 	{
 		global $smileyimgs;
 
@@ -28,7 +30,25 @@ class Shoutbox
 		return preg_replace_callback($this->smileyPattern, array($this, 'replaceSmileys'), $string);
 	}
 
-	function getShouts()
+	private function highlightUsername($string)
+	{
+		if(empty($this->useranamePattern))
+			$this->usernamePattern = '#((^| )+)(' . preg_quote($_SESSION['username']) . ')(($| )+)#';
+
+   	$string = preg_replace($this->usernamePattern, '\\1<span class="highlight">\\3</span>\\4', $string);
+	
+		return $string;
+	}
+	
+	public function processMessage($string)
+	{
+		$string = $this->highlightUsername($string);
+		$string = $this->replaceSmileys($string);
+		
+		return $string;
+	}
+
+	public function getShouts()
 	{
 		global $db, $lng, $qsid;
 
@@ -39,7 +59,7 @@ class Shoutbox
 			$shouts .= sprintf('<tr><td><strong>%s</strong> <span class="hint">%s</span></td><td>%s</td><td>%s</td></tr>',
 				$db->out($h['name']),
 				date('d.m.y H:i', $h['time']),
-				$this->replaceSmileys($db->out($h['message'])),
+				$this->processMessage($db->out($h['message'])),
 				'&nbsp;' // REPLACE BY DELETE-LINK
 			);
 		$shouts .= '</table>';
@@ -48,7 +68,7 @@ class Shoutbox
 	}
 
 
-	function makeShoutbox()
+	public function makeShoutbox()
 	{
 		global $db, $lng, $qsid;
 
