@@ -127,7 +127,7 @@ function get_torrent($url, $public, $start = false, $add_resume_data = false)
 
 function add_file($tmpname, $filename, $public, $start=0)
 {
-	global $settings;
+	global $settings, $lng;
 
 	$action = 'load';
 	if($start)

@@ -24,7 +24,13 @@ class RpcHandler
 
 	private function execute($context)
 	{
-		$file = file_get_contents($this->path, false, $context);
+		$file = @file_get_contents($this->path, false, $context);
+		if($file === false)
+		{
+      	global $out;
+			$out->fatal("Connection Error", "Could not connect to rTorrent.");
+		}
+		
 		$file = str_replace("i8","double",$file);
 
 		return xmlrpc_decode($file);
