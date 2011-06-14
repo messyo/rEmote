@@ -17,7 +17,8 @@ else
 }
 
 define('IN_INSTALL', true);
-define('VERSION', '2.0.0-beta-1');
+define('REMOTE_BUILD', 2);
+define('REMOTE_VERSION', '2.0.0-B1');
 define('MIN_RT', '0.8.4');
 define('TO_ROOT', '../');
 
@@ -40,7 +41,7 @@ if(is_file(TO_ROOT.'.lock'))
 	if(isset($file[0]))
 	{
 		$l = trim($file[0]);
-		if(version_compare(VERSION, $l) < 1)
+		if(version_compare(REMOTE_VERSION.'-'.REMOTE_BUILD, $l) < 1)
 			$locked = true;
 	}
 }

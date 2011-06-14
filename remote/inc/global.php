@@ -3,30 +3,33 @@
 $starttime = microtime('true');
 
 /***************************
- * DEFINE IMPORTANT VALUES *
+ * define IMPORTANT VALUES *
  ***************************/
 
 //LOGLEVELS
-DEFINE('LOGDEBUG',    1);
-DEFINE('LOGERROR',    2);
-DEFINE('LOGSECURITY', 4);
-DEFINE('LOGADDDEL',   8);
-DEFINE('LOGINFOS',    16);
-DEFINE('LOGSETTINGS', 32);
-DEFINE('LOGUSERS',    64);
+define('LOGDEBUG',    1);
+define('LOGERROR',    2);
+define('LOGSECURITY', 4);
+define('LOGADDDEL',   8);
+define('LOGINFOS',    16);
+define('LOGSETTINGS', 32);
+define('LOGUSERS',    64);
 
 //USERCLASSES
-DEFINE('GUEST',    0);
-DEFINE('USER',     1);
-DEFINE('ADMIN',    2);
-DEFINE('SUADMIN',  3);
+define('GUEST',    0);
+define('USER',     1);
+define('ADMIN',    2);
+define('SUADMIN',  3);
 
 //BOXAREAS
-DEFINE('BOX_NONE',   -1);
-DEFINE('BOX_SIDE',    0);
-DEFINE('BOX_TOP',     1);
-DEFINE('BOX_BOTTOM',  2);
-DEFINE('BOX_RIGHT',   3);
+define('BOX_NONE',   -1);
+define('BOX_SIDE',    0);
+define('BOX_TOP',     1);
+define('BOX_BOTTOM',  2);
+define('BOX_RIGHT',   3);
+
+define('REMOTE_BUILD', 2);
+define('REMOTE_VERSION', '2.0.0-B1');
 
 //VIEW/SOURCE/GROUP
 $view_arr    = array('main', 'started', 'stopped', 'complete', 'incomplete', 'seeding');
@@ -60,7 +63,7 @@ $result = $rpc->simple_multicall('system.client_version',
 											'get_download_rate',
 											'get_upload_rate');
 
-$global['versions']['remote']     = '2.0.0-beta-1';
+$global['versions']['remote']     = REMOTE_VERSION.'-'.REMOTE_BUILD;
 $global['versions']['rtorrent']   = $result[0][0];
 $global['versions']['libtorrent'] = $result[1][0];
 $global['downspeed']              = $result[2][0];

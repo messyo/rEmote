@@ -14,7 +14,7 @@ if(is_writeable(TO_ROOT) || (is_file($lockfile) && is_writeable($lockfile)))
 {
 	if($h = fopen($lockfile, "w"))
 	{
-		fwrite($h, VERSION);
+		fwrite($h, REMOTE_VERSION.'-'.REMOTE_BUILD);
 		fclose($h);
 		$success = true;
 	}
