@@ -67,7 +67,7 @@ while($h = $db->fetch($result))
 	$userDirs[$h['uid']] = stripslashes($h['dir']);
 
 
-$result = $db->query('SELECT f.fid, f.url, f.interval, f.directory, f.uid, f.download, h.function FROM feeds f, highlightrules h WHERE f.uid = h.uid AND (h.fid = 0 OR h.fid = f.fid) AND h.function > 1');
+$result = $db->query('SELECT DISTINCT f.fid, f.url, f.interval, f.directory, f.uid, f.download, h.function FROM feeds f, highlightrules h WHERE f.uid = h.uid AND (h.fid = 0 OR h.fid = f.fid) AND h.function > 1');
 while($h = $db->fetch($result))
 {
 	$id = $h['fid'];

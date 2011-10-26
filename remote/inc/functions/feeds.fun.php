@@ -49,7 +49,7 @@ function highlight($field, $message)
 
 function fetchRss($url, $id, $download, $ddir = '')
 {
-	global $settings;
+	global $settings, $higharr;
 
 	if(!($xml = @file_get_contents($url)) || ($xml == ''))
 		return false;
@@ -61,6 +61,7 @@ function fetchRss($url, $id, $download, $ddir = '')
 	xml_parse_into_struct($parser, $xml, $tags);
 	xml_parser_free($parser);
 
+	$higharr = array();
 	read_highlights($id);
 
 	if(!$settings['disable_sem'])
