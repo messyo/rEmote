@@ -2,7 +2,7 @@
 
 // Define Session-Functions
 
-class SessionHandler
+class REmoteSessionHandler
 {
 
 	public static $sessionexisted = false;
@@ -79,6 +79,6 @@ class SessionHandler
 
 /* Tell PHP to use Session functions */
 ini_set('session.save_handler', 'user');
-session_set_save_handler('SessionHandler::open', 'SessionHandler::close', 'SessionHandler::read', 'SessionHandler::write', 'SessionHandler::destroy', 'SessionHandler::gc');
+session_set_save_handler('REmoteSessionHandler::open', 'REmoteSessionHandler::close', 'REmoteSessionHandler::read', 'REmoteSessionHandler::write', 'REmoteSessionHandler::destroy', 'REmoteSessionHandler::gc');
 
 ?>

@@ -17,7 +17,7 @@ else
 }
 
 define('IN_INSTALL', true);
-define('REMOTE_BUILD', 2);
+define('REMOTE_BUILD', 4);
 define('REMOTE_VERSION', '2.0.0-B1');
 define('MIN_RT', '0.8.4');
 define('TO_ROOT', '../');

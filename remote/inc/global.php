@@ -28,7 +28,7 @@ define('BOX_TOP',     1);
 define('BOX_BOTTOM',  2);
 define('BOX_RIGHT',   3);
 
-define('REMOTE_BUILD', 2);
+define('REMOTE_BUILD', 4);
 define('REMOTE_VERSION', '2.0.0-B1');
 
 //VIEW/SOURCE/GROUP
