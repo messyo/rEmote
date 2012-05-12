@@ -100,7 +100,7 @@ session_name($settings['session_name']);
 // So here is our own GC-Call
 if(!defined('NO_GC') && mt_rand(1, SESSION_GC_DIVISOR) == SESSION_GC_DIVISOR)
 {
-	SessionHandler::gc($settings['session_lifetime']);
+	REmoteSessionHandler::gc($settings['session_lifetime']);
 	// Also cleanup cache
 	$db->query('DELETE FROM cache WHERE expires > 0 AND expires < ?', 'i', time());
 }
